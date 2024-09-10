@@ -9,30 +9,50 @@
         
         <title>feedback_form</title>
         
+        <!-- Scripts -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/admin-lte@3.1/dist/js/adminlte.min.js"></script>
+        <script src="https://unpkg.com/alpinejs@3.10.2/dist/cdn.min.js" defer></script>
+        
         <!-- Fonts -->
         <link rel="dns-prefetch" href="//fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&amp;display=fallback">
+        {{-- <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet"> --}}
         
         <!-- Styles -->
+        {{-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> --}}
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.1/dist/css/adminlte.min.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
         
         <!-- Icons -->
         <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
         
-        <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+        <!-- Small Ionicons Fixes for AdminLTE -->
+        <style>
+        html {
+            background-color: #f4f6f9;
+        }
         
-        <!-- Scripts -->
-        @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+        .nav-icon.icon:before {
+            width: 25px;
+        }
+        </style>
 
         
         @livewireStyles
     </head>
     
-    <body>
-        <div id="app">
-            @include('layouts.nav')
+    <body class="sidebar-mini layout-fixed layout-navbar-fixed sidebar-collapse">
+        <div id="app" class="wrapper">
+            <div class="main-header">
+                @include('layouts.nav')
+            </div>
         
-            <main class="py-4">
+            @include('layouts.sidebar')
+        
+            <main class="content-wrapper p-5">
                 @yield('content')
             </main>
         </div>
@@ -51,7 +71,7 @@
             notyf.success('{{ session('success') }}')
         </script> 
         @endif
-        
+
         <script>
             /* Simple Alpine Image Viewer */
             document.addEventListener('alpine:init', () => {

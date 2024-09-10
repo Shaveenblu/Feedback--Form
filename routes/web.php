@@ -3,8 +3,15 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\TourController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\GuideController;
+use App\Http\Controllers\HotelController;
+use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\ResponseTypeController;
+use App\Http\Controllers\QuestionCategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,4 +39,14 @@ Route::prefix('/')
         Route::resource('permissions', PermissionController::class);
 
         Route::resource('users', UserController::class);
+        Route::resource('customers', CustomerController::class);
+        Route::resource('guides', GuideController::class);
+        Route::resource('hotels', HotelController::class);
+        Route::resource('questions', QuestionController::class);
+        Route::resource(
+            'question-categories',
+            QuestionCategoryController::class
+        );
+        Route::resource('response-types', ResponseTypeController::class);
+        Route::resource('tours', TourController::class);
     });
