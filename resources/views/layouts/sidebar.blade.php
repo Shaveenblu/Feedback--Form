@@ -2,7 +2,7 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="{{ url('/') }}" class="brand-link">
-        <img src="https://vemto.app/favicon.png" alt="Vemto Logo" class="brand-image bg-white img-circle">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzYecmvpnNeDHPG0bzQ6KctcLWVT35IZcJPQ&usqp=CAU" alt="Admin Logo" class="brand-image bg-white img-circle">
         <span class="brand-text font-weight-light">feedback_form</span>
     </a>
 
@@ -99,7 +99,7 @@
                     </ul>
                 </li>
 
-                @if (Auth::user()->can('view-any', Spatie\Permission\Models\Role::class) || 
+                @if (Auth::user()->can('view-any', Spatie\Permission\Models\Role::class) ||
                     Auth::user()->can('view-any', Spatie\Permission\Models\Permission::class))
                 <li class="nav-item">
                     <a href="#" class="nav-link">
