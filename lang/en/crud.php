@@ -135,6 +135,30 @@ return [
         ],
     ],
 
+    'customer_hotels' => [
+        'name' => 'Customer Hotels',
+        'index_title' => ' List',
+        'new_title' => 'New Customer hotel',
+        'create_title' => 'Create customer_hotel',
+        'edit_title' => 'Edit customer_hotel',
+        'show_title' => 'Show customer_hotel',
+        'inputs' => [
+            'hotel_id' => 'Hotel',
+        ],
+    ],
+
+    'tour_guides' => [
+        'name' => 'Tour Guides',
+        'index_title' => ' List',
+        'new_title' => 'New Guide tour',
+        'create_title' => 'Create guide_tour',
+        'edit_title' => 'Edit guide_tour',
+        'show_title' => 'Show guide_tour',
+        'inputs' => [
+            'guide_id' => 'Guide',
+        ],
+    ],
+
     'roles' => [
         'name' => 'Roles',
         'index_title' => 'Roles List',

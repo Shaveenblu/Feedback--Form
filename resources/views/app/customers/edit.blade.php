@@ -43,5 +43,15 @@
             </x-form>
         </div>
     </div>
+
+    @can('view-any', App\Models\customer_hotel::class)
+    <div class="card mt-4">
+        <div class="card-body">
+            <h4 class="card-title w-100 mb-2">Hotels</h4>
+
+            <livewire:customer-hotels-detail :customer="$customer" />
+        </div>
+    </div>
+    @endcan
 </div>
 @endsection

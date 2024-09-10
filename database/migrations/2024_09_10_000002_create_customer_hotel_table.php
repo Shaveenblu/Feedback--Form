@@ -13,6 +13,8 @@ return new class extends Migration {
         Schema::create('customer_hotel', function (Blueprint $table) {
             $table->unsignedBigInteger('hotel_id');
             $table->unsignedBigInteger('customer_id');
+
+            $table->timestamps();
         });
     }
 

@@ -12,10 +12,12 @@ use App\Http\Controllers\Api\CustomerController;
 use App\Http\Controllers\Api\QuestionController;
 use App\Http\Controllers\Api\GuideToursController;
 use App\Http\Controllers\Api\TourGuidesController;
+use App\Http\Controllers\Api\guide_tourController;
 use App\Http\Controllers\Api\PermissionController;
 use App\Http\Controllers\Api\ResponseTypeController;
 use App\Http\Controllers\Api\CustomerHotelsController;
 use App\Http\Controllers\Api\HotelCustomersController;
+use App\Http\Controllers\Api\customer_hotelController;
 use App\Http\Controllers\Api\QuestionCategoryController;
 use App\Http\Controllers\Api\QuestionCategoryQuestionsController;
 

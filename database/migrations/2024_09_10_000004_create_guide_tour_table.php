@@ -13,6 +13,8 @@ return new class extends Migration {
         Schema::create('guide_tour', function (Blueprint $table) {
             $table->unsignedBigInteger('guide_id');
             $table->unsignedBigInteger('tour_id');
+
+            $table->timestamps();
         });
     }
 
