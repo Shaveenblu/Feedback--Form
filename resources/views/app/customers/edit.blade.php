@@ -10,31 +10,16 @@
                 ></a>
                 @lang('crud.customers.edit_title')
             </h4>
-
-            <x-form
-                method="PUT"
+            <x-form method="PUT"
                 action="{{ route('customers.update', $customer) }}"
-                class="mt-4"
-            >
+                class="mt-4">
                 @include('app.customers.form-inputs')
-
                 <div class="mt-4">
-                    <a
-                        href="{{ route('customers.index') }}"
-                        class="btn btn-light"
-                    >
+                    <a href="{{ route('customers.index') }}"
+                        class="btn btn-light">
                         <i class="icon ion-md-return-left text-primary"></i>
                         @lang('crud.common.back')
                     </a>
-
-                    <a
-                        href="{{ route('customers.create') }}"
-                        class="btn btn-light"
-                    >
-                        <i class="icon ion-md-add text-primary"></i>
-                        @lang('crud.common.create')
-                    </a>
-
                     <button type="submit" class="btn btn-primary float-right">
                         <i class="icon ion-md-save"></i>
                         @lang('crud.common.update')
@@ -43,12 +28,10 @@
             </x-form>
         </div>
     </div>
-
     @can('view-any', App\Models\customer_hotel::class)
     <div class="card mt-4">
         <div class="card-body">
             <h4 class="card-title w-100 mb-2">Hotels</h4>
-
             <livewire:customer-hotels-detail :customer="$customer" />
         </div>
     </div>

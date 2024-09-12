@@ -41,8 +41,11 @@ class CustomerController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(CustomerStoreRequest $request): RedirectResponse
+    public function store(Request $request)
     {
+
+        return $request;
+
         $this->authorize('create', Customer::class);
 
         $validated = $request->validated();
