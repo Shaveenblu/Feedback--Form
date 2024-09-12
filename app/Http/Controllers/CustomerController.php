@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Customer;
+use App\Models\Hotel;
+use App\Models\Tour;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
@@ -34,8 +36,9 @@ class CustomerController extends Controller
     public function create(Request $request): View
     {
         $this->authorize('create', Customer::class);
-
-        return view('app.customers.create');
+        $hotels = Hotel::all();
+        $tours = Tour::all();
+        return view('app.customers.create', compact('hotels','tours'));
     }
 
     /**
@@ -73,8 +76,9 @@ class CustomerController extends Controller
     public function edit(Request $request, Customer $customer): View
     {
         $this->authorize('update', $customer);
-
-        return view('app.customers.edit', compact('customer'));
+        $hotels = Hotel::all();
+        $tours = Tour::all();
+        return view('app.customers.edit', compact('customer','hotels','tours'));
     }
 
     /**

@@ -10,14 +10,10 @@
                 ></a>
                 @lang('crud.customers.create_title')
             </h4>
-
-            <x-form
-                method="POST"
+            <x-form method="POST"
                 action="{{ route('customers.store') }}"
-                class="mt-4"
-            >
+                class="mt-4">
                 @include('app.customers.form-inputs')
-
                 <div class="mt-4">
                     <a
                         href="{{ route('customers.index') }}"

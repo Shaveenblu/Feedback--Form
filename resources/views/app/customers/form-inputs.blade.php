@@ -28,28 +28,40 @@
     </div>
     <div class="form-group col-sm-12">
         <label for="tourNumber">Tour Number</label>
-        <input
-            class="form-control"
-            id="tourNumber"
-            type="text"
-            name="tour_no"
-            label="Tour No"
-            value="{{old('tour_no', ($editing ? $customer->tour_no : ''))}}"
-            maxlength="255"
-            placeholder="Tour No"
-            required>
+        <select class="form-select form-select-lg mb-3 form-control" aria-label=".form-select-lg example">
+            <option selected disabled>Open this select menu</option>
+            @foreach($tours as $tour)
+                <option value="{{$tour->id}}">{{$tour->tour_no}}</option>
+            @endforeach
+        </select>
     </div>
-    <div class="form-group col-sm-12">
-        <label for="unique_id">Unique Id</label>
-        <input
-            class="form-control"
-            type="text"
-            id="unique_id"
-            name="unique_id"
-            label="Unique Id"
-            value="{{old('unique_id', ($editing ? $customer->unique_id : ''))}}"
-            maxlength="255"
-            placeholder="Unique Id"
-            required>
-    </div>
+    @if(!$editing)
+        <div class="form-group col-sm-12">
+            <label for="unique_id">Select Hotels</label>
+            <select name="title[]" class="form-control" id="favorite-colors"  multiple required>
+                @foreach($hotels as $hotel)
+                    <option value="{{$hotel->id}}">{{$hotel->hotel_name}}</option>
+                @endforeach
+            </select>
+        </div>
+    @endif
 </div>
+
+
+@section('style_link')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        .select2-container--default .select2-selection--multiple .select2-selection__choice {
+            background-color: #484848;
+        }
+    </style>
+@endsection
+
+@section('js_script')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        $(function () {
+            $('#favorite-colors').select2();
+        })
+     </script>
+@endsection
