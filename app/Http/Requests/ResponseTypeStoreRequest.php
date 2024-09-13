@@ -22,12 +22,6 @@ class ResponseTypeStoreRequest extends FormRequest
     {
         return [
             'name' => ['required', 'max:255', 'string'],
-            'unique_id' => [
-                'required',
-                'unique:response_types,unique_id',
-                'max:255',
-                'string',
-            ],
         ];
     }
 }

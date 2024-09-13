@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Str;
 use Illuminate\View\View;
 use App\Models\ResponseType;
 use Illuminate\Http\Request;
@@ -22,7 +23,7 @@ class ResponseTypeController extends Controller
 
         $responseTypes = ResponseType::search($search)
             ->latest()
-            ->paginate(5)
+            ->paginate(10)
             ->withQueryString();
 
         return view(
@@ -49,7 +50,7 @@ class ResponseTypeController extends Controller
         $this->authorize('create', ResponseType::class);
 
         $validated = $request->validated();
-
+        $validated['unique_id'] = Str::random(9);
         $responseType = ResponseType::create($validated);
 
         return redirect()
@@ -87,7 +88,6 @@ class ResponseTypeController extends Controller
         $this->authorize('update', $responseType);
 
         $validated = $request->validated();
-
         $responseType->update($validated);
 
         return redirect()

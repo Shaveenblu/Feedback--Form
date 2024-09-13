@@ -22,14 +22,6 @@ class ResponseTypeUpdateRequest extends FormRequest
     {
         return [
             'name' => ['required', 'max:255', 'string'],
-            'unique_id' => [
-                'required',
-                Rule::unique('response_types', 'unique_id')->ignore(
-                    $this->responseType
-                ),
-                'max:255',
-                'string',
-            ],
         ];
     }
 }

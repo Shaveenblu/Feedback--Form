@@ -115,7 +115,7 @@ return [
         'show_title' => 'Show ResponseType',
         'inputs' => [
             'name' => 'Name',
-            'unique_id' => 'Unique Id',
+            'unique_id' => 'ResponseTypes Id',
         ],
     ],
 

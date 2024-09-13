@@ -27,13 +27,6 @@
                         @lang('crud.common.back')
                     </a>
 
-                    <a
-                        href="{{ route('response-types.create') }}"
-                        class="btn btn-light"
-                    >
-                        <i class="icon ion-md-add text-primary"></i>
-                        @lang('crud.common.create')
-                    </a>
 
                     <button type="submit" class="btn btn-primary float-right">
                         <i class="icon ion-md-save"></i>
