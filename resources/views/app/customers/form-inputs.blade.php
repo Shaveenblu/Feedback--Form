@@ -30,6 +30,11 @@
         <label for="tourNumber">Tour Number</label>
         <select class="form-select form-select-lg mb-3 form-control" name="tour_no" aria-label=".form-select-lg example">
             <option selected disabled>Open this select menu</option>
+            @if($editing)
+                <option value="{{$customer->tour_no}}" selected>{{$customer->tour_no}}</option>
+            @else
+                <option value="" selected disabled>Select Status</option>
+            @endif
             @foreach($tours as $tour)
                 <option value="{{$tour->tour_no}}">{{$tour->tour_no}}</option>
             @endforeach
