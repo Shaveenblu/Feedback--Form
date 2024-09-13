@@ -28,7 +28,7 @@ class TourGuidesDetail extends Component
     public function mount(Tour $tour): void
     {
         $this->tour = $tour;
-        $this->guidesForSelect = Guide::pluck('unique_id', 'id');
+        $this->guidesForSelect = Guide::pluck('guid_first_name', 'id');
         $this->resetGuideData();
     }
 

@@ -11,7 +11,7 @@ class Guide extends Model
     use HasFactory;
     use Searchable;
 
-    protected $fillable = ['unique_id', 'guid_first_name', 'guid_last_name'];
+    protected $fillable = ['guid_first_name', 'guid_last_name','unique_id'];
 
     protected $searchableFields = ['*'];
 
