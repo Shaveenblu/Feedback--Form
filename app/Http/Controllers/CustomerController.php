@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Customer;
 use App\Models\Hotel;
 use App\Models\Tour;
+use Dflydev\DotAccessData\Data;
+use Illuminate\Support\Str;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
@@ -44,16 +46,16 @@ class CustomerController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CustomerStoreRequest $request)
     {
 
-        return $request;
-
         $this->authorize('create', Customer::class);
-
         $validated = $request->validated();
+        $validated['unique_id'] = Str::random(9);
 
         $customer = Customer::create($validated);
+        $hotels = $request->hotels;
+        $customer->hotels()->attach($hotels);
 
         return redirect()
             ->route('customers.edit', $customer)

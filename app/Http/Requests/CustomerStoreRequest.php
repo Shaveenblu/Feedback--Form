@@ -24,11 +24,9 @@ class CustomerStoreRequest extends FormRequest
             'customer_name' => ['required', 'max:255', 'string'],
             'customer_phone_number' => ['required', 'max:255', 'string'],
             'tour_no' => ['required', 'max:255', 'string'],
-            'unique_id' => [
+            'hotels' => [
+                'array',
                 'required',
-                'unique:customers,unique_id',
-                'max:255',
-                'string',
             ],
         ];
     }

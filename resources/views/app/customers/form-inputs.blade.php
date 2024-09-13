@@ -28,17 +28,17 @@
     </div>
     <div class="form-group col-sm-12">
         <label for="tourNumber">Tour Number</label>
-        <select class="form-select form-select-lg mb-3 form-control" aria-label=".form-select-lg example">
+        <select class="form-select form-select-lg mb-3 form-control" name="tour_no" aria-label=".form-select-lg example">
             <option selected disabled>Open this select menu</option>
             @foreach($tours as $tour)
-                <option value="{{$tour->id}}">{{$tour->tour_no}}</option>
+                <option value="{{$tour->tour_no}}">{{$tour->tour_no}}</option>
             @endforeach
         </select>
     </div>
     @if(!$editing)
         <div class="form-group col-sm-12">
             <label for="unique_id">Select Hotels</label>
-            <select name="title[]" class="form-control" id="favorite-colors"  multiple required>
+            <select name="hotels[]" class="form-control" id="favorite-colors"  multiple required>
                 @foreach($hotels as $hotel)
                     <option value="{{$hotel->id}}">{{$hotel->hotel_name}}</option>
                 @endforeach
@@ -53,6 +53,9 @@
     <style>
         .select2-container--default .select2-selection--multiple .select2-selection__choice {
             background-color: #007BFF;
+        }
+        .select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
+            color: #ffffff;
         }
     </style>
 @endsection
