@@ -11,11 +11,9 @@
                 @lang('crud.tours.edit_title')
             </h4>
 
-            <x-form
-                method="PUT"
+            <x-form method="PUT"
                 action="{{ route('tours.update', $tour) }}"
-                class="mt-4"
-            >
+                class="mt-4">
                 @include('app.tours.form-inputs')
 
                 <div class="mt-4">
@@ -24,10 +22,6 @@
                         @lang('crud.common.back')
                     </a>
 
-                    <a href="{{ route('tours.create') }}" class="btn btn-light">
-                        <i class="icon ion-md-add text-primary"></i>
-                        @lang('crud.common.create')
-                    </a>
 
                     <button type="submit" class="btn btn-primary float-right">
                         <i class="icon ion-md-save"></i>

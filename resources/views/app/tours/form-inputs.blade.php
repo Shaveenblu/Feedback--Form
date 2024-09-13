@@ -44,4 +44,38 @@
             required
         ></x-inputs.text>
     </x-inputs.group>
+    @if(!$editing)
+        <div class="form-group col-sm-12">
+            <label for="guides">Select Guide</label>
+            <select name="guides[]" class="form-control" id="favorite-colors"  multiple required>
+                @foreach($guides as $guide)
+                    <option value="{{$guide->id}}">{{$guide->guid_first_name}} {{$guide->guid_last_name}}</option>
+                @endforeach
+            </select>
+        </div>
+    @endif
 </div>
+
+@section('style_link')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        .select2-container--default .select2-selection--multiple .select2-selection__choice {
+            background-color: #007BFF;
+        }
+        .select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
+            color: #ffffff;
+        }
+    </style>
+@endsection
+
+@section('js_script')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        $(function () {
+            $('#favorite-colors').select2();
+        })
+    </script>
+@endsection
+
+
+

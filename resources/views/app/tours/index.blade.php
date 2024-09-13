@@ -45,9 +45,6 @@
                     <thead>
                         <tr>
                             <th class="text-left">
-                                @lang('crud.tours.inputs.unique_id')
-                            </th>
-                            <th class="text-left">
                                 @lang('crud.tours.inputs.tour_operator')
                             </th>
                             <th class="text-left">
@@ -67,23 +64,18 @@
                     <tbody>
                         @forelse($tours as $tour)
                         <tr>
-                            <td>{{ $tour->unique_id ?? '-' }}</td>
                             <td>{{ $tour->tour_operator ?? '-' }}</td>
                             <td>{{ $tour->tour_name ?? '-' }}</td>
-                            <td>{{ $tour->tour_start_date ?? '-' }}</td>
+                            <td>{{ $tour->tour_start_date->format('Y-m-d') ?? '-' }}</td>
                             <td>{{ $tour->tour_no ?? '-' }}</td>
                             <td class="text-center" style="width: 134px;">
-                                <div
-                                    role="group"
+                                <div role="group"
                                     aria-label="Row Actions"
-                                    class="btn-group"
-                                >
+                                    class="btn-group">
                                     @can('update', $tour)
                                     <a href="{{ route('tours.edit', $tour) }}">
-                                        <button
-                                            type="button"
-                                            class="btn btn-light"
-                                        >
+                                        <button type="button"
+                                            class="btn btn-light">
                                             <i class="icon ion-md-create"></i>
                                         </button>
                                     </a>

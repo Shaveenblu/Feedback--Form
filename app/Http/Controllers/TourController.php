@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Guide;
 use App\Models\Tour;
 use Illuminate\Support\Str;
 use Illuminate\View\View;
@@ -23,7 +24,7 @@ class TourController extends Controller
 
         $tours = Tour::search($search)
             ->latest()
-            ->paginate(5)
+            ->paginate(10)
             ->withQueryString();
 
         return view('app.tours.index', compact('tours', 'search'));
@@ -35,8 +36,8 @@ class TourController extends Controller
     public function create(Request $request): View
     {
         $this->authorize('create', Tour::class);
-
-        return view('app.tours.create');
+        $guides = Guide::all();
+        return view('app.tours.create',compact('guides'));
     }
 
     /**
@@ -45,11 +46,11 @@ class TourController extends Controller
     public function store(TourStoreRequest $request): RedirectResponse
     {
         $this->authorize('create', Tour::class);
-
         $validated = $request->validated();
         $validated['unique_id'] = Str::random(9);
         $tour = Tour::create($validated);
-
+        $guides = $request->guides;
+        $tour->guides()->attach($guides);
         return redirect()
             ->route('tours.edit', $tour)
             ->withSuccess(__('crud.common.created'));

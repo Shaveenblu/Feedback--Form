@@ -70,7 +70,7 @@
             <tbody class="text-gray-600">
                 @foreach ($tourGuides as $guide)
                 <tr class="hover:bg-gray-100">
-                    <td class="text-left">{{ $guide->unique_id ?? '-' }}</td>
+                    <td class="text-left">{{ $guide->guid_first_name ?? '-' }} {{ $guide->guid_last_name ?? '-' }}</td>
                     <td class="text-right" style="width: 70px;">
                         <div
                             role="group"

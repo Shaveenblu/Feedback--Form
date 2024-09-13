@@ -21,12 +21,6 @@ class TourUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'unique_id' => [
-                'required',
-                Rule::unique('tours', 'unique_id')->ignore($this->tour),
-                'max:255',
-                'string',
-            ],
             'tour_operator' => ['required', 'max:255', 'string'],
             'tour_name' => ['required', 'max:255', 'string'],
             'tour_start_date' => ['required', 'date'],
