@@ -22,7 +22,7 @@ class QuestionCategoryController extends Controller
 
         $questionCategories = QuestionCategory::search($search)
             ->latest()
-            ->paginate(5)
+            ->paginate(10)
             ->withQueryString();
 
         return view(
@@ -81,7 +81,6 @@ class QuestionCategoryController extends Controller
         QuestionCategory $questionCategory
     ): View {
         $this->authorize('update', $questionCategory);
-
         return view(
             'app.question_categories.edit',
             compact('questionCategory')

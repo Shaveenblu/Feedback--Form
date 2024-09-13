@@ -24,13 +24,13 @@
                         @lang('crud.common.back')
                     </a>
 
-                    <a
-                        href="{{ route('guides.create') }}"
-                        class="btn btn-light"
-                    >
-                        <i class="icon ion-md-add text-primary"></i>
-                        @lang('crud.common.create')
-                    </a>
+{{--                    <a--}}
+{{--                        href="{{ route('guides.create') }}"--}}
+{{--                        class="btn btn-light"--}}
+{{--                    >--}}
+{{--                        <i class="icon ion-md-add text-primary"></i>--}}
+{{--                        @lang('crud.common.create')--}}
+{{--                    </a>--}}
 
                     <button type="submit" class="btn btn-primary float-right">
                         <i class="icon ion-md-save"></i>

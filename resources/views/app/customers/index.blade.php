@@ -56,9 +56,6 @@
                             <th class="text-left">
                                 @lang('crud.customers.inputs.tour_no')
                             </th>
-                            <th class="text-left">
-                                @lang('crud.customers.inputs.unique_id')
-                            </th>
                             <th class="text-center">
                                 @lang('crud.common.actions')
                             </th>
@@ -72,17 +69,12 @@
                                 {{ $customer->customer_phone_number ?? '-' }}
                             </td>
                             <td>{{ $customer->tour_no ?? '-' }}</td>
-                            <td>{{ $customer->unique_id ?? '-' }}</td>
                             <td class="text-center" style="width: 134px;">
-                                <div
-                                    role="group"
+                                <div role="group"
                                     aria-label="Row Actions"
-                                    class="btn-group"
-                                >
+                                    class="btn-group">
                                     @can('update', $customer)
-                                    <a
-                                        href="{{ route('customers.edit', $customer) }}"
-                                    >
+                                    <a href="{{ route('customers.edit', $customer) }}">
                                         <button
                                             type="button"
                                             class="btn btn-light"
