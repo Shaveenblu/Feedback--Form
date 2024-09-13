@@ -98,20 +98,39 @@
                                             <i class="icon ion-md-eye"></i>
                                         </button>
                                     </a>
-                                    @endcan @can('delete', $question)
-                                    <form
-                                        action="{{ route('questions.destroy', $question) }}"
-                                        method="POST"
-                                        onsubmit="return confirm('{{ __('crud.common.are_you_sure') }}')"
-                                    >
-                                        @csrf @method('DELETE')
-                                        <button
-                                            type="submit"
-                                            class="btn btn-light text-danger"
-                                        >
-                                            <i class="icon ion-md-trash"></i>
-                                        </button>
-                                    </form>
+                                    @endcan
+                                @can('delete', $question)
+                               <form>
+                                   <a class="btn btn-light text-danger"
+                                      data-target="#deleteModal_{{$question->id}}"
+                                      data-toggle="modal">
+                                       <i class="icon ion-md-trash"></i>
+                                   </a>
+                               </form>
+                               <div class="modal fade" id="deleteModal_{{$question->id}}">
+                                   <div class="modal-dialog">
+                                       <div class="modal-content">
+                                           <div class="modal-header">
+                                               <h5 class="modal-title" id="exampleModalLabel">Delete</h5>
+                                               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                   <span aria-hidden="true">&times;</span>
+                                               </button>
+                                           </div>
+                                           <div class="modal-body">
+                                               <p>Are you sure you want to delete?</p>
+                                           </div>
+                                           <div class="modal-footer">
+                                               <button type="button" class="btn btn-secondary" data-dismiss="modal" id="close-modal">No</button>
+                                               <form action="{{ route('questions.destroy', $question) }}"
+                                                     method="POST">
+                                                   @csrf
+                                                   @method('DELETE')
+                                                   <button type="submit" class="btn btn-danger">Yes</button>
+                                               </form>
+                                           </div>
+                                       </div>
+                                   </div>
+                               </div>
                                     @endcan
                                 </div>
                             </td>
