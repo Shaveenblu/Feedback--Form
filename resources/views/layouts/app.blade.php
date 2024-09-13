@@ -28,7 +28,7 @@
 
         <!-- Icons -->
         <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
-
+        <link href="{{asset('assets/css/ionicons.min.css')}}" rel="stylesheet">
         <!-- Small Ionicons Fixes for AdminLTE -->
         <style>
         html {
