@@ -22,12 +22,6 @@ class QuestionCategoryStoreRequest extends FormRequest
     {
         return [
             'name' => ['required', 'max:255', 'string'],
-            'unique_id' => [
-                'required',
-                'unique:question_categories,unique_id',
-                'max:255',
-                'string',
-            ],
         ];
     }
 }

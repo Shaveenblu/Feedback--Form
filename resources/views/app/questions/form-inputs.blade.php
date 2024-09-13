@@ -25,15 +25,4 @@
             @endforeach
         </x-inputs.select>
     </x-inputs.group>
-
-    <x-inputs.group class="col-sm-12">
-        <x-inputs.text
-            name="unique_id"
-            label="Unique Id"
-            :value="old('unique_id', ($editing ? $question->unique_id : ''))"
-            maxlength="255"
-            placeholder="Unique Id"
-            required
-        ></x-inputs.text>
-    </x-inputs.group>
 </div>

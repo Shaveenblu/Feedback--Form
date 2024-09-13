@@ -10,12 +10,9 @@
                 ></a>
                 @lang('crud.questions.create_title')
             </h4>
-
-            <x-form
-                method="POST"
+            <x-form method="POST"
                 action="{{ route('questions.store') }}"
-                class="mt-4"
-            >
+                class="mt-4">
                 @include('app.questions.form-inputs')
 
                 <div class="mt-4">

@@ -26,12 +26,6 @@ class QuestionStoreRequest extends FormRequest
                 'required',
                 'exists:question_categories,id',
             ],
-            'unique_id' => [
-                'required',
-                'unique:questions,unique_id',
-                'max:255',
-                'string',
-            ],
         ];
     }
 }

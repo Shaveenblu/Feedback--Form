@@ -19,18 +19,11 @@
                 @include('app.hotels.form-inputs')
 
                 <div class="mt-4">
-                    <a href="{{ route('hotels.index') }}" class="btn btn-light">
+                    <a href="{{ route('hotels.index') }}" class="btn btn-light border-dark">
                         <i class="icon ion-md-return-left text-primary"></i>
                         @lang('crud.common.back')
                     </a>
 
-                    <a
-                        href="{{ route('hotels.create') }}"
-                        class="btn btn-light"
-                    >
-                        <i class="icon ion-md-add text-primary"></i>
-                        @lang('crud.common.create')
-                    </a>
 
                     <button type="submit" class="btn btn-primary float-right">
                         <i class="icon ion-md-save"></i>

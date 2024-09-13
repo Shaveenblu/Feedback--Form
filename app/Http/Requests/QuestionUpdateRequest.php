@@ -26,12 +26,6 @@ class QuestionUpdateRequest extends FormRequest
                 'required',
                 'exists:question_categories,id',
             ],
-            'unique_id' => [
-                'required',
-                Rule::unique('questions', 'unique_id')->ignore($this->question),
-                'max:255',
-                'string',
-            ],
         ];
     }
 }

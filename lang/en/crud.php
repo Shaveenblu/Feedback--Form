@@ -89,20 +89,20 @@ return [
         'inputs' => [
             'question' => 'Question',
             'question_category_id' => 'Question Category',
-            'unique_id' => 'Unique Id',
+            'unique_id' => 'Question Unique Id',
         ],
     ],
 
     'question_categories' => [
         'name' => 'Question Categories',
-        'index_title' => 'QuestionCategories List',
+        'index_title' => 'Question Categories List',
         'new_title' => 'New Question category',
-        'create_title' => 'Create QuestionCategory',
-        'edit_title' => 'Edit QuestionCategory',
-        'show_title' => 'Show QuestionCategory',
+        'create_title' => 'Create Question Category',
+        'edit_title' => 'Edit Question Category',
+        'show_title' => 'Show Question Category',
         'inputs' => [
             'name' => 'Name',
-            'unique_id' => 'Unique Id',
+            'unique_id' => 'Question Categories Id',
         ],
     ],
 

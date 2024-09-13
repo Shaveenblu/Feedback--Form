@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Question;
+use Illuminate\Support\Str;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 use App\Models\QuestionCategory;
@@ -49,7 +50,7 @@ class QuestionController extends Controller
         $this->authorize('create', Question::class);
 
         $validated = $request->validated();
-
+        $validated['unique_id'] = Str::random(9);
         $question = Question::create($validated);
 
         return redirect()
