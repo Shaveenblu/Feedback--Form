@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Tour;
+use Illuminate\Support\Str;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
@@ -46,7 +47,7 @@ class TourController extends Controller
         $this->authorize('create', Tour::class);
 
         $validated = $request->validated();
-
+        $validated['unique_id'] = Str::random(9);
         $tour = Tour::create($validated);
 
         return redirect()
