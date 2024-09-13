@@ -27,19 +27,11 @@
                     <a href="#" class="nav-link">
                         <i class="nav-icon icon ion-md-apps"></i>
                         <p>
-                            Apps
+                            Setting
                             <i class="nav-icon right icon ion-md-arrow-round-back"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
-                            @can('view-any', App\Models\User::class)
-                            <li class="nav-item">
-                                <a href="{{ route('users.index') }}" class="nav-link">
-                                    <i class="nav-icon icon ion-md-radio-button-off"></i>
-                                    <p>Users</p>
-                                </a>
-                            </li>
-                            @endcan
                             @can('view-any', App\Models\Customer::class)
                             <li class="nav-item">
                                 <a href="{{ route('customers.index') }}" class="nav-link">
@@ -118,7 +110,6 @@
                             </a>
                         </li>
                         @endcan
-
                         @can('view-any', Spatie\Permission\Models\Permission::class)
                         <li class="nav-item">
                             <a href="{{ route('permissions.index') }}" class="nav-link">
@@ -127,6 +118,14 @@
                             </a>
                         </li>
                         @endcan
+                       @can('view-any', App\Models\User::class)
+                           <li class="nav-item">
+                               <a href="{{ route('users.index') }}" class="nav-link">
+                                   <i class="nav-icon icon ion-md-radio-button-off"></i>
+                                   <p>Users</p>
+                               </a>
+                           </li>
+                       @endcan
                     </ul>
                 </li>
                 @endif
