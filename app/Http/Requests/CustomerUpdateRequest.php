@@ -24,12 +24,6 @@ class CustomerUpdateRequest extends FormRequest
             'customer_name' => ['required', 'max:255', 'string'],
             'customer_phone_number' => ['required', 'max:255', 'string'],
             'tour_no' => ['required', 'max:255', 'string'],
-            'unique_id' => [
-                'required',
-                Rule::unique('customers', 'unique_id')->ignore($this->customer),
-                'max:255',
-                'string',
-            ],
         ];
     }
 }

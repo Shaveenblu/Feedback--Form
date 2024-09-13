@@ -72,20 +72,38 @@
                 <tr class="hover:bg-gray-100">
                     <td class="text-left">{{ $hotel->hotel_name ?? '-' }}</td>
                     <td class="text-right" style="width: 70px;">
-                        <div
-                            role="group"
+                        <div role="group"
                             aria-label="Row Actions"
-                            class="relative inline-flex align-middle"
-                        >
+                            class="relative inline-flex align-middle">
                             @can('delete-any', App\Models\Hotel::class)
-                            <button
-                                class="btn btn-danger"
-                                onclick="confirm('Are you sure?') || event.stopImmediatePropagation()"
-                                wire:click="detach('{{ $hotel->id }}')"
-                            >
-                                <i class="icon ion-md-trash"></i>
-                                @lang('crud.common.detach')
-                            </button>
+                              <button class="btn btn-light text-danger"
+                                 data-target="#deleteModal_{{$hotel->id}}"
+                                 data-toggle="modal">
+                                <span class="btn btn-danger"> Delete </span>
+                              </button>
+                                <div class="modal fade" id="deleteModal_{{$hotel->id}}">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Delete</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p>Are you sure you want to delete?</p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal" id="close-modal">No</button>
+                                                <button class="btn btn-danger"
+                                                        wire:click="detach('{{ $hotel->id }}')">
+                                                    Yes
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                             @endcan
                         </div>
                     </td>
