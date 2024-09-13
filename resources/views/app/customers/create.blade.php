@@ -15,14 +15,11 @@
                 class="mt-4">
                 @include('app.customers.form-inputs')
                 <div class="mt-4">
-                    <a
-                        href="{{ route('customers.index') }}"
-                        class="btn btn-light"
-                    >
-                        <i class="icon ion-md-return-left text-primary"></i>
+                    <a href="{{ route('customers.index') }}"
+                        class="btn btn-light">
+                        <i class="icon ion-md-return-left text-primary border-dark"></i>
                         @lang('crud.common.back')
                     </a>
-
                     <button type="submit" class="btn btn-primary float-right">
                         <i class="icon ion-md-save"></i>
                         @lang('crud.common.create')

@@ -65,15 +65,11 @@
                             <td>{{ $guide->guid_first_name ?? '-' }}</td>
                             <td>{{ $guide->guid_last_name ?? '-' }}</td>
                             <td class="text-center" style="width: 134px;">
-                                <div
-                                    role="group"
+                                <div role="group"
                                     aria-label="Row Actions"
-                                    class="btn-group"
-                                >
+                                    class="btn-group">
                                     @can('update', $guide)
-                                    <a
-                                        href="{{ route('guides.edit', $guide) }}"
-                                    >
+                                    <a href="{{ route('guides.edit', $guide) }}">
                                         <button
                                             type="button"
                                             class="btn btn-light"
@@ -82,9 +78,7 @@
                                         </button>
                                     </a>
                                     @endcan @can('view', $guide)
-                                    <a
-                                        href="{{ route('guides.show', $guide) }}"
-                                    >
+                                    <a href="{{ route('guides.show', $guide) }}">
                                         <button
                                             type="button"
                                             class="btn btn-light"
@@ -93,7 +87,6 @@
                                         </button>
                                     </a>
                                     @endcan
-
                                         @can('delete', $guide)
 
                                             <form>
@@ -127,7 +120,6 @@
                                                     </div>
                                                 </div>
                                             </div>
-
                                     @endcan
                                 </div>
                             </td>

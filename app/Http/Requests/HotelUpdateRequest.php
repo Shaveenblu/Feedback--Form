@@ -23,12 +23,6 @@ class HotelUpdateRequest extends FormRequest
         return [
             'hotel_name' => ['required', 'max:255', 'string'],
             'hotel_place' => ['required', 'max:255', 'string'],
-            'unique_id' => [
-                'required',
-                Rule::unique('hotels', 'unique_id')->ignore($this->hotel),
-                'max:255',
-                'string',
-            ],
         ];
     }
 }

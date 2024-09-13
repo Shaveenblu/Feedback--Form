@@ -4,10 +4,10 @@
     <x-inputs.group class="col-sm-12">
         <x-inputs.text
             name="unique_id"
-            label="Unique Id"
+            label="Guid No"
             :value="old('unique_id', ($editing ? $guide->unique_id : ''))"
             maxlength="255"
-            placeholder="Unique Id"
+            placeholder="Guid Id"
             required
         ></x-inputs.text>
     </x-inputs.group>

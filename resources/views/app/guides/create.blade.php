@@ -10,7 +10,6 @@
                 ></a>
                 @lang('crud.guides.create_title')
             </h4>
-
             <x-form
                 method="POST"
                 action="{{ route('guides.store') }}"

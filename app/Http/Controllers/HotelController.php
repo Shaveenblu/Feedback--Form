@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Hotel;
+use Illuminate\Support\Str;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
@@ -46,7 +47,7 @@ class HotelController extends Controller
         $this->authorize('create', Hotel::class);
 
         $validated = $request->validated();
-
+        $validated['unique_id'] = Str::random(9);
         $hotel = Hotel::create($validated);
 
         return redirect()

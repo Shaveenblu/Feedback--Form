@@ -59,7 +59,7 @@ return [
         'edit_title' => 'Edit Guide',
         'show_title' => 'Show Guide',
         'inputs' => [
-            'unique_id' => 'Unique Id',
+            'unique_id' => 'Guid No',
             'guid_first_name' => 'Guid First Name',
             'guid_last_name' => 'Guid Last Name',
         ],
@@ -75,7 +75,7 @@ return [
         'inputs' => [
             'hotel_name' => 'Hotel Name',
             'hotel_place' => 'Hotel Place',
-            'unique_id' => 'Unique Id',
+            'unique_id' => 'Hotel Unique Id',
         ],
     ],
 

@@ -23,12 +23,6 @@ class HotelStoreRequest extends FormRequest
         return [
             'hotel_name' => ['required', 'max:255', 'string'],
             'hotel_place' => ['required', 'max:255', 'string'],
-            'unique_id' => [
-                'required',
-                'unique:hotels,unique_id',
-                'max:255',
-                'string',
-            ],
         ];
     }
 }
