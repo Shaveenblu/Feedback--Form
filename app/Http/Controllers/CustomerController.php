@@ -6,6 +6,7 @@ use App\Models\Customer;
 use App\Models\Hotel;
 use App\Models\Tour;
 use Dflydev\DotAccessData\Data;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
@@ -68,8 +69,12 @@ class CustomerController extends Controller
     public function show(Request $request, Customer $customer): View
     {
         $this->authorize('view', $customer);
-
-        return view('app.customers.show', compact('customer'));
+        $customer_hotel=DB::table('customer_hotel')
+            ->join('hotels', 'hotels.id', '=', 'customer_hotel.hotel_id')
+            ->join('customers', 'customers.id', '=', 'customer_hotel.customer_id')
+            ->where('customer_id',$customer->id)
+            ->get();
+        return view('app.customers.show', compact('customer','customer_hotel'));
     }
 
     /**

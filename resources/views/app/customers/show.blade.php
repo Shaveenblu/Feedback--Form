@@ -10,39 +10,59 @@
                 ></a>
                 @lang('crud.customers.show_title')
             </h4>
-
             <div class="mt-4">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th scope="col">Record No</th>
+                        <th scope="col">@lang('crud.customers.inputs.customer_name')</th>
+                        <th scope="col">@lang('crud.customers.inputs.customer_phone_number')</th>
+                        <th scope="col">@lang('crud.customers.inputs.tour_no')</th>
+                        <th scope="col">@lang('crud.customers.inputs.unique_id')</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th scope="row">{{ $customer->unique_id ?? '-' }}</th>
+                        <td>{{ $customer->customer_name ?? '-' }}</td>
+                        <td>{{ $customer->customer_phone_number ?? '-' }}</td>
+                        <td>{{ $customer->tour_no ?? '-' }}</td>
+                        <td>{{ $customer->unique_id ?? '-' }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <hr>
                 <div class="mb-4">
-                    <h5>@lang('crud.customers.inputs.customer_name')</h5>
-                    <span>{{ $customer->customer_name ?? '-' }}</span>
-                </div>
-                <div class="mb-4">
-                    <h5>
-                        @lang('crud.customers.inputs.customer_phone_number')
-                    </h5>
-                    <span>{{ $customer->customer_phone_number ?? '-' }}</span>
-                </div>
-                <div class="mb-4">
-                    <h5>@lang('crud.customers.inputs.tour_no')</h5>
-                    <span>{{ $customer->tour_no ?? '-' }}</span>
-                </div>
-                <div class="mb-4">
-                    <h5>@lang('crud.customers.inputs.unique_id')</h5>
-                    <span>{{ $customer->unique_id ?? '-' }}</span>
+                    <h5><u> <strong>Selected Hotels </strong>  </u></h5>
+                        @isset($customer_hotel)
+                          @if($customer_hotel->count() > 0)
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th scope="col">Hotel Name</th>
+                                    <th scope="col">Hotel Place</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                             @foreach($customer_hotel as $hotel)
+                                 <tr>
+                                     <th scope="row"> <span class="bg-danger p-2"> {{ $hotel->hotel_name ?? '-' }} </span> </th>
+                                     <td> <span class="bg-primary p-2"> {{ $hotel->hotel_place ?? '-' }} </span> </td>
+                                 </tr>
+                             @endforeach
+                                </tbody>
+                            </table>
+                          @else
+                              No Data
+                          @endif
+                        @endisset
                 </div>
             </div>
-
             <div class="mt-4">
-                <a href="{{ route('customers.index') }}" class="btn btn-light">
+                <a href="{{ route('customers.index') }}" class="btn btn-light border-dark">
                     <i class="icon ion-md-return-left"></i>
                     @lang('crud.common.back')
                 </a>
-
-                @can('create', App\Models\Customer::class)
-                <a href="{{ route('customers.create') }}" class="btn btn-light">
-                    <i class="icon ion-md-add"></i> @lang('crud.common.create')
-                </a>
-                @endcan
             </div>
         </div>
     </div>
