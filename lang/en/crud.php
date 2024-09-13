@@ -127,7 +127,7 @@ return [
         'edit_title' => 'Edit Tour',
         'show_title' => 'Show Tour',
         'inputs' => [
-            'unique_id' => 'Unique Id',
+            'unique_id' => 'Tour Unique Id',
             'tour_operator' => 'Tour Operator',
             'tour_name' => 'Tour Name',
             'tour_start_date' => 'Tour Start Date',

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Guide;
 use App\Models\Tour;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
@@ -62,8 +63,12 @@ class TourController extends Controller
     public function show(Request $request, Tour $tour): View
     {
         $this->authorize('view', $tour);
-
-        return view('app.tours.show', compact('tour'));
+        $guide_tours=DB::table('guide_tour')
+            ->join('guides', 'guides.id', '=', 'guide_tour.guide_id')
+            ->join('tours', 'tours.id', '=', 'guide_tour.tour_id')
+            ->where('tour_id',$tour->id)
+            ->get();
+        return view('app.tours.show', compact('tour','guide_tours'));
     }
 
     /**

@@ -12,39 +12,46 @@
             </h4>
 
             <div class="mt-4">
-                <div class="mb-4">
-                    <h5>@lang('crud.tours.inputs.unique_id')</h5>
-                    <span>{{ $tour->unique_id ?? '-' }}</span>
-                </div>
-                <div class="mb-4">
-                    <h5>@lang('crud.tours.inputs.tour_operator')</h5>
-                    <span>{{ $tour->tour_operator ?? '-' }}</span>
-                </div>
-                <div class="mb-4">
-                    <h5>@lang('crud.tours.inputs.tour_name')</h5>
-                    <span>{{ $tour->tour_name ?? '-' }}</span>
-                </div>
-                <div class="mb-4">
-                    <h5>@lang('crud.tours.inputs.tour_start_date')</h5>
-                    <span>{{ $tour->tour_start_date ?? '-' }}</span>
-                </div>
-                <div class="mb-4">
-                    <h5>@lang('crud.tours.inputs.tour_no')</h5>
-                    <span>{{ $tour->tour_no ?? '-' }}</span>
-                </div>
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th scope="col">@lang('crud.tours.inputs.unique_id')</th>
+                        <th scope="col">@lang('crud.tours.inputs.tour_operator')</th>
+                        <th scope="col">@lang('crud.tours.inputs.tour_name')</th>
+                        <th scope="col">@lang('crud.tours.inputs.tour_start_date')</th>
+                        <th scope="col">@lang('crud.tours.inputs.tour_no')</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th scope="row">{{ $tour->unique_id ?? '-' }}</th>
+                        <td>{{ $tour->tour_operator ?? '-' }}</td>
+                        <td>{{ $tour->tour_name ?? '-' }}</td>
+                        <td>{{ $tour->tour_start_date ?? '-' }}</td>
+                        <td>{{ $tour->tour_no ?? '-' }}</td>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
 
+            <hr>
+            <div class="mb-4">
+                <h5><u> <strong>Guid </strong>  </u></h5>
+                @isset($guide_tours)
+                    @if($guide_tours->count() > 0)
+                            @foreach($guide_tours  as $key => $guid)
+                                <p class="bg-primary"> {{++$key}} ) {{ $guid->guid_first_name ?? '-' }} {{ $guid->guid_last_name ?? '-' }}</p>
+                            @endforeach
+                    @else
+                        No Data
+                    @endif
+                @endisset
+            </div>
             <div class="mt-4">
                 <a href="{{ route('tours.index') }}" class="btn btn-light">
                     <i class="icon ion-md-return-left"></i>
                     @lang('crud.common.back')
                 </a>
-
-                @can('create', App\Models\Tour::class)
-                <a href="{{ route('tours.create') }}" class="btn btn-light">
-                    <i class="icon ion-md-add"></i> @lang('crud.common.create')
-                </a>
-                @endcan
             </div>
         </div>
     </div>
