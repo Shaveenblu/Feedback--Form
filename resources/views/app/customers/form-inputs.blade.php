@@ -29,11 +29,10 @@
     <div class="form-group col-sm-12">
         <label for="tourNumber">Tour Number</label>
         <select class="form-select form-select-lg mb-3 form-control" name="tour_no" aria-label=".form-select-lg example">
-            <option selected disabled>Open this select menu</option>
             @if($editing)
                 <option value="{{$customer->tour_no}}" selected>{{$customer->tour_no}}</option>
             @else
-                <option value="" selected disabled>Select Status</option>
+                <option value="" selected disabled>Open this select menu</option>
             @endif
             @foreach($tours as $tour)
                 <option value="{{$tour->tour_no}}">{{$tour->tour_no}}</option>
@@ -51,8 +50,6 @@
         </div>
     @endif
 </div>
-
-
 @section('style_link')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>

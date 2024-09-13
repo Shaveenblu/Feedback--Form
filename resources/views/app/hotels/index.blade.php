@@ -13,7 +13,8 @@
                             placeholder="{{ __('crud.common.search') }}"
                             value="{{ $search ?? '' }}"
                             class="form-control"
-                            autocomplete="off"/>
+                            autocomplete="off"
+                            required/>
                         <div class="input-group-append">
                             <button type="submit" class="btn btn-primary">
                                 <i class="icon ion-md-search"></i>
