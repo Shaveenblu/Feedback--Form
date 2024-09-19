@@ -31,7 +31,7 @@
                         <ul class="nav nav-treeview">
                             @can('view-any', App\Models\Customer::class)
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
+                                    <a href="{{route('generate-link')}}" class="nav-link">
                                         <i class="nav-icon icon ion-md-transgender bg-primary rounded"></i>
                                         <p>Generate</p>
                                     </a>

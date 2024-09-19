@@ -49,4 +49,8 @@ Route::prefix('/')
         );
         Route::resource('response-types', ResponseTypeController::class);
         Route::resource('tours', TourController::class);
+
+        /*link generate*/
+        Route::get('/generate-link', [\App\Http\Controllers\LinkGenerateController::class,'index'])->name('generate-link');
+
     });
