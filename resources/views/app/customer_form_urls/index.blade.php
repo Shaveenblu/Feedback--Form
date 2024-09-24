@@ -73,12 +73,12 @@
                         @forelse($customerFormUrls as $customerFormUrl)
                         <tr>
                             <td>
-                                <a href="{{ $customerFormUrl->url_link ?? '-' }}" id="CopyText">
+                                <a href="{{ $customerFormUrl->url_link ?? '-' }}" id="CopyText_{{$customerFormUrl->id}}">
                                     {{ $customerFormUrl->url_link ?? '-' }}
                                 </a>
                             </td>
                             <td>
-                                <button class="btn btn-dark" onclick="copyContent()"> Copy </button>
+                                <button class="btn btn-dark" onclick="copyContent({{$customerFormUrl->id}})"> Copy </button>
                             </td>
                             <td>
                                 @if($customerFormUrl->status == 'Completed')
@@ -102,18 +102,6 @@
                                     aria-label="Row Actions"
                                     class="btn-group"
                                 >
-{{--                                    @can('update', $customerFormUrl)--}}
-{{--                                    <a--}}
-{{--                                        href="{{ route('customer-form-urls.edit', $customerFormUrl) }}"--}}
-{{--                                    >--}}
-{{--                                        <button--}}
-{{--                                            type="button"--}}
-{{--                                            class="btn btn-light"--}}
-{{--                                        >--}}
-{{--                                            <i class="icon ion-md-create"></i>--}}
-{{--                                        </button>--}}
-{{--                                    </a>--}}
-{{--                                    @endcan --}}
                                         @can('view', $customerFormUrl)
                                     <a
                                         href="{{ route('customer-form-urls.show', $customerFormUrl) }}"
@@ -126,21 +114,6 @@
                                         </button>
                                     </a>
                                     @endcan
-{{--                                        @can('delete', $customerFormUrl)--}}
-{{--                                    <form--}}
-{{--                                        action="{{ route('customer-form-urls.destroy', $customerFormUrl) }}"--}}
-{{--                                        method="POST"--}}
-{{--                                        onsubmit="return confirm('{{ __('crud.common.are_you_sure') }}')"--}}
-{{--                                    >--}}
-{{--                                        @csrf @method('DELETE')--}}
-{{--                                        <button--}}
-{{--                                            type="submit"--}}
-{{--                                            class="btn btn-light text-danger"--}}
-{{--                                        >--}}
-{{--                                            <i class="icon ion-md-trash"></i>--}}
-{{--                                        </button>--}}
-{{--                                    </form>--}}
-{{--                                    @endcan--}}
                                 </div>
                             </td>
                         </tr>
@@ -172,14 +145,13 @@
 
 @section('js_script')
     <script>
-        let text = document.getElementById('CopyText').innerHTML;
-        const copyContent = async () => {
-            try {
-                await navigator.clipboard.writeText(text);
-                console.log('Content copied to clipboard');
-            } catch (err) {
-                console.error('Failed to copy: ', err);
-            }
+        function copyContent(id) {
+            let text = document.getElementById('CopyText_' + id).innerHTML;
+            navigator.clipboard.writeText(text).then(function() {
+                alert('Content copied successfully!');
+            }, function(err) {
+                console.error('Error copying content:', err);
+            });
         }
     </script>
 @endsection
