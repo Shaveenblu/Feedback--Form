@@ -199,4 +199,24 @@ return [
             'other_details' => 'Other Details',
         ],
     ],
+
+    'feed_back_forms' => [
+        'name' => 'Feed Back Forms',
+        'index_title' => 'FeedBackForms List',
+        'new_title' => 'New Feed back form',
+        'create_title' => 'Create FeedBackForm',
+        'edit_title' => 'Edit FeedBackForm',
+        'show_title' => 'Show FeedBackForm',
+        'inputs' => [
+            'question_id' => 'Question',
+            'customer_id' => 'Question2',
+            'response_type_id' => 'Response Type',
+            'hotel_id' => 'Hotel',
+            'guide_id' => 'Guide',
+            'tour_id' => 'Tour',
+            'customer_name' => 'Customer Name',
+            'customer_tel_phone_number' => 'Customer Tel Phone Number',
+            'date' => 'Date',
+        ],
+    ],
 ];
