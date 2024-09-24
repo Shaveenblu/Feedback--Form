@@ -53,22 +53,13 @@
                                 @lang('crud.customer_form_urls.inputs.url_link')
                             </th>
                             <th class="text-left">
-                                @lang('crud.customer_form_urls.inputs.unique_id')
+                                @lang('crud.customer_form_urls.inputs.status')
                             </th>
                             <th class="text-left">
                                 @lang('crud.customer_form_urls.inputs.customer_id')
                             </th>
                             <th class="text-left">
                                 @lang('crud.customer_form_urls.inputs.tour_id')
-                            </th>
-                            <th class="text-left">
-                                @lang('crud.customer_form_urls.inputs.status')
-                            </th>
-                            <th class="text-left">
-                                @lang('crud.customer_form_urls.inputs.date')
-                            </th>
-                            <th class="text-left">
-                                @lang('crud.customer_form_urls.inputs.other_details')
                             </th>
                             <th class="text-center">
                                 @lang('crud.common.actions')
@@ -78,8 +69,18 @@
                     <tbody>
                         @forelse($customerFormUrls as $customerFormUrl)
                         <tr>
-                            <td>{{ $customerFormUrl->url_link ?? '-' }}</td>
-                            <td>{{ $customerFormUrl->unique_id ?? '-' }}</td>
+                            <td>
+                                <a href="{{ $customerFormUrl->url_link ?? '-' }}">
+                                    {{ $customerFormUrl->url_link ?? '-' }}
+                                </a>
+                            </td>
+                            <td>
+                                @if($customerFormUrl->status == 'Completed')
+                                    <span class="btn btn-success">  {{ $customerFormUrl->status ?? '-' }} </span>
+                                @elseif($customerFormUrl->status == 'In Progress')
+                                    <span class="btn btn-danger"> {{ $customerFormUrl->status ?? '-' }}</span>
+                                @endif
+                            </td>
                             <td>
                                 {{
                                 optional($customerFormUrl->customer)->customer_name
@@ -88,11 +89,6 @@
                             <td>
                                 {{ optional($customerFormUrl->tour)->unique_id
                                 ?? '-' }}
-                            </td>
-                            <td>{{ $customerFormUrl->status ?? '-' }}</td>
-                            <td>{{ $customerFormUrl->date ?? '-' }}</td>
-                            <td>
-                                {{ $customerFormUrl->other_details ?? '-' }}
                             </td>
                             <td class="text-center" style="width: 134px;">
                                 <div
