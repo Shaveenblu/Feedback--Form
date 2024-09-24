@@ -68,9 +68,9 @@ class CustomerFormUrlController extends Controller
         $validated['tour_id'] = $tour_id->id;
         $validated['status'] = 'In Progress';
         $validated['date'] = $todayDate;
-        $customerFormUrl = CustomerFormUrl::create($validated);
+        CustomerFormUrl::create($validated);
         return redirect()
-            ->route('customer-form-urls.edit', $customerFormUrl)
+            ->route('customer-form-urls.index')
             ->withSuccess(__('crud.common.created'));
     }
 

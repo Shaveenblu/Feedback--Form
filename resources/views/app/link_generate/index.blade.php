@@ -12,6 +12,7 @@
                 @method('POST')
                 <div class="form-group col-sm-12">
                      <select name="customer_id" class="form-control" id="favorite-colors"  required>
+                         <option value="" disabled selected>Select Customer</option>
                         @isset($customers)
                             @if($customers->count() > 0)
                                 @foreach($customers as $customer)

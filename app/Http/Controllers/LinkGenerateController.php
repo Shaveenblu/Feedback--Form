@@ -13,6 +13,7 @@ class LinkGenerateController extends Controller
         $customers = DB::table('customers')
             ->leftJoin('customer_form_urls', 'customer_form_urls.customer_id', '=', 'customers.id')
             ->where('date','=',null)
+            ->select('customers.*')
             ->get();
         return view('app.link_generate.index',compact('customers'));
     }
