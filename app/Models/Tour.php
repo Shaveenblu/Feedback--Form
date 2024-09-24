@@ -30,6 +30,11 @@ class Tour extends Model
         return $this->hasMany(CustomerFormUrl::class);
     }
 
+    public function feedBackForms()
+    {
+        return $this->hasMany(FeedBackForm::class);
+    }
+
     public function guides()
     {
         return $this->belongsToMany(Guide::class);

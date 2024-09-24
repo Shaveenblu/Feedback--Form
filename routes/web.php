@@ -51,6 +51,7 @@ Route::prefix('/')
         Route::resource('tours', TourController::class);
 
         Route::resource('customer-form-urls',\App\Http\Controllers\CustomerFormUrlController::class);
+        Route::resource('feed-back-forms',\App\Http\Controllers\FeedBackFormController::class);
 
 
         /*link generate*/

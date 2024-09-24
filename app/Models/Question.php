@@ -19,4 +19,9 @@ class Question extends Model
     {
         return $this->belongsTo(QuestionCategory::class);
     }
+
+    public function feedBackForms()
+    {
+        return $this->hasMany(FeedBackForm::class);
+    }
 }

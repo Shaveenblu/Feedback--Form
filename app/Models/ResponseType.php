@@ -16,4 +16,9 @@ class ResponseType extends Model
     protected $searchableFields = ['*'];
 
     protected $table = 'response_types';
+
+    public function feedBackForms()
+    {
+        return $this->hasMany(FeedBackForm::class);
+    }
 }

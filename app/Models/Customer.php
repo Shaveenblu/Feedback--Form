@@ -25,6 +25,11 @@ class Customer extends Model
         return $this->hasMany(CustomerFormUrl::class);
     }
 
+    public function feedBackForms()
+    {
+        return $this->hasMany(FeedBackForm::class);
+    }
+
     public function hotels()
     {
         return $this->belongsToMany(Hotel::class);

@@ -13,14 +13,21 @@ use App\Http\Controllers\Api\GuideToursController;
 use App\Http\Controllers\Api\TourGuidesController;
 use App\Http\Controllers\Api\guide_tourController;
 use App\Http\Controllers\Api\ResponseTypeController;
+use App\Http\Controllers\Api\FeedBackFormController;
 use App\Http\Controllers\Api\CustomerHotelsController;
 use App\Http\Controllers\Api\HotelCustomersController;
 use App\Http\Controllers\Api\customer_hotelController;
 use App\Http\Controllers\Api\CustomerFormUrlController;
 use App\Http\Controllers\Api\QuestionCategoryController;
+use App\Http\Controllers\Api\TourFeedBackFormsController;
+use App\Http\Controllers\Api\GuideFeedBackFormsController;
+use App\Http\Controllers\Api\HotelFeedBackFormsController;
 use App\Http\Controllers\Api\TourCustomerFormUrlsController;
+use App\Http\Controllers\Api\CustomerFeedBackFormsController;
+use App\Http\Controllers\Api\QuestionFeedBackFormsController;
 use App\Http\Controllers\Api\CustomerCustomerFormUrlsController;
 use App\Http\Controllers\Api\QuestionCategoryQuestionsController;
+use App\Http\Controllers\Api\ResponseTypeFeedBackFormsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -58,6 +65,16 @@ Route::name('api.')
             'store',
         ])->name('customers.customer-form-urls.store');
 
+        // Customer Feed Back Forms
+        Route::get('/customers/{customer}/feed-back-forms', [
+            CustomerFeedBackFormsController::class,
+            'index',
+        ])->name('customers.feed-back-forms.index');
+        Route::post('/customers/{customer}/feed-back-forms', [
+            CustomerFeedBackFormsController::class,
+            'store',
+        ])->name('customers.feed-back-forms.store');
+
         // Customer Hotels
         Route::get('/customers/{customer}/hotels', [
             CustomerHotelsController::class,
@@ -73,6 +90,16 @@ Route::name('api.')
         ])->name('customers.hotels.destroy');
 
         Route::apiResource('guides', GuideController::class);
+
+        // Guide Feed Back Forms
+        Route::get('/guides/{guide}/feed-back-forms', [
+            GuideFeedBackFormsController::class,
+            'index',
+        ])->name('guides.feed-back-forms.index');
+        Route::post('/guides/{guide}/feed-back-forms', [
+            GuideFeedBackFormsController::class,
+            'store',
+        ])->name('guides.feed-back-forms.store');
 
         // Guide Tours
         Route::get('/guides/{guide}/tours', [
@@ -90,6 +117,16 @@ Route::name('api.')
 
         Route::apiResource('hotels', HotelController::class);
 
+        // Hotel Feed Back Forms
+        Route::get('/hotels/{hotel}/feed-back-forms', [
+            HotelFeedBackFormsController::class,
+            'index',
+        ])->name('hotels.feed-back-forms.index');
+        Route::post('/hotels/{hotel}/feed-back-forms', [
+            HotelFeedBackFormsController::class,
+            'store',
+        ])->name('hotels.feed-back-forms.store');
+
         // Hotel Customers
         Route::get('/hotels/{hotel}/customers', [
             HotelCustomersController::class,
@@ -105,6 +142,16 @@ Route::name('api.')
         ])->name('hotels.customers.destroy');
 
         Route::apiResource('questions', QuestionController::class);
+
+        // Question Feed Back Forms
+        Route::get('/questions/{question}/feed-back-forms', [
+            QuestionFeedBackFormsController::class,
+            'index',
+        ])->name('questions.feed-back-forms.index');
+        Route::post('/questions/{question}/feed-back-forms', [
+            QuestionFeedBackFormsController::class,
+            'store',
+        ])->name('questions.feed-back-forms.store');
 
         Route::apiResource(
             'question-categories',
@@ -123,6 +170,16 @@ Route::name('api.')
 
         Route::apiResource('response-types', ResponseTypeController::class);
 
+        // ResponseType Feed Back Forms
+        Route::get('/response-types/{responseType}/feed-back-forms', [
+            ResponseTypeFeedBackFormsController::class,
+            'index',
+        ])->name('response-types.feed-back-forms.index');
+        Route::post('/response-types/{responseType}/feed-back-forms', [
+            ResponseTypeFeedBackFormsController::class,
+            'store',
+        ])->name('response-types.feed-back-forms.store');
+
         Route::apiResource('tours', TourController::class);
 
         // Tour Customer Form Urls
@@ -134,6 +191,16 @@ Route::name('api.')
             TourCustomerFormUrlsController::class,
             'store',
         ])->name('tours.customer-form-urls.store');
+
+        // Tour Feed Back Forms
+        Route::get('/tours/{tour}/feed-back-forms', [
+            TourFeedBackFormsController::class,
+            'index',
+        ])->name('tours.feed-back-forms.index');
+        Route::post('/tours/{tour}/feed-back-forms', [
+            TourFeedBackFormsController::class,
+            'store',
+        ])->name('tours.feed-back-forms.store');
 
         // Tour Guides
         Route::get('/tours/{tour}/guides', [
@@ -153,4 +220,6 @@ Route::name('api.')
             'customer-form-urls',
             CustomerFormUrlController::class
         );
+
+        Route::apiResource('feed-back-forms', FeedBackFormController::class);
     });

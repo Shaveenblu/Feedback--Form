@@ -53,6 +53,14 @@
                                    </a>
                                </li>
                            @endcan
+                          @can('view-any', App\Models\Customer::class)
+                              <li class="nav-item">
+                                  <a href="{{route('feed-back-forms.index')}}" class="nav-link">
+                                      <i class="nav-icon icon ion-md-transgender bg-primary rounded"></i>
+                                      <p>Customer Feed Back</p>
+                                  </a>
+                              </li>
+                          @endcan
                         </ul>
                     </li>
                 <li class="nav-item">

@@ -15,6 +15,11 @@ class Hotel extends Model
 
     protected $searchableFields = ['*'];
 
+    public function feedBackForms()
+    {
+        return $this->hasMany(FeedBackForm::class);
+    }
+
     public function customers()
     {
         return $this->belongsToMany(Customer::class);
