@@ -37,6 +37,22 @@
                                     </a>
                                 </li>
                             @endcan
+                            @can('view-any', App\Models\Customer::class)
+                                <li class="nav-item">
+                                    <a href="{{route('copy-generated-link')}}" class="nav-link">
+                                        <i class="nav-icon icon ion-md-transgender bg-primary rounded"></i>
+                                        <p>Copy Link</p>
+                                    </a>
+                                </li>
+                            @endcan
+                            @can('view-any', App\Models\Customer::class)
+                                <li class="nav-item">
+                                    <a href="{{route('customer-form-urls.index')}}" class="nav-link">
+                                        <i class="nav-icon icon ion-md-transgender bg-primary rounded"></i>
+                                        <p>Generated Link</p>
+                                    </a>
+                                </li>
+                            @endcan
                         </ul>
                     </li>
                 <li class="nav-item">

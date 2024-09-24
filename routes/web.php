@@ -50,7 +50,16 @@ Route::prefix('/')
         Route::resource('response-types', ResponseTypeController::class);
         Route::resource('tours', TourController::class);
 
+        Route::resource('customer-form-urls',\App\Http\Controllers\CustomerFormUrlController::class);
+
+
         /*link generate*/
-        Route::get('/generate-link', [\App\Http\Controllers\LinkGenerateController::class,'index'])->name('generate-link');
+        Route::get('/generate-link', [\App\Http\Controllers\LinkGenerateController::class,'generate_link'])->name('generate-link');
+        Route::get('/copy-generated-link', [\App\Http\Controllers\LinkGenerateController::class,'copy_link'])->name('copy-generated-link');
+
+        /*Link Generate*/
+        Route::get('/user/{unique_id}/link/{name}', [\App\Http\Controllers\LinkGenerateController::class, 'test_generator'])->name('link-generate.test_generator');
+
+
 
     });

@@ -5,7 +5,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\TourController;
 use App\Http\Controllers\Api\AuthController;
-use App\Http\Controllers\Api\RoleController;
 use App\Http\Controllers\Api\GuideController;
 use App\Http\Controllers\Api\HotelController;
 use App\Http\Controllers\Api\CustomerController;
@@ -13,12 +12,14 @@ use App\Http\Controllers\Api\QuestionController;
 use App\Http\Controllers\Api\GuideToursController;
 use App\Http\Controllers\Api\TourGuidesController;
 use App\Http\Controllers\Api\guide_tourController;
-use App\Http\Controllers\Api\PermissionController;
 use App\Http\Controllers\Api\ResponseTypeController;
 use App\Http\Controllers\Api\CustomerHotelsController;
 use App\Http\Controllers\Api\HotelCustomersController;
 use App\Http\Controllers\Api\customer_hotelController;
+use App\Http\Controllers\Api\CustomerFormUrlController;
 use App\Http\Controllers\Api\QuestionCategoryController;
+use App\Http\Controllers\Api\TourCustomerFormUrlsController;
+use App\Http\Controllers\Api\CustomerCustomerFormUrlsController;
 use App\Http\Controllers\Api\QuestionCategoryQuestionsController;
 
 /*
@@ -43,12 +44,19 @@ Route::middleware('auth:sanctum')
 Route::name('api.')
     ->middleware('auth:sanctum')
     ->group(function () {
-        Route::apiResource('roles', RoleController::class);
-        Route::apiResource('permissions', PermissionController::class);
-
         Route::apiResource('users', UserController::class);
 
         Route::apiResource('customers', CustomerController::class);
+
+        // Customer Customer Form Urls
+        Route::get('/customers/{customer}/customer-form-urls', [
+            CustomerCustomerFormUrlsController::class,
+            'index',
+        ])->name('customers.customer-form-urls.index');
+        Route::post('/customers/{customer}/customer-form-urls', [
+            CustomerCustomerFormUrlsController::class,
+            'store',
+        ])->name('customers.customer-form-urls.store');
 
         // Customer Hotels
         Route::get('/customers/{customer}/hotels', [
@@ -117,6 +125,16 @@ Route::name('api.')
 
         Route::apiResource('tours', TourController::class);
 
+        // Tour Customer Form Urls
+        Route::get('/tours/{tour}/customer-form-urls', [
+            TourCustomerFormUrlsController::class,
+            'index',
+        ])->name('tours.customer-form-urls.index');
+        Route::post('/tours/{tour}/customer-form-urls', [
+            TourCustomerFormUrlsController::class,
+            'store',
+        ])->name('tours.customer-form-urls.store');
+
         // Tour Guides
         Route::get('/tours/{tour}/guides', [
             TourGuidesController::class,
@@ -130,4 +148,9 @@ Route::name('api.')
             TourGuidesController::class,
             'destroy',
         ])->name('tours.guides.destroy');
+
+        Route::apiResource(
+            'customer-form-urls',
+            CustomerFormUrlController::class
+        );
     });

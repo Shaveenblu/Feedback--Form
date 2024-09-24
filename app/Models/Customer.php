@@ -20,6 +20,11 @@ class Customer extends Model
 
     protected $searchableFields = ['*'];
 
+    public function customerFormUrls()
+    {
+        return $this->hasMany(CustomerFormUrl::class);
+    }
+
     public function hotels()
     {
         return $this->belongsToMany(Hotel::class);

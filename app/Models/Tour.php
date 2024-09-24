@@ -25,6 +25,11 @@ class Tour extends Model
         'tour_start_date' => 'date',
     ];
 
+    public function customerFormUrls()
+    {
+        return $this->hasMany(CustomerFormUrl::class);
+    }
+
     public function guides()
     {
         return $this->belongsToMany(Guide::class);
