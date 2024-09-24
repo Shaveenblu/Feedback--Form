@@ -53,6 +53,9 @@
                                 @lang('crud.customer_form_urls.inputs.url_link')
                             </th>
                             <th class="text-left">
+                                @lang('crud.customer_form_urls.inputs.copy_link')
+                            </th>
+                            <th class="text-left">
                                 @lang('crud.customer_form_urls.inputs.status')
                             </th>
                             <th class="text-left">
@@ -70,9 +73,12 @@
                         @forelse($customerFormUrls as $customerFormUrl)
                         <tr>
                             <td>
-                                <a href="{{ $customerFormUrl->url_link ?? '-' }}">
+                                <a href="{{ $customerFormUrl->url_link ?? '-' }}" id="CopyText">
                                     {{ $customerFormUrl->url_link ?? '-' }}
                                 </a>
+                            </td>
+                            <td>
+                                <button class="btn btn-dark" onclick="copyContent()"> Copy </button>
                             </td>
                             <td>
                                 @if($customerFormUrl->status == 'Completed')
@@ -159,3 +165,44 @@
     </div>
 </div>
 @endsection
+
+
+
+
+
+@section('js_script')
+    <script>
+        let text = document.getElementById('CopyText').innerHTML;
+        const copyContent = async () => {
+            try {
+                await navigator.clipboard.writeText(text);
+                console.log('Content copied to clipboard');
+            } catch (err) {
+                console.error('Failed to copy: ', err);
+            }
+        }
+    </script>
+@endsection
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

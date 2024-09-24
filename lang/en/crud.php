@@ -190,6 +190,7 @@ return [
         'show_title' => 'Show CustomerFormUrl',
         'inputs' => [
             'url_link' => 'Url Link',
+            'copy_link' => 'Copy Link',
             'unique_id' => 'Unique Url Id',
             'customer_id' => 'Customer',
             'tour_id' => 'Tour No',
