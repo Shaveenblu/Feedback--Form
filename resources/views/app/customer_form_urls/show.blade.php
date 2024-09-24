@@ -14,7 +14,11 @@
             <div class="mt-4">
                 <div class="mb-4">
                     <h5>@lang('crud.customer_form_urls.inputs.url_link')</h5>
-                    <span>{{ $customerFormUrl->url_link ?? '-' }}</span>
+                    <span>
+                        <a href="{{ $customerFormUrl->url_link ?? '-' }}">
+                            {{ $customerFormUrl->url_link ?? '-' }}
+                        </a>
+                    </span>
                 </div>
                 <div class="mb-4">
                     <h5>@lang('crud.customer_form_urls.inputs.unique_id')</h5>
@@ -40,7 +44,7 @@
                 </div>
                 <div class="mb-4">
                     <h5>@lang('crud.customer_form_urls.inputs.date')</h5>
-                    <span>{{ $customerFormUrl->date ?? '-' }}</span>
+                    <span>{{ \Carbon\Carbon::parse($customerFormUrl->date)->toDateString() ?? '-' }}</span>
                 </div>
                 <div class="mb-4">
                     <h5>
@@ -58,15 +62,6 @@
                     <i class="icon ion-md-return-left"></i>
                     @lang('crud.common.back')
                 </a>
-
-                @can('create', App\Models\CustomerFormUrl::class)
-                <a
-                    href="{{ route('customer-form-urls.create') }}"
-                    class="btn btn-light"
-                >
-                    <i class="icon ion-md-add"></i> @lang('crud.common.create')
-                </a>
-                @endcan
             </div>
         </div>
     </div>

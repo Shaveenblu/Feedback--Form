@@ -96,18 +96,19 @@
                                     aria-label="Row Actions"
                                     class="btn-group"
                                 >
-                                    @can('update', $customerFormUrl)
-                                    <a
-                                        href="{{ route('customer-form-urls.edit', $customerFormUrl) }}"
-                                    >
-                                        <button
-                                            type="button"
-                                            class="btn btn-light"
-                                        >
-                                            <i class="icon ion-md-create"></i>
-                                        </button>
-                                    </a>
-                                    @endcan @can('view', $customerFormUrl)
+{{--                                    @can('update', $customerFormUrl)--}}
+{{--                                    <a--}}
+{{--                                        href="{{ route('customer-form-urls.edit', $customerFormUrl) }}"--}}
+{{--                                    >--}}
+{{--                                        <button--}}
+{{--                                            type="button"--}}
+{{--                                            class="btn btn-light"--}}
+{{--                                        >--}}
+{{--                                            <i class="icon ion-md-create"></i>--}}
+{{--                                        </button>--}}
+{{--                                    </a>--}}
+{{--                                    @endcan --}}
+                                        @can('view', $customerFormUrl)
                                     <a
                                         href="{{ route('customer-form-urls.show', $customerFormUrl) }}"
                                     >
@@ -118,21 +119,22 @@
                                             <i class="icon ion-md-eye"></i>
                                         </button>
                                     </a>
-                                    @endcan @can('delete', $customerFormUrl)
-                                    <form
-                                        action="{{ route('customer-form-urls.destroy', $customerFormUrl) }}"
-                                        method="POST"
-                                        onsubmit="return confirm('{{ __('crud.common.are_you_sure') }}')"
-                                    >
-                                        @csrf @method('DELETE')
-                                        <button
-                                            type="submit"
-                                            class="btn btn-light text-danger"
-                                        >
-                                            <i class="icon ion-md-trash"></i>
-                                        </button>
-                                    </form>
                                     @endcan
+{{--                                        @can('delete', $customerFormUrl)--}}
+{{--                                    <form--}}
+{{--                                        action="{{ route('customer-form-urls.destroy', $customerFormUrl) }}"--}}
+{{--                                        method="POST"--}}
+{{--                                        onsubmit="return confirm('{{ __('crud.common.are_you_sure') }}')"--}}
+{{--                                    >--}}
+{{--                                        @csrf @method('DELETE')--}}
+{{--                                        <button--}}
+{{--                                            type="submit"--}}
+{{--                                            class="btn btn-light text-danger"--}}
+{{--                                        >--}}
+{{--                                            <i class="icon ion-md-trash"></i>--}}
+{{--                                        </button>--}}
+{{--                                    </form>--}}
+{{--                                    @endcan--}}
                                 </div>
                             </td>
                         </tr>
