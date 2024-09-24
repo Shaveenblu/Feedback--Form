@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Customer;
+use App\Models\CustomerFormUrl;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -24,10 +25,13 @@ class LinkGenerateController extends Controller
     }
 
 
-    public function test_generator(string  $unique_id, string $name){
-       // return ' unique id ' . $unique_id. ' name ' . $name;
-
-        return url()->current();
+    public function customer_form_page($unique_id,$name){
+        $customer_form_url = CustomerFormUrl::where('unique_id',$unique_id)->first();
+        if($customer_form_url){
+            return view('app.link_generate.form_page');
+        }else{
+            return abort(404);
+        }
     }
 
 

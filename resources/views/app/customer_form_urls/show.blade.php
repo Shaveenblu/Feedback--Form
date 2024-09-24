@@ -25,7 +25,7 @@
                     </thead>
                     <tbody>
                     <tr>
-                        <th scope="row">{{ $customerFormUrl->url_link ?? '-' }}</th>
+                        <th scope="row"><a href="{{ $customerFormUrl->url_link ?? '-' }}">{{ $customerFormUrl->url_link ?? '-' }}</a></th>
                         <td>{{ $customerFormUrl->unique_id ?? '-' }}</td>
                         <td>{{ optional($customerFormUrl->customer)->customer_name ?? '-' }}</td>
                         <td>{{ optional($customerFormUrl->tour)->unique_id ?? '-'}}</td>

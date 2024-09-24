@@ -56,10 +56,11 @@ Route::prefix('/')
         /*link generate*/
         Route::get('/generate-link', [\App\Http\Controllers\LinkGenerateController::class,'generate_link'])->name('generate-link');
         Route::get('/copy-generated-link', [\App\Http\Controllers\LinkGenerateController::class,'copy_link'])->name('copy-generated-link');
-
-        /*Link Generate*/
-        Route::get('/user/{unique_id}/link/{name}', [\App\Http\Controllers\LinkGenerateController::class, 'test_generator'])->name('link-generate.test_generator');
-
-
+        /*........*/
 
     });
+
+
+/*Link Generate*/
+Route::get('/user/{unique_id}/link/{name}', [\App\Http\Controllers\LinkGenerateController::class, 'customer_form_page'])->name('customer_form_page');
+
