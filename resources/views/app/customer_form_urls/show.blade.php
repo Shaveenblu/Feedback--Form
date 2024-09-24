@@ -10,55 +10,35 @@
                 ></a>
                 @lang('crud.customer_form_urls.show_title')
             </h4>
-
             <div class="mt-4">
-                <div class="mb-4">
-                    <h5>@lang('crud.customer_form_urls.inputs.url_link')</h5>
-                    <span>
-                        <a href="{{ $customerFormUrl->url_link ?? '-' }}">
-                            {{ $customerFormUrl->url_link ?? '-' }}
-                        </a>
-                    </span>
-                </div>
-                <div class="mb-4">
-                    <h5>@lang('crud.customer_form_urls.inputs.unique_id')</h5>
-                    <span>{{ $customerFormUrl->unique_id ?? '-' }}</span>
-                </div>
-                <div class="mb-4">
-                    <h5>@lang('crud.customer_form_urls.inputs.customer_id')</h5>
-                    <span
-                        >{{ optional($customerFormUrl->customer)->customer_name
-                        ?? '-' }}</span
-                    >
-                </div>
-                <div class="mb-4">
-                    <h5>@lang('crud.customer_form_urls.inputs.tour_id')</h5>
-                    <span
-                        >{{ optional($customerFormUrl->tour)->unique_id ?? '-'
-                        }}</span
-                    >
-                </div>
-                <div class="mb-4">
-                    <h5>@lang('crud.customer_form_urls.inputs.status')</h5>
-                    <span>{{ $customerFormUrl->status ?? '-' }}</span>
-                </div>
-                <div class="mb-4">
-                    <h5>@lang('crud.customer_form_urls.inputs.date')</h5>
-                    <span>{{ \Carbon\Carbon::parse($customerFormUrl->date)->toDateString() ?? '-' }}</span>
-                </div>
-                <div class="mb-4">
-                    <h5>
-                        @lang('crud.customer_form_urls.inputs.other_details')
-                    </h5>
-                    <span>{{ $customerFormUrl->other_details ?? '-' }}</span>
-                </div>
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th scope="col">@lang('crud.customer_form_urls.inputs.url_link')</th>
+                        <th scope="col">@lang('crud.customer_form_urls.inputs.unique_id')</th>
+                        <th scope="col">@lang('crud.customer_form_urls.inputs.customer_id')</th>
+                        <th scope="col">@lang('crud.customer_form_urls.inputs.tour_id')</th>
+                        <th scope="col">@lang('crud.customer_form_urls.inputs.status')</th>
+                        <th scope="col">@lang('crud.customer_form_urls.inputs.date')</th>
+                        <th scope="col">@lang('crud.customer_form_urls.inputs.other_details')</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th scope="row">{{ $customerFormUrl->url_link ?? '-' }}</th>
+                        <td>{{ $customerFormUrl->unique_id ?? '-' }}</td>
+                        <td>{{ optional($customerFormUrl->customer)->customer_name ?? '-' }}</td>
+                        <td>{{ optional($customerFormUrl->tour)->unique_id ?? '-'}}</td>
+                        <td>{{ $customerFormUrl->status ?? '-' }}</td>
+                        <td>{{ \Carbon\Carbon::parse($customerFormUrl->date)->toDateString() ?? '-' }}</td>
+                        <td>{{ $customerFormUrl->other_details ?? '-' }}</td>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
-
             <div class="mt-4">
-                <a
-                    href="{{ route('customer-form-urls.index') }}"
-                    class="btn btn-light"
-                >
+                <a href="{{ route('customer-form-urls.index') }}"
+                    class="btn btn-light">
                     <i class="icon ion-md-return-left"></i>
                     @lang('crud.common.back')
                 </a>

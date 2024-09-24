@@ -5,7 +5,7 @@
     <div class="card">
         <div class="card-body">
             <div style="display: flex; justify-content: space-between;">
-                <h4 class="card-title mt-2 mb-2">Select Customer</h4>
+                <h4 class="card-title mt-2 mb-2">Select Customer & Generate Link</h4>
             </div>
             <form action="{{route('customer-form-urls.store')}}" enctype="multipart/form-data" method="post">
                 @csrf
