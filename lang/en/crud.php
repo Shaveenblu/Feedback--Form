@@ -180,4 +180,22 @@ return [
             'name' => 'Name',
         ],
     ],
+
+    'customer_form_urls' => [
+        'name' => 'Customer Form Urls',
+        'index_title' => 'CustomerFormUrls List',
+        'new_title' => 'New Customer form url',
+        'create_title' => 'Create CustomerFormUrl',
+        'edit_title' => 'Edit CustomerFormUrl',
+        'show_title' => 'Show CustomerFormUrl',
+        'inputs' => [
+            'url_link' => 'Url Link',
+            'unique_id' => 'Unique Id',
+            'customer_id' => 'Customer',
+            'tour_id' => 'Tour',
+            'status' => 'Status',
+            'date' => 'Date',
+            'other_details' => 'Other Details',
+        ],
+    ],
 ];
