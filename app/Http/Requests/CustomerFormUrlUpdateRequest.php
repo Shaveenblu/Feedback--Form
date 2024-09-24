@@ -32,7 +32,7 @@ class CustomerFormUrlUpdateRequest extends FormRequest
             ],
             'customer_id' => ['required', 'exists:customers,id'],
             'tour_id' => ['required', 'exists:tours,id'],
-            'status' => ['required', 'in:completed,in progress'],
+            'status' => ['required', 'in:Completed,In progress'],
             'date' => ['required', 'date'],
             'other_details' => ['required', 'max:255', 'string'],
         ];
