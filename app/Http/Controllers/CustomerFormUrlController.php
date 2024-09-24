@@ -54,13 +54,21 @@ class CustomerFormUrlController extends Controller
      */
     public function store(
         CustomerFormUrlStoreRequest $request
-    ): RedirectResponse {
+    ) {
         $this->authorize('create', CustomerFormUrl::class);
-
+        $todayDate = now()->format('Y-m-d');
+        $customer = Customer::find($request->customer_id);
+        $unique_id = str()->random();
+        $baseUrl = url('/');
+        $url = $baseUrl . '/' . $unique_id . '/link/' . $customer->customer_name;
+        $tour_id = Tour::where('tour_no',$customer->tour_no)->first();
         $validated = $request->validated();
-
+        $validated['unique_id'] =str()->random();
+        $validated['url_link'] = $url;
+        $validated['tour_id'] = $tour_id->id;
+        $validated['status'] = 'In Progress';
+        $validated['date'] = $todayDate;
         $customerFormUrl = CustomerFormUrl::create($validated);
-
         return redirect()
             ->route('customer-form-urls.edit', $customerFormUrl)
             ->withSuccess(__('crud.common.created'));

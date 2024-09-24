@@ -21,18 +21,7 @@ class CustomerFormUrlStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'url_link' => ['required', 'max:255', 'string'],
-            'unique_id' => [
-                'required',
-                'unique:customer_form_urls,unique_id',
-                'max:255',
-                'string',
-            ],
             'customer_id' => ['required', 'exists:customers,id'],
-            'tour_id' => ['required', 'exists:tours,id'],
-            'status' => ['required', 'in:Completed,In progress'],
-            'date' => ['required', 'date'],
-            'other_details' => ['required', 'max:255', 'string'],
         ];
     }
 }

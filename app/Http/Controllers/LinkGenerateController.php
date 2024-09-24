@@ -4,12 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Models\Customer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class LinkGenerateController extends Controller
 {
     public function generate_link()
     {
-        $customers = Customer::all();
+        $customers = DB::table('customers')
+            ->leftJoin('customer_form_urls', 'customer_form_urls.customer_id', '=', 'customers.id')
+            ->where('date','=',null)
+            ->get();
         return view('app.link_generate.index',compact('customers'));
     }
 
