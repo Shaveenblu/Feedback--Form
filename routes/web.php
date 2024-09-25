@@ -28,8 +28,14 @@ Route::get('/cart/sessiondata', function (){
     //http://127.0.0.1:8000/cart/sessiondata
     //return Gloudemans\Shoppingcart\Facades\Cart::content();
     return session()->all();
+   // return 'session see';
 });
 
+Route::get('/cart/forget', function (){
+    //http://127.0.0.1:8000/cart/forget
+    session()->forget('session_first');
+    return 'done forget';
+});
 
 Route::get('/', function () {
     return view('welcome');

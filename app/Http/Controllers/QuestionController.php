@@ -24,7 +24,7 @@ class QuestionController extends Controller
 
         $questions = Question::search($search)
             ->latest()
-            ->paginate(5)
+            ->paginate(10)
             ->withQueryString();
 
         return view('app.questions.index', compact('questions', 'search'));

@@ -34,12 +34,6 @@
                     <i class="icon ion-md-return-left"></i>
                     @lang('crud.common.back')
                 </a>
-
-                @can('create', App\Models\Question::class)
-                <a href="{{ route('questions.create') }}" class="btn btn-light">
-                    <i class="icon ion-md-add"></i> @lang('crud.common.create')
-                </a>
-                @endcan
             </div>
         </div>
     </div>

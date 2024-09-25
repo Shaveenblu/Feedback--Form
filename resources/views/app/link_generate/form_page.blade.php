@@ -17,6 +17,17 @@
             @csrf
             {{csrf_field()}}
             <div class="card p-5">
+                <div class="mb-3">
+                    <label for="customerName" class="form-label">Full Name</label>
+                    <input type="text" class="form-control" id="customerName" name="customer_name">
+                </div>
+                <div class="mb-3">
+                    <label for="customerTelPhone" class="form-label">Telephone Number</label>
+                    <input type="text" class="form-control" id="customerTelPhone" maxlength="13" name="customer_phone_number">
+                    <div  class="form-text">We'll never share your phone <number></number> with anyone else.</div>
+                </div>
+            </div>
+            <div class="card p-5">
                 <p>1) Reception by the representative of nkar travels and tours</p>
                 <div class="row">
                     <div class="col-md-3">
@@ -91,7 +102,7 @@
                 </div>
             </div>
             <div class="col-md-12 mt-5">
-                <button type="submit" class="btn btn-sm btn-primary">Submit</button>
+                <button type="submit" class="btn btn-sm btn-primary float-right"> NEXT </button>
             </div>
         </form>
     </div>

@@ -42,9 +42,14 @@ class LinkGenerateController extends Controller
         $request->validate([
              'xzR5hRwvY'=>'required',
              'NNJEvpDTlK'=>'required',
+             'customer_name'=>'required',
+             'customer_phone_number'=>'required'
          ]);
+
         $part = $request->except('_token');
         session(['session_first' =>$part]);
-        return back();
+
+
+        return 'done';
     }
 }
