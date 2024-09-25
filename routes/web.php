@@ -33,7 +33,7 @@ Route::get('/cart/sessiondata', function (){
 
 Route::get('/cart/forget', function (){
     //http://127.0.0.1:8000/cart/forget
-    session()->forget('session_first');
+    session()->forget('customer_id');
     return 'done forget';
 });
 
@@ -78,3 +78,6 @@ Route::prefix('/')
 /*Link Generate*/
 Route::get('/user/{unique_id}/link/{name}', [\App\Http\Controllers\LinkGenerateController::class, 'customer_form_page'])->name('customer_form_page');
 Route::post('/store-customer-details', [\App\Http\Controllers\LinkGenerateController::class, 'customer_form_data_store'])->name('customer_form_data_store');
+
+/*second step form*/
+Route::get('/form-hotel-standard/step-two',[\App\Http\Controllers\LinkGenerateController::class,'hotel_standard'])->name('hotel_standard');

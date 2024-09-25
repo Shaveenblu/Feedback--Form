@@ -31,6 +31,7 @@ class LinkGenerateController extends Controller
     public function customer_form_page($unique_id,$name){
         $customer_form_url = CustomerFormUrl::where('unique_id',$unique_id)->first();
         if($customer_form_url){
+            session(['customer_id' => $customer_form_url->customer_id]);
             return view('app.link_generate.form_page');
         }else{
             return abort(404);
@@ -40,16 +41,30 @@ class LinkGenerateController extends Controller
     public function customer_form_data_store(Request $request)
     {
         $request->validate([
-             'xzR5hRwvY'=>'required',
-             'NNJEvpDTlK'=>'required',
-             'customer_name'=>'required',
-             'customer_phone_number'=>'required'
+             'xzR5hRwvY'=>'required|string|max:255|min:3',
+             'NNJEvpDTlK'=>'required|string|max:255|min:3',
+             'customer_name'=>'required|string|max:255|min:3',
+             'customer_phone_number'=>'required|max:255|min:3|string'
          ]);
 
         $part = $request->except('_token');
         session(['session_first' =>$part]);
 
-
-        return 'done';
+        if(session()->has('session_first')){
+            return redirect()->route('hotel_standard');
+        }else{
+            return view('app.link_generate.form_page');
+        }
     }
+
+    public function hotel_standard(){
+
+        $customer_hotel=DB::table('customer_hotel')
+            ->join('hotels', 'hotels.id', '=', 'customer_hotel.hotel_id')
+            ->where('customer_id','=',session()->get('customer_id'))
+            ->get();
+        $questions = Question::where('question_category_id','=',3)->get();
+        return view('app.link_generate.hotel_standard',compact('customer_hotel','questions'));
+    }
+
 }
