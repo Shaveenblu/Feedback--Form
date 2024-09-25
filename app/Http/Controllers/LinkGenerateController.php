@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Customer;
 use App\Models\CustomerFormUrl;
+use App\Models\FeedBackForm;
+use App\Models\Question;
+use App\Models\ResponseType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -34,6 +37,14 @@ class LinkGenerateController extends Controller
         }
     }
 
-
-
+    public function customer_form_data_store(Request $request)
+    {
+        $request->validate([
+             'xzR5hRwvY'=>'required',
+             'NNJEvpDTlK'=>'required',
+         ]);
+        $part = $request->except('_token');
+        session(['session_first' =>$part]);
+        return back();
+    }
 }

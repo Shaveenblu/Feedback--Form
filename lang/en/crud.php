@@ -209,7 +209,7 @@ return [
         'show_title' => 'Show FeedBackForm',
         'inputs' => [
             'question_id' => 'Question',
-            'customer_id' => 'Question2',
+            'customer_id' => 'Customer',
             'response_type_id' => 'Response Type',
             'hotel_id' => 'Hotel',
             'guide_id' => 'Guide',

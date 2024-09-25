@@ -24,6 +24,13 @@ use App\Http\Controllers\QuestionCategoryController;
 |
 */
 
+Route::get('/cart/sessiondata', function (){
+    //http://127.0.0.1:8000/cart/sessiondata
+    //return Gloudemans\Shoppingcart\Facades\Cart::content();
+    return session()->all();
+});
+
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -64,4 +71,4 @@ Route::prefix('/')
 
 /*Link Generate*/
 Route::get('/user/{unique_id}/link/{name}', [\App\Http\Controllers\LinkGenerateController::class, 'customer_form_page'])->name('customer_form_page');
-
+Route::post('/store-customer-details', [\App\Http\Controllers\LinkGenerateController::class, 'customer_form_data_store'])->name('customer_form_data_store');
