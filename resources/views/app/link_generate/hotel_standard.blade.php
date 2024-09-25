@@ -25,32 +25,32 @@
                     <div class="row">
                         <div class="col-md-3">
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="xzR5hRwvY" id="exampleRadios1" value="MCSSCK2024">
-                                <label class="form-check-label" for="exampleRadios1">
+                                <input class="form-check-input" type="radio" name="{{$hotel->unique_id.'_'.$question->unique_id}}" id="exampleRadios_{{$question->unique_id}}" value="MCSSCK2024">
+                                <label class="form-check-label" for="exampleRadios_{{$question->unique_id}}">
                                     Excellent 😆
                                 </label>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="xzR5hRwvY" id="exampleRadios1" value="CCRRUT2024">
-                                <label class="form-check-label" for="exampleRadios1">
+                                <input class="form-check-input" type="radio" name="{{$hotel->unique_id.'_'.$question->unique_id}}" id="exampleRadios_{{$question->unique_id}}" value="CCRRUT2024">
+                                <label class="form-check-label" for="exampleRadios_{{$question->unique_id}}">
                                     Good 🙂
                                 </label>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="xzR5hRwvY" id="exampleRadios1" value="SVHTTV2024">
-                                <label class="form-check-label" for="exampleRadios1">
+                                <input class="form-check-input" type="radio" name="{{$hotel->unique_id.'_'.$question->unique_id}}" id="exampleRadios_{{$question->unique_id}}" value="SVHTTV2024">
+                                <label class="form-check-label" for="exampleRadios_{{$question->unique_id}}">
                                     Satisfactory 😒
                                 </label>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="xzR5hRwvY" id="exampleRadios1" value="TRRSC2024">
-                                <label class="form-check-label" for="exampleRadios1">
+                                <input class="form-check-input" type="radio" name="{{$hotel->unique_id.'_'.$question->unique_id}}" id="exampleRadios_{{$question->unique_id}}" value="TRRSC2024">
+                                <label class="form-check-label" for="exampleRadios_{{$question->unique_id}}">
                                     Unsatisfactory ☹️
                                 </label>
                             </div>
@@ -59,6 +59,9 @@
                 </div>
             @endforeach
         @endforeach
+            <div class="col-md-12 mt-5">
+                <button type="submit" class="btn btn-sm btn-primary float-right"> NEXT </button>
+            </div>
     </div>
 </div>
 
