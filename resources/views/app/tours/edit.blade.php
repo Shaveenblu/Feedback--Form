@@ -31,8 +31,6 @@
             </x-form>
         </div>
     </div>
-
-    @can('view-any', App\Models\guide_tour::class)
     <div class="card mt-4">
         <div class="card-body">
             <h4 class="card-title w-100 mb-2">Guides</h4>
@@ -40,6 +38,5 @@
             <livewire:tour-guides-detail :tour="$tour" />
         </div>
     </div>
-    @endcan
 </div>
 @endsection
