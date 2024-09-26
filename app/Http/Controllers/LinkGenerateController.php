@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Customer;
 use App\Models\CustomerFormUrl;
 use App\Models\FeedBackForm;
+use App\Models\Hotel;
 use App\Models\Question;
 use App\Models\ResponseType;
 use Illuminate\Http\Request;
@@ -65,6 +66,36 @@ class LinkGenerateController extends Controller
             ->get();
         $questions = Question::where('question_category_id','=',3)->get();
         return view('app.link_generate.hotel_standard',compact('customer_hotel','questions'));
+    }
+
+    public function hotel_standard_store(Request $request)
+    {
+
+        foreach ($request->except('_token') as $key => $value) {
+            // Split the key to get the hotel ID and question ID
+            list($hotelId, $questionId) = explode('_', $key);
+
+            // The value is the selected rating (e.g., "CCRRUT2024")
+            $rating = $value;
+
+            // Now you can process each part as needed
+            // For example, you might save each response to a database
+            // Example:
+            $hotel = Hotel::where('unique_id',$hotelId)->first();
+            $response = ResponseType::where('unique_id',$rating)->first();
+            $question = Question::where('unique_id',$questionId)->first();
+
+
+            FeedBackForm::create([
+                 'question_id' => $question->id,
+                 'customer_id' => 5,
+                 'response_type_id' => $response->id,
+                 'hotel_id' => $hotel->id,
+             ]);
+        }
+
+        return 'done';
+
     }
 
 }

@@ -13,6 +13,9 @@
 
 <div class="container">
     <div class="mt-5">
+        <form action="{{route('hotel_standard_store')}}" enctype="multipart/form-data" method="post">
+            @csrf
+            {{csrf_field()}}
         @foreach($customer_hotel as $hotel)
            <h3>
               <strong>
@@ -62,15 +65,49 @@
             <div class="col-md-12 mt-5">
                 <button type="submit" class="btn btn-sm btn-primary float-right"> NEXT </button>
             </div>
+        </form>
     </div>
 </div>
 
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const form = document.querySelector('form[action="{{ route('hotel_standard_store') }}"]');
+        const submitButton = form.querySelector('button[type="submit"]');
 
-<br>
-<br>
-<br>
-<br>
-<br>
+        submitButton.addEventListener('click', function(event) {
+            // Get all unique group names (hotel_id_question_id)
+            const radioGroups = new Set();
+            form.querySelectorAll('input[type="radio"]').forEach(radio => {
+                radioGroups.add(radio.name);
+            });
+
+            let isValid = true;
+
+            // Check each group if at least one radio button is checked
+            radioGroups.forEach(groupName => {
+                const radios = form.querySelectorAll(`input[name="${groupName}"]`);
+                const isChecked = Array.from(radios).some(radio => radio.checked);
+
+                if (!isChecked) {
+                    isValid = false;
+
+
+
+
+                    alert(`Please select an option for the question related to ${groupName.split('_')[0]}`);
+
+                    radios[0].focus(); // Focus on the first radio button of the group
+
+                    return false; // Exit the loop early for this group if not valid
+                }
+            });
+
+            if (!isValid) {
+                event.preventDefault(); // Prevent form submission
+            }
+        });
+    });
+</script>
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->

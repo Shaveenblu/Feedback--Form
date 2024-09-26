@@ -81,3 +81,4 @@ Route::post('/store-customer-details', [\App\Http\Controllers\LinkGenerateContro
 
 /*second step form*/
 Route::get('/form-hotel-standard/step-two',[\App\Http\Controllers\LinkGenerateController::class,'hotel_standard'])->name('hotel_standard');
+Route::post('/form-hotel-standard/step-two/store',[\App\Http\Controllers\LinkGenerateController::class,'hotel_standard_store'])->name('hotel_standard_store');
