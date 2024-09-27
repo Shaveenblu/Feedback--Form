@@ -28,7 +28,7 @@ class FeedBackFormController extends Controller
 
         $feedBackForms = FeedBackForm::search($search)
             ->latest()
-            ->paginate(5)
+            ->paginate(10)
             ->withQueryString();
 
         return view(
