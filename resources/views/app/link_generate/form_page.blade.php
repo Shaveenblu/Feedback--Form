@@ -6,11 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.rawgit.com/t4t5/sweetalert/v0.2.0/lib/sweet-alert.css">
     <title>NKAR TRAVEL</title>
 </head>
 <body>
-
-
 <div class="container">
     <div class="mt-5">
         <form action="{{route('customer_form_data_store')}}" enctype="multipart/form-data" id="feedbackForm" method="post">
@@ -107,38 +106,30 @@
         </form>
     </div>
 </div>
-
-
+<script src="https://cdn.rawgit.com/t4t5/sweetalert/v0.2.0/lib/sweet-alert.min.js">
+</script>
 <script>
     document.getElementById('feedbackForm').onsubmit = function(event) {
         // Validate radio buttons with the class `exampleRadios_Zv2x4x6w54`
         const radiosGroup1 = document.querySelectorAll('.exampleRadios_Zv2x4x6w54');
         const isGroup1Checked = Array.from(radiosGroup1).some(radio => radio.checked);
-
         if (!isGroup1Checked) {
-            alert('Please select an option for "Reception by the representative of NKAR travels and tours"');
+            swal("Please select an option !", "1) Reception by the representative of nkar travels and tours ?")
             event.preventDefault();  // Prevent form submission
             return false;
         }
-
         // Validate radio buttons with the class `exampleRadios_Zv3x4x6w54`
         const radiosGroup2 = document.querySelectorAll('.exampleRadios_Zv3x4x6w54');
         const isGroup2Checked = Array.from(radiosGroup2).some(radio => radio.checked);
-
         if (!isGroup2Checked) {
-            alert('Please select an option for "Services of NKAR Travels and Tours During Your Stay"');
+            swal("Please select an option !", "2) Services of NKAR Travels and Tours During Your Stay ?")
             event.preventDefault();  // Prevent form submission
             return false;
         }
-
         // If both groups are valid, allow the form to submit
         return true;
     };
 </script>
-
-
-
-
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
