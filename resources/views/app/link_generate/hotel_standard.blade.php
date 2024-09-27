@@ -7,6 +7,11 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <title>NKAR TRAVEL</title>
+    <style>
+        .line_class{
+            border-top: 3px dashed red;
+        }
+    </style>
 </head>
 <body>
 
@@ -16,52 +21,59 @@
         <form action="{{route('hotel_standard_store')}}" enctype="multipart/form-data" method="post">
             @csrf
             {{csrf_field()}}
-        @foreach($customer_hotel as $hotel)
+        @foreach($customer_hotel as $key =>$hotel)
+           <hr class="line_class">
            <h3>
               <strong>
                    {{$hotel->hotel_name}} Hotel
               </strong>
            </h3>
+                <div class="row">
             @foreach($questions as $question)
-                <div class="card p-5">
-                    <p>   {{$question->question}} | <span class="text-dark"> <strong> {{$hotel->hotel_name}} </strong> </span> </p>
-                    <div class="row">
-                        <div class="col-md-3">
-                            <div class="form-check">
-                                <input class="form-check-input {{$question->unique_id}}" type="radio" name="{{$hotel->unique_id.'_'.$question->unique_id}}"  value="MCSSCK2024">
-                                <label class="form-check-label" for="exampleRadios_{{$question->unique_id}}">
-                                    Excellent 😆
-                                </label>
+                    <div class="col-md-6">
+                        <div class="card mt-2 mb-2 shadow-sm p-2">
+                            <p> <u> {{$question->question}} | <span class="text-dark"> <strong> {{$hotel->hotel_name}} </strong> </span>  </u>  </p>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-check">
+                                        <input class="form-check-input {{'hotel_'.$key.'_'.$question->unique_id}}" type="radio" name="{{$hotel->unique_id.'_'.$question->unique_id}}"  value="MCSSCK2024">
+                                        <label class="form-check-label" for="exampleRadios_{{$question->unique_id}}">
+                                            Excellent 😆
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-check">
+                                        <input class="form-check-input {{'hotel_'.$key.'_'.$question->unique_id}}" type="radio" name="{{$hotel->unique_id.'_'.$question->unique_id}}"  value="CCRRUT2024">
+                                        <label class="form-check-label" for="exampleRadios_{{$question->unique_id}}">
+                                            Good 🙂
+                                        </label>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-check">
-                                <input class="form-check-input {{$question->unique_id}}" type="radio" name="{{$hotel->unique_id.'_'.$question->unique_id}}"  value="CCRRUT2024">
-                                <label class="form-check-label" for="exampleRadios_{{$question->unique_id}}">
-                                    Good 🙂
-                                </label>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-check">
-                                <input class="form-check-input {{$question->unique_id}}" type="radio" name="{{$hotel->unique_id.'_'.$question->unique_id}}"  value="SVHTTV2024">
-                                <label class="form-check-label" for="exampleRadios_{{$question->unique_id}}">
-                                    Satisfactory 😒
-                                </label>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-check">
-                                <input class="form-check-input {{$question->unique_id}}" type="radio" name="{{$hotel->unique_id.'_'.$question->unique_id}}"  value="TRRSC2024">
-                                <label class="form-check-label" for="exampleRadios_{{$question->unique_id}}">
-                                    Unsatisfactory ☹️
-                                </label>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-check">
+                                        <input class="form-check-input {{'hotel_'.$key.'_'.$question->unique_id}}" type="radio" name="{{$hotel->unique_id.'_'.$question->unique_id}}"  value="SVHTTV2024">
+                                        <label class="form-check-label" for="exampleRadios_{{$question->unique_id}}">
+                                            Satisfactory 😒
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-check">
+                                        <input class="form-check-input {{'hotel_'.$key.'_'.$question->unique_id}}" type="radio" name="{{$hotel->unique_id.'_'.$question->unique_id}}"  value="TRRSC2024">
+                                        <label class="form-check-label" for="exampleRadios_{{$question->unique_id}}">
+                                            Unsatisfactory ☹️
+                                        </label>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
+            @endforeach
                 </div>
             @endforeach
-        @endforeach
             <div class="col-md-12 mt-5">
                 <button type="submit" class="btn btn-sm btn-primary float-right"> NEXT </button>
             </div>

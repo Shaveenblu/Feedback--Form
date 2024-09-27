@@ -33,7 +33,11 @@ class LinkGenerateController extends Controller
         $customer_form_url = CustomerFormUrl::where('unique_id',$unique_id)->first();
         if($customer_form_url){
             session(['customer_id' => $customer_form_url->customer_id]);
-            return view('app.link_generate.form_page');
+            if(session()->has('session_first')){
+                return redirect()->route('hotel_standard');
+            }else{
+                return view('app.link_generate.form_page');
+            }
         }else{
             return abort(404);
         }
@@ -47,9 +51,6 @@ class LinkGenerateController extends Controller
              'customer_name'=>'required|string|max:255|min:3',
              'customer_phone_number'=>'required|max:255|min:3|string'
          ]);
-
-
-        return 'done';
 
         $part = $request->except('_token');
         session(['session_first' =>$part]);
