@@ -89,6 +89,11 @@ class LinkGenerateController extends Controller
     public function hotel_standard_store(Request $request)
     {
 
+
+        return 'done';
+
+
+
         foreach ($request->except('_token') as $key => $value) {
             // Split the key to get the hotel ID and question ID
             list($hotelId, $questionId) = explode('_', $key);

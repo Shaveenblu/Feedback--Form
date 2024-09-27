@@ -5,7 +5,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{asset('question/css/bootstrap.min.css')}}" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{asset("question/css/sweet-alert.css")}}">
     <title>NKAR TRAVEL</title>
     <style>
         .line_class{
@@ -18,7 +19,7 @@
 
 <div class="container">
     <div class="mt-5">
-        <form action="{{route('hotel_standard_store')}}" enctype="multipart/form-data" method="post">
+        <form action="{{route('hotel_standard_store')}}" id="feedbackForm" enctype="multipart/form-data" method="post">
             @csrf
             {{csrf_field()}}
         @foreach($customer_hotel as $key =>$hotel)
@@ -80,27 +81,9 @@
         </form>
     </div>
 </div>
-
-<script>
-    document.getElementById('feedbackForm').addEventListener('submit', function(event) {
-        // Get all radio buttons with the class 'exampleRadios_Zv2x4x6w54'
-        const Zv2x4x6w54_radios = document.querySelectorAll('.exampleRadios_Zv2x4x6w54');
-        let isChecked = false;
-
-        // Check if any radio button is selected
-        for (let i = 0; i < Zv2x4x6w54_radios.length; i++) {
-            if (Zv2x4x6w54_radios[i].checked) {
-                isChecked = true;
-                break;
-            }
-        }
-
-        // If no radio button is selected, prevent form submission and show an alert
-        if (!isChecked) {
-            event.preventDefault();
-            alert('Please select an option for Cleanliness of Rooms.');
-        }
-    });
+<script src="{{asset('question/js/sweet-alert.min.js')}}">
+</script>
+<script src="{{asset('question/js/script.js')}}">
 </script>
 
 <!-- Optional JavaScript -->
