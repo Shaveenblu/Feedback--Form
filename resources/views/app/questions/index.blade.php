@@ -88,13 +88,9 @@
                                         </button>
                                     </a>
                                     @endcan @can('view', $question)
-                                    <a
-                                        href="{{ route('questions.show', $question) }}"
-                                    >
-                                        <button
-                                            type="button"
-                                            class="btn btn-light"
-                                        >
+                                    <a href="{{ route('questions.show', $question) }}">
+                                        <button type="button"
+                                            class="btn btn-light">
                                             <i class="icon ion-md-eye"></i>
                                         </button>
                                     </a>

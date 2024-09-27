@@ -68,7 +68,21 @@ class LinkGenerateController extends Controller
             ->join('hotels', 'hotels.id', '=', 'customer_hotel.hotel_id')
             ->where('customer_id','=',session()->get('customer_id'))
             ->get();
-        $questions = Question::where('question_category_id','=',3)->get();
+        $questions = Question::where([
+            ['question_category_id', '=', 3],
+        ])->whereIn("unique_id",[
+            "Zv2x4x6w54",
+            "vfZWkBvin",
+            "5CT3IcShn",
+            "csdufRifW",
+            "naxn4IjaP",
+            "ddLbQ9UIF",
+            "tidgy8P7u",
+            "tkHqyoi0n",
+            "RivzREI7t",
+            "eu2QqeYfl",
+            "vkOIIsM3O",
+        ])->get();
         return view('app.link_generate.hotel_standard',compact('customer_hotel','questions'));
     }
 
