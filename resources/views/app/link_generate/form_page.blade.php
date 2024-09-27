@@ -13,17 +13,17 @@
 
 <div class="container">
     <div class="mt-5">
-        <form action="{{route('customer_form_data_store')}}" enctype="multipart/form-data" method="post">
+        <form action="{{route('customer_form_data_store')}}" enctype="multipart/form-data" id="feedbackForm" method="post">
             @csrf
             {{csrf_field()}}
             <div class="card p-5">
                 <div class="mb-3">
                     <label for="customerName" class="form-label">Full Name</label>
-                    <input type="text" class="form-control" id="customerName" name="customer_name">
+                    <input type="text" class="form-control" id="customerName" name="customer_name" required>
                 </div>
                 <div class="mb-3">
                     <label for="customerTelPhone" class="form-label">Telephone Number</label>
-                    <input type="text" class="form-control" id="customerTelPhone" maxlength="13" name="customer_phone_number">
+                    <input type="text" class="form-control" id="customerTelPhone" maxlength="13" name="customer_phone_number" required>
                     <div  class="form-text">We'll never share your phone <number></number> with anyone else.</div>
                 </div>
             </div>
@@ -32,32 +32,32 @@
                 <div class="row">
                     <div class="col-md-3">
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="xzR5hRwvY" id="exampleRadios1" value="MCSSCK2024">
-                            <label class="form-check-label" for="exampleRadios1">
+                            <input class="form-check-input exampleRadios_Zv2x4x6w54" type="radio" name="xzR5hRwvY"  value="MCSSCK2024">
+                            <label class="form-check-label">
                                 Excellent 😆
                             </label>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="xzR5hRwvY" id="exampleRadios1" value="CCRRUT2024">
-                            <label class="form-check-label" for="exampleRadios1">
+                            <input class="form-check-input exampleRadios_Zv2x4x6w54" type="radio" name="xzR5hRwvY"  value="CCRRUT2024">
+                            <label class="form-check-label">
                                 Good 🙂
                             </label>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="xzR5hRwvY" id="exampleRadios1" value="SVHTTV2024">
-                            <label class="form-check-label" for="exampleRadios1">
+                            <input class="form-check-input exampleRadios_Zv2x4x6w54" type="radio" name="xzR5hRwvY"  value="SVHTTV2024">
+                            <label class="form-check-label">
                                 Satisfactory 😒
                             </label>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="xzR5hRwvY" id="exampleRadios1" value="TRRSC2024">
-                            <label class="form-check-label" for="exampleRadios1">
+                            <input class="form-check-input exampleRadios_Zv2x4x6w54" type="radio" name="xzR5hRwvY"  value="TRRSC2024">
+                            <label class="form-check-label">
                                 Unsatisfactory ☹️
                             </label>
                         </div>
@@ -69,32 +69,32 @@
                 <div class="row">
                     <div class="col-md-3">
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="NNJEvpDTlK" id="exampleRadios1" value="MCSSCK2024">
-                            <label class="form-check-label" for="exampleRadios1">
+                            <input class="form-check-input exampleRadios_Zv3x4x6w54" type="radio" name="NNJEvpDTlK"  value="MCSSCK2024">
+                            <label class="form-check-label" >
                                 Excellent 😆
                             </label>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="NNJEvpDTlK" id="exampleRadios1" value="CCRRUT2024">
-                            <label class="form-check-label" for="exampleRadios1">
+                            <input class="form-check-input exampleRadios_Zv3x4x6w54" type="radio" name="NNJEvpDTlK"  value="CCRRUT2024">
+                            <label class="form-check-label">
                                 Good 🙂
                             </label>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="NNJEvpDTlK" id="exampleRadios1" value="SVHTTV2024">
-                            <label class="form-check-label" for="exampleRadios1">
+                            <input class="form-check-input exampleRadios_Zv3x4x6w54" type="radio" name="NNJEvpDTlK"  value="SVHTTV2024">
+                            <label class="form-check-label" >
                                 Satisfactory 😒
                             </label>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="NNJEvpDTlK" id="exampleRadios1" value="TRRSC2024">
-                            <label class="form-check-label" for="exampleRadios1">
+                            <input class="form-check-input exampleRadios_Zv3x4x6w54" type="radio" name="NNJEvpDTlK"  value="TRRSC2024">
+                            <label class="form-check-label">
                                 Unsatisfactory ☹️
                             </label>
                         </div>
@@ -109,11 +109,35 @@
 </div>
 
 
-<br>
-<br>
-<br>
-<br>
-<br>
+<script>
+    document.getElementById('feedbackForm').onsubmit = function(event) {
+        // Validate radio buttons with the class `exampleRadios_Zv2x4x6w54`
+        const radiosGroup1 = document.querySelectorAll('.exampleRadios_Zv2x4x6w54');
+        const isGroup1Checked = Array.from(radiosGroup1).some(radio => radio.checked);
+
+        if (!isGroup1Checked) {
+            alert('Please select an option for "Reception by the representative of NKAR travels and tours"');
+            event.preventDefault();  // Prevent form submission
+            return false;
+        }
+
+        // Validate radio buttons with the class `exampleRadios_Zv3x4x6w54`
+        const radiosGroup2 = document.querySelectorAll('.exampleRadios_Zv3x4x6w54');
+        const isGroup2Checked = Array.from(radiosGroup2).some(radio => radio.checked);
+
+        if (!isGroup2Checked) {
+            alert('Please select an option for "Services of NKAR Travels and Tours During Your Stay"');
+            event.preventDefault();  // Prevent form submission
+            return false;
+        }
+
+        // If both groups are valid, allow the form to submit
+        return true;
+    };
+</script>
+
+
+
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->

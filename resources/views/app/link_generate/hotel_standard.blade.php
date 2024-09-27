@@ -28,7 +28,7 @@
                     <div class="row">
                         <div class="col-md-3">
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="{{$hotel->unique_id.'_'.$question->unique_id}}" id="exampleRadios_{{$question->unique_id}}" value="MCSSCK2024">
+                                <input class="form-check-input {{$question->unique_id}}" type="radio" name="{{$hotel->unique_id.'_'.$question->unique_id}}"  value="MCSSCK2024">
                                 <label class="form-check-label" for="exampleRadios_{{$question->unique_id}}">
                                     Excellent 😆
                                 </label>
@@ -36,7 +36,7 @@
                         </div>
                         <div class="col-md-3">
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="{{$hotel->unique_id.'_'.$question->unique_id}}" id="exampleRadios_{{$question->unique_id}}" value="CCRRUT2024">
+                                <input class="form-check-input {{$question->unique_id}}" type="radio" name="{{$hotel->unique_id.'_'.$question->unique_id}}"  value="CCRRUT2024">
                                 <label class="form-check-label" for="exampleRadios_{{$question->unique_id}}">
                                     Good 🙂
                                 </label>
@@ -44,7 +44,7 @@
                         </div>
                         <div class="col-md-3">
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="{{$hotel->unique_id.'_'.$question->unique_id}}" id="exampleRadios_{{$question->unique_id}}" value="SVHTTV2024">
+                                <input class="form-check-input {{$question->unique_id}}" type="radio" name="{{$hotel->unique_id.'_'.$question->unique_id}}"  value="SVHTTV2024">
                                 <label class="form-check-label" for="exampleRadios_{{$question->unique_id}}">
                                     Satisfactory 😒
                                 </label>
@@ -52,7 +52,7 @@
                         </div>
                         <div class="col-md-3">
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="{{$hotel->unique_id.'_'.$question->unique_id}}" id="exampleRadios_{{$question->unique_id}}" value="TRRSC2024">
+                                <input class="form-check-input {{$question->unique_id}}" type="radio" name="{{$hotel->unique_id.'_'.$question->unique_id}}"  value="TRRSC2024">
                                 <label class="form-check-label" for="exampleRadios_{{$question->unique_id}}">
                                     Unsatisfactory ☹️
                                 </label>
@@ -70,42 +70,24 @@
 </div>
 
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const form = document.querySelector('form[action="{{ route('hotel_standard_store') }}"]');
-        const submitButton = form.querySelector('button[type="submit"]');
+    document.getElementById('feedbackForm').addEventListener('submit', function(event) {
+        // Get all radio buttons with the class 'exampleRadios_Zv2x4x6w54'
+        const Zv2x4x6w54_radios = document.querySelectorAll('.exampleRadios_Zv2x4x6w54');
+        let isChecked = false;
 
-        submitButton.addEventListener('click', function(event) {
-            // Get all unique group names (hotel_id_question_id)
-            const radioGroups = new Set();
-            form.querySelectorAll('input[type="radio"]').forEach(radio => {
-                radioGroups.add(radio.name);
-            });
-
-            let isValid = true;
-
-            // Check each group if at least one radio button is checked
-            radioGroups.forEach(groupName => {
-                const radios = form.querySelectorAll(`input[name="${groupName}"]`);
-                const isChecked = Array.from(radios).some(radio => radio.checked);
-
-                if (!isChecked) {
-                    isValid = false;
-
-
-
-
-                    alert(`Please select an option for the question related to ${groupName.split('_')[0]}`);
-
-                    radios[0].focus(); // Focus on the first radio button of the group
-
-                    return false; // Exit the loop early for this group if not valid
-                }
-            });
-
-            if (!isValid) {
-                event.preventDefault(); // Prevent form submission
+        // Check if any radio button is selected
+        for (let i = 0; i < Zv2x4x6w54_radios.length; i++) {
+            if (Zv2x4x6w54_radios[i].checked) {
+                isChecked = true;
+                break;
             }
-        });
+        }
+
+        // If no radio button is selected, prevent form submission and show an alert
+        if (!isChecked) {
+            event.preventDefault();
+            alert('Please select an option for Cleanliness of Rooms.');
+        }
     });
 </script>
 

@@ -48,6 +48,9 @@ class LinkGenerateController extends Controller
              'customer_phone_number'=>'required|max:255|min:3|string'
          ]);
 
+
+        return 'done';
+
         $part = $request->except('_token');
         session(['session_first' =>$part]);
 
