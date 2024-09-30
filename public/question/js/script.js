@@ -343,13 +343,434 @@ document.getElementById('feedbackForm').onsubmit = function(event) {
     }
 
 
+    /*///////////////////////////////////////////////////////////////*/
+    //hotel 05
+    const hotel_4_Zv2x4x6w54 = document.querySelectorAll('.hotel_4_Zv2x4x6w54');
+    if (hotel_4_Zv2x4x6w54.length > 0) {
+        const isGroup1Checked_hotel_4_Zv2x4x6w54 = Array.from(hotel_4_Zv2x4x6w54).some(radio => radio.checked);
+        if (!isGroup1Checked_hotel_4_Zv2x4x6w54) {
+            swal("Please select an option !", "1) Cleanliness of Rooms ?")
+            event.preventDefault();  // Prevent form submission
+            return false;
+        }
+        const hotel_4_vfZWkBvin = document.querySelectorAll('.hotel_4_vfZWkBvin');
+        const isGroup1Checked_hotel_4_vfZWkBvin = Array.from(hotel_4_vfZWkBvin).some(radio => radio.checked);
+        if (!isGroup1Checked_hotel_4_vfZWkBvin) {
+            swal("Please select an option !", "2) Cleanliness of Restaurant ?")
+            event.preventDefault();  // Prevent form submission
+            return false;
+        }
+
+        const hotel_4_5CT3IcShn = document.querySelectorAll('.hotel_4_5CT3IcShn');
+        const isGroup1Checked_hotel_4_5CT3IcShn = Array.from(hotel_4_5CT3IcShn).some(radio => radio.checked);
+        if (!isGroup1Checked_hotel_4_5CT3IcShn) {
+            swal("Please select an option !", "3) Cleanliness of Public Areas ?")
+            event.preventDefault();  // Prevent form submission
+            return false;
+        }
+        const hotel_4_csdufRifW = document.querySelectorAll('.hotel_4_csdufRifW');
+        const isGroup1Checked_hotel_4_csdufRifW = Array.from(hotel_4_csdufRifW).some(radio => radio.checked);
+        if (!isGroup1Checked_hotel_4_csdufRifW) {
+            swal("Please select an option !", "4) Food Presentation ?")
+            event.preventDefault();  // Prevent form submission
+            return false;
+        }
+        const hotel_4_naxn4IjaP = document.querySelectorAll('.hotel_4_naxn4IjaP');
+        const isGroup1Checked_hotel_4_naxn4IjaP = Array.from(hotel_4_naxn4IjaP).some(radio => radio.checked);
+        if (!isGroup1Checked_hotel_4_naxn4IjaP) {
+            swal("Please select an option !", "5) Food Quality ?")
+            event.preventDefault();  // Prevent form submission
+            return false;
+        }
+        const hotel_4_ddLbQ9UIF = document.querySelectorAll('.hotel_4_ddLbQ9UIF');
+        const isGroup1Checked_hotel_4_ddLbQ9UIF = Array.from(hotel_4_ddLbQ9UIF).some(radio => radio.checked);
+        if (!isGroup1Checked_hotel_4_ddLbQ9UIF) {
+            swal("Please select an option !", "6) Rooms Appearance ?")
+            event.preventDefault();  // Prevent form submission
+            return false;
+        }
+        const hotel_4_tidgy8P7u = document.querySelectorAll('.hotel_4_tidgy8P7u');
+        const isGroup1Checked_hotel_4_tidgy8P7u = Array.from(hotel_4_tidgy8P7u).some(radio => radio.checked);
+        if (!isGroup1Checked_hotel_4_tidgy8P7u) {
+            swal("Please select an option !", "7) Rooms Air-condition ?")
+            event.preventDefault();  // Prevent form submission
+            return false;
+        }
+        const hotel_4_tkHqyoi0n = document.querySelectorAll('.hotel_4_tkHqyoi0n');
+        const isGroup1Checked_hotel_4_tkHqyoi0n = Array.from(hotel_4_tkHqyoi0n).some(radio => radio.checked);
+        if (!isGroup1Checked_hotel_4_tkHqyoi0n) {
+            swal("Please select an option !", "8) Rooms Linen ?")
+            event.preventDefault();  // Prevent form submission
+            return false;
+        }
+        const hotel_4_RivzREI7t = document.querySelectorAll('.hotel_4_RivzREI7t');
+        const isGroup1Checked_hotel_4_RivzREI7t = Array.from(hotel_4_RivzREI7t).some(radio => radio.checked);
+        if (!isGroup1Checked_hotel_4_RivzREI7t) {
+            swal("Please select an option !", "9) Service Front Office ?")
+            event.preventDefault();  // Prevent form submission
+            return false;
+        }
+        const hotel_4_eu2QqeYfl = document.querySelectorAll('.hotel_4_eu2QqeYfl');
+        const isGroup1Checked_hotel_4_eu2QqeYfl = Array.from(hotel_4_eu2QqeYfl).some(radio => radio.checked);
+        if (!isGroup1Checked_hotel_4_eu2QqeYfl) {
+            swal("Please select an option !", "10) Service Restaurant ?")
+            event.preventDefault();  // Prevent form submission
+            return false;
+        }
+        const hotel_4_vkOIIsM3O = document.querySelectorAll('.hotel_4_vkOIIsM3O');
+        const isGroup1Checked_hotel_4_vkOIIsM3O = Array.from(hotel_4_vkOIIsM3O).some(radio => radio.checked);
+        if (!isGroup1Checked_hotel_4_vkOIIsM3O) {
+            swal("Please select an option !", "11) Service Housekeeping")
+            event.preventDefault();  // Prevent form submission
+            return false;
+        }
+    }else {
+        return true;
+    }
+
+
+    /*///////////////////////////////////////////////////////////////*/
+    //hotel 06
+    const hotel_5_Zv2x4x6w54 = document.querySelectorAll('.hotel_5_Zv2x4x6w54');
+    if (hotel_5_Zv2x4x6w54.length > 0) {
+        const isGroup1Checked_hotel_5_Zv2x4x6w54 = Array.from(hotel_5_Zv2x4x6w54).some(radio => radio.checked);
+        if (!isGroup1Checked_hotel_5_Zv2x4x6w54) {
+            swal("Please select an option !", "1) Cleanliness of Rooms ?")
+            event.preventDefault();  // Prevent form submission
+            return false;
+        }
+        const hotel_5_vfZWkBvin = document.querySelectorAll('.hotel_5_vfZWkBvin');
+        const isGroup1Checked_hotel_5_vfZWkBvin = Array.from(hotel_5_vfZWkBvin).some(radio => radio.checked);
+        if (!isGroup1Checked_hotel_5_vfZWkBvin) {
+            swal("Please select an option !", "2) Cleanliness of Restaurant ?")
+            event.preventDefault();  // Prevent form submission
+            return false;
+        }
+
+        const hotel_5_5CT3IcShn = document.querySelectorAll('.hotel_5_5CT3IcShn');
+        const isGroup1Checked_hotel_5_5CT3IcShn = Array.from(hotel_5_5CT3IcShn).some(radio => radio.checked);
+        if (!isGroup1Checked_hotel_5_5CT3IcShn) {
+            swal("Please select an option !", "3) Cleanliness of Public Areas ?")
+            event.preventDefault();  // Prevent form submission
+            return false;
+        }
+        const hotel_5_csdufRifW = document.querySelectorAll('.hotel_5_csdufRifW');
+        const isGroup1Checked_hotel_5_csdufRifW = Array.from(hotel_5_csdufRifW).some(radio => radio.checked);
+        if (!isGroup1Checked_hotel_5_csdufRifW) {
+            swal("Please select an option !", "4) Food Presentation ?")
+            event.preventDefault();  // Prevent form submission
+            return false;
+        }
+        const hotel_5_naxn4IjaP = document.querySelectorAll('.hotel_5_naxn4IjaP');
+        const isGroup1Checked_hotel_5_naxn4IjaP = Array.from(hotel_5_naxn4IjaP).some(radio => radio.checked);
+        if (!isGroup1Checked_hotel_5_naxn4IjaP) {
+            swal("Please select an option !", "5) Food Quality ?")
+            event.preventDefault();  // Prevent form submission
+            return false;
+        }
+        const hotel_5_ddLbQ9UIF = document.querySelectorAll('.hotel_5_ddLbQ9UIF');
+        const isGroup1Checked_hotel_5_ddLbQ9UIF = Array.from(hotel_5_ddLbQ9UIF).some(radio => radio.checked);
+        if (!isGroup1Checked_hotel_5_ddLbQ9UIF) {
+            swal("Please select an option !", "6) Rooms Appearance ?")
+            event.preventDefault();  // Prevent form submission
+            return false;
+        }
+        const hotel_5_tidgy8P7u = document.querySelectorAll('.hotel_5_tidgy8P7u');
+        const isGroup1Checked_hotel_5_tidgy8P7u = Array.from(hotel_5_tidgy8P7u).some(radio => radio.checked);
+        if (!isGroup1Checked_hotel_5_tidgy8P7u) {
+            swal("Please select an option !", "7) Rooms Air-condition ?")
+            event.preventDefault();  // Prevent form submission
+            return false;
+        }
+        const hotel_5_tkHqyoi0n = document.querySelectorAll('.hotel_5_tkHqyoi0n');
+        const isGroup1Checked_hotel_5_tkHqyoi0n = Array.from(hotel_5_tkHqyoi0n).some(radio => radio.checked);
+        if (!isGroup1Checked_hotel_5_tkHqyoi0n) {
+            swal("Please select an option !", "8) Rooms Linen ?")
+            event.preventDefault();  // Prevent form submission
+            return false;
+        }
+        const hotel_5_RivzREI7t = document.querySelectorAll('.hotel_5_RivzREI7t');
+        const isGroup1Checked_hotel_5_RivzREI7t = Array.from(hotel_5_RivzREI7t).some(radio => radio.checked);
+        if (!isGroup1Checked_hotel_5_RivzREI7t) {
+            swal("Please select an option !", "9) Service Front Office ?")
+            event.preventDefault();  // Prevent form submission
+            return false;
+        }
+        const hotel_5_eu2QqeYfl = document.querySelectorAll('.hotel_5_eu2QqeYfl');
+        const isGroup1Checked_hotel_5_eu2QqeYfl = Array.from(hotel_5_eu2QqeYfl).some(radio => radio.checked);
+        if (!isGroup1Checked_hotel_5_eu2QqeYfl) {
+            swal("Please select an option !", "10) Service Restaurant ?")
+            event.preventDefault();  // Prevent form submission
+            return false;
+        }
+        const hotel_5_vkOIIsM3O = document.querySelectorAll('.hotel_5_vkOIIsM3O');
+        const isGroup1Checked_hotel_5_vkOIIsM3O = Array.from(hotel_5_vkOIIsM3O).some(radio => radio.checked);
+        if (!isGroup1Checked_hotel_5_vkOIIsM3O) {
+            swal("Please select an option !", "11) Service Housekeeping")
+            event.preventDefault();  // Prevent form submission
+            return false;
+        }
+    }else {
+        return true;
+    }
 
 
 
+    /*///////////////////////////////////////////////////////////////*/
+    //hotel 07
+    const hotel_6_Zv2x4x6w54 = document.querySelectorAll('.hotel_6_Zv2x4x6w54');
+    if (hotel_6_Zv2x4x6w54.length > 0) {
+        const isGroup1Checked_hotel_6_Zv2x4x6w54 = Array.from(hotel_6_Zv2x4x6w54).some(radio => radio.checked);
+        if (!isGroup1Checked_hotel_6_Zv2x4x6w54) {
+            swal("Please select an option !", "1) Cleanliness of Rooms ?")
+            event.preventDefault();  // Prevent form submission
+            return false;
+        }
+        const hotel_6_vfZWkBvin = document.querySelectorAll('.hotel_6_vfZWkBvin');
+        const isGroup1Checked_hotel_6_vfZWkBvin = Array.from(hotel_6_vfZWkBvin).some(radio => radio.checked);
+        if (!isGroup1Checked_hotel_6_vfZWkBvin) {
+            swal("Please select an option !", "2) Cleanliness of Restaurant ?")
+            event.preventDefault();  // Prevent form submission
+            return false;
+        }
+
+        const hotel_6_5CT3IcShn = document.querySelectorAll('.hotel_6_5CT3IcShn');
+        const isGroup1Checked_hotel_6_5CT3IcShn = Array.from(hotel_6_5CT3IcShn).some(radio => radio.checked);
+        if (!isGroup1Checked_hotel_6_5CT3IcShn) {
+            swal("Please select an option !", "3) Cleanliness of Public Areas ?")
+            event.preventDefault();  // Prevent form submission
+            return false;
+        }
+        const hotel_6_csdufRifW = document.querySelectorAll('.hotel_6_csdufRifW');
+        const isGroup1Checked_hotel_6_csdufRifW = Array.from(hotel_6_csdufRifW).some(radio => radio.checked);
+        if (!isGroup1Checked_hotel_6_csdufRifW) {
+            swal("Please select an option !", "4) Food Presentation ?")
+            event.preventDefault();  // Prevent form submission
+            return false;
+        }
+        const hotel_6_naxn4IjaP = document.querySelectorAll('.hotel_6_naxn4IjaP');
+        const isGroup1Checked_hotel_6_naxn4IjaP = Array.from(hotel_6_naxn4IjaP).some(radio => radio.checked);
+        if (!isGroup1Checked_hotel_6_naxn4IjaP) {
+            swal("Please select an option !", "5) Food Quality ?")
+            event.preventDefault();  // Prevent form submission
+            return false;
+        }
+        const hotel_6_ddLbQ9UIF = document.querySelectorAll('.hotel_6_ddLbQ9UIF');
+        const isGroup1Checked_hotel_6_ddLbQ9UIF = Array.from(hotel_6_ddLbQ9UIF).some(radio => radio.checked);
+        if (!isGroup1Checked_hotel_6_ddLbQ9UIF) {
+            swal("Please select an option !", "6) Rooms Appearance ?")
+            event.preventDefault();  // Prevent form submission
+            return false;
+        }
+        const hotel_6_tidgy8P7u = document.querySelectorAll('.hotel_6_tidgy8P7u');
+        const isGroup1Checked_hotel_6_tidgy8P7u = Array.from(hotel_6_tidgy8P7u).some(radio => radio.checked);
+        if (!isGroup1Checked_hotel_6_tidgy8P7u) {
+            swal("Please select an option !", "7) Rooms Air-condition ?")
+            event.preventDefault();  // Prevent form submission
+            return false;
+        }
+        const hotel_6_tkHqyoi0n = document.querySelectorAll('.hotel_6_tkHqyoi0n');
+        const isGroup1Checked_hotel_6_tkHqyoi0n = Array.from(hotel_6_tkHqyoi0n).some(radio => radio.checked);
+        if (!isGroup1Checked_hotel_6_tkHqyoi0n) {
+            swal("Please select an option !", "8) Rooms Linen ?")
+            event.preventDefault();  // Prevent form submission
+            return false;
+        }
+        const hotel_6_RivzREI7t = document.querySelectorAll('.hotel_6_RivzREI7t');
+        const isGroup1Checked_hotel_6_RivzREI7t = Array.from(hotel_6_RivzREI7t).some(radio => radio.checked);
+        if (!isGroup1Checked_hotel_6_RivzREI7t) {
+            swal("Please select an option !", "9) Service Front Office ?")
+            event.preventDefault();  // Prevent form submission
+            return false;
+        }
+        const hotel_6_eu2QqeYfl = document.querySelectorAll('.hotel_6_eu2QqeYfl');
+        const isGroup1Checked_hotel_6_eu2QqeYfl = Array.from(hotel_6_eu2QqeYfl).some(radio => radio.checked);
+        if (!isGroup1Checked_hotel_6_eu2QqeYfl) {
+            swal("Please select an option !", "10) Service Restaurant ?")
+            event.preventDefault();  // Prevent form submission
+            return false;
+        }
+        const hotel_6_vkOIIsM3O = document.querySelectorAll('.hotel_6_vkOIIsM3O');
+        const isGroup1Checked_hotel_6_vkOIIsM3O = Array.from(hotel_6_vkOIIsM3O).some(radio => radio.checked);
+        if (!isGroup1Checked_hotel_6_vkOIIsM3O) {
+            swal("Please select an option !", "11) Service Housekeeping")
+            event.preventDefault();  // Prevent form submission
+            return false;
+        }
+    }else {
+        return true;
+    }
 
 
+    /*///////////////////////////////////////////////////////////////*/
+    //hotel 08
+    const hotel_7_Zv2x4x6w54 = document.querySelectorAll('.hotel_7_Zv2x4x6w54');
+    if (hotel_7_Zv2x4x6w54.length > 0) {
+        const isGroup1Checked_hotel_7_Zv2x4x6w54 = Array.from(hotel_7_Zv2x4x6w54).some(radio => radio.checked);
+        if (!isGroup1Checked_hotel_7_Zv2x4x6w54) {
+            swal("Please select an option !", "1) Cleanliness of Rooms ?")
+            event.preventDefault();  // Prevent form submission
+            return false;
+        }
+        const hotel_7_vfZWkBvin = document.querySelectorAll('.hotel_7_vfZWkBvin');
+        const isGroup1Checked_hotel_7_vfZWkBvin = Array.from(hotel_7_vfZWkBvin).some(radio => radio.checked);
+        if (!isGroup1Checked_hotel_7_vfZWkBvin) {
+            swal("Please select an option !", "2) Cleanliness of Restaurant ?")
+            event.preventDefault();  // Prevent form submission
+            return false;
+        }
 
+        const hotel_7_5CT3IcShn = document.querySelectorAll('.hotel_7_5CT3IcShn');
+        const isGroup1Checked_hotel_7_5CT3IcShn = Array.from(hotel_7_5CT3IcShn).some(radio => radio.checked);
+        if (!isGroup1Checked_hotel_7_5CT3IcShn) {
+            swal("Please select an option !", "3) Cleanliness of Public Areas ?")
+            event.preventDefault();  // Prevent form submission
+            return false;
+        }
+        const hotel_7_csdufRifW = document.querySelectorAll('.hotel_7_csdufRifW');
+        const isGroup1Checked_hotel_7_csdufRifW = Array.from(hotel_7_csdufRifW).some(radio => radio.checked);
+        if (!isGroup1Checked_hotel_7_csdufRifW) {
+            swal("Please select an option !", "4) Food Presentation ?")
+            event.preventDefault();  // Prevent form submission
+            return false;
+        }
+        const hotel_7_naxn4IjaP = document.querySelectorAll('.hotel_7_naxn4IjaP');
+        const isGroup1Checked_hotel_7_naxn4IjaP = Array.from(hotel_7_naxn4IjaP).some(radio => radio.checked);
+        if (!isGroup1Checked_hotel_7_naxn4IjaP) {
+            swal("Please select an option !", "5) Food Quality ?")
+            event.preventDefault();  // Prevent form submission
+            return false;
+        }
+        const hotel_7_ddLbQ9UIF = document.querySelectorAll('.hotel_7_ddLbQ9UIF');
+        const isGroup1Checked_hotel_7_ddLbQ9UIF = Array.from(hotel_7_ddLbQ9UIF).some(radio => radio.checked);
+        if (!isGroup1Checked_hotel_7_ddLbQ9UIF) {
+            swal("Please select an option !", "6) Rooms Appearance ?")
+            event.preventDefault();  // Prevent form submission
+            return false;
+        }
+        const hotel_7_tidgy8P7u = document.querySelectorAll('.hotel_7_tidgy8P7u');
+        const isGroup1Checked_hotel_7_tidgy8P7u = Array.from(hotel_7_tidgy8P7u).some(radio => radio.checked);
+        if (!isGroup1Checked_hotel_7_tidgy8P7u) {
+            swal("Please select an option !", "7) Rooms Air-condition ?")
+            event.preventDefault();  // Prevent form submission
+            return false;
+        }
+        const hotel_7_tkHqyoi0n = document.querySelectorAll('.hotel_7_tkHqyoi0n');
+        const isGroup1Checked_hotel_7_tkHqyoi0n = Array.from(hotel_7_tkHqyoi0n).some(radio => radio.checked);
+        if (!isGroup1Checked_hotel_7_tkHqyoi0n) {
+            swal("Please select an option !", "8) Rooms Linen ?")
+            event.preventDefault();  // Prevent form submission
+            return false;
+        }
+        const hotel_7_RivzREI7t = document.querySelectorAll('.hotel_7_RivzREI7t');
+        const isGroup1Checked_hotel_7_RivzREI7t = Array.from(hotel_7_RivzREI7t).some(radio => radio.checked);
+        if (!isGroup1Checked_hotel_7_RivzREI7t) {
+            swal("Please select an option !", "9) Service Front Office ?")
+            event.preventDefault();  // Prevent form submission
+            return false;
+        }
+        const hotel_7_eu2QqeYfl = document.querySelectorAll('.hotel_7_eu2QqeYfl');
+        const isGroup1Checked_hotel_7_eu2QqeYfl = Array.from(hotel_7_eu2QqeYfl).some(radio => radio.checked);
+        if (!isGroup1Checked_hotel_7_eu2QqeYfl) {
+            swal("Please select an option !", "10) Service Restaurant ?")
+            event.preventDefault();  // Prevent form submission
+            return false;
+        }
+        const hotel_7_vkOIIsM3O = document.querySelectorAll('.hotel_7_vkOIIsM3O');
+        const isGroup1Checked_hotel_7_vkOIIsM3O = Array.from(hotel_7_vkOIIsM3O).some(radio => radio.checked);
+        if (!isGroup1Checked_hotel_7_vkOIIsM3O) {
+            swal("Please select an option !", "11) Service Housekeeping")
+            event.preventDefault();  // Prevent form submission
+            return false;
+        }
+    }else {
+        return true;
+    }
 
+    /*///////////////////////////////////////////////////////////////*/
+    //hotel 09
+    const hotel_8_Zv2x4x6w54 = document.querySelectorAll('.hotel_8_Zv2x4x6w54');
+    if (hotel_8_Zv2x4x6w54.length > 0) {
+        const isGroup1Checked_hotel_8_Zv2x4x6w54 = Array.from(hotel_8_Zv2x4x6w54).some(radio => radio.checked);
+        if (!isGroup1Checked_hotel_8_Zv2x4x6w54) {
+            swal("Please select an option !", "1) Cleanliness of Rooms ?")
+            event.preventDefault();  // Prevent form submission
+            return false;
+        }
+        const hotel_8_vfZWkBvin = document.querySelectorAll('.hotel_8_vfZWkBvin');
+        const isGroup1Checked_hotel_8_vfZWkBvin = Array.from(hotel_8_vfZWkBvin).some(radio => radio.checked);
+        if (!isGroup1Checked_hotel_8_vfZWkBvin) {
+            swal("Please select an option !", "2) Cleanliness of Restaurant ?")
+            event.preventDefault();  // Prevent form submission
+            return false;
+        }
+
+        const hotel_8_5CT3IcShn = document.querySelectorAll('.hotel_8_5CT3IcShn');
+        const isGroup1Checked_hotel_8_5CT3IcShn = Array.from(hotel_8_5CT3IcShn).some(radio => radio.checked);
+        if (!isGroup1Checked_hotel_8_5CT3IcShn) {
+            swal("Please select an option !", "3) Cleanliness of Public Areas ?")
+            event.preventDefault();  // Prevent form submission
+            return false;
+        }
+        const hotel_8_csdufRifW = document.querySelectorAll('.hotel_8_csdufRifW');
+        const isGroup1Checked_hotel_8_csdufRifW = Array.from(hotel_8_csdufRifW).some(radio => radio.checked);
+        if (!isGroup1Checked_hotel_8_csdufRifW) {
+            swal("Please select an option !", "4) Food Presentation ?")
+            event.preventDefault();  // Prevent form submission
+            return false;
+        }
+        const hotel_8_naxn4IjaP = document.querySelectorAll('.hotel_8_naxn4IjaP');
+        const isGroup1Checked_hotel_8_naxn4IjaP = Array.from(hotel_8_naxn4IjaP).some(radio => radio.checked);
+        if (!isGroup1Checked_hotel_8_naxn4IjaP) {
+            swal("Please select an option !", "5) Food Quality ?")
+            event.preventDefault();  // Prevent form submission
+            return false;
+        }
+        const hotel_8_ddLbQ9UIF = document.querySelectorAll('.hotel_8_ddLbQ9UIF');
+        const isGroup1Checked_hotel_8_ddLbQ9UIF = Array.from(hotel_8_ddLbQ9UIF).some(radio => radio.checked);
+        if (!isGroup1Checked_hotel_8_ddLbQ9UIF) {
+            swal("Please select an option !", "6) Rooms Appearance ?")
+            event.preventDefault();  // Prevent form submission
+            return false;
+        }
+        const hotel_8_tidgy8P7u = document.querySelectorAll('.hotel_8_tidgy8P7u');
+        const isGroup1Checked_hotel_8_tidgy8P7u = Array.from(hotel_8_tidgy8P7u).some(radio => radio.checked);
+        if (!isGroup1Checked_hotel_8_tidgy8P7u) {
+            swal("Please select an option !", "7) Rooms Air-condition ?")
+            event.preventDefault();  // Prevent form submission
+            return false;
+        }
+        const hotel_8_tkHqyoi0n = document.querySelectorAll('.hotel_8_tkHqyoi0n');
+        const isGroup1Checked_hotel_8_tkHqyoi0n = Array.from(hotel_8_tkHqyoi0n).some(radio => radio.checked);
+        if (!isGroup1Checked_hotel_8_tkHqyoi0n) {
+            swal("Please select an option !", "8) Rooms Linen ?")
+            event.preventDefault();  // Prevent form submission
+            return false;
+        }
+        const hotel_8_RivzREI7t = document.querySelectorAll('.hotel_8_RivzREI7t');
+        const isGroup1Checked_hotel_8_RivzREI7t = Array.from(hotel_8_RivzREI7t).some(radio => radio.checked);
+        if (!isGroup1Checked_hotel_8_RivzREI7t) {
+            swal("Please select an option !", "9) Service Front Office ?")
+            event.preventDefault();  // Prevent form submission
+            return false;
+        }
+        const hotel_8_eu2QqeYfl = document.querySelectorAll('.hotel_8_eu2QqeYfl');
+        const isGroup1Checked_hotel_8_eu2QqeYfl = Array.from(hotel_8_eu2QqeYfl).some(radio => radio.checked);
+        if (!isGroup1Checked_hotel_8_eu2QqeYfl) {
+            swal("Please select an option !", "10) Service Restaurant ?")
+            event.preventDefault();  // Prevent form submission
+            return false;
+        }
+        const hotel_8_vkOIIsM3O = document.querySelectorAll('.hotel_8_vkOIIsM3O');
+        const isGroup1Checked_hotel_8_vkOIIsM3O = Array.from(hotel_8_vkOIIsM3O).some(radio => radio.checked);
+        if (!isGroup1Checked_hotel_8_vkOIIsM3O) {
+            swal("Please select an option !", "11) Service Housekeeping")
+            event.preventDefault();  // Prevent form submission
+            return false;
+        }
+    }else {
+        return true;
+    }
 
 
 
