@@ -100,6 +100,7 @@
                     </div>
                 </div>
             </div>
+            
             <div class="col-md-12 mt-5">
                 <button type="submit" class="btn btn-sm btn-primary float-right"> NEXT </button>
             </div>
@@ -109,6 +110,7 @@
 <script src="{{asset('question/js/sweet-alert.min.js')}}">
 </script>
 <script>
+
     document.getElementById('feedbackForm').onsubmit = function(event) {
         // Validate radio buttons with the class `exampleRadios_Zv2x4x6w54`
         const radiosGroup1 = document.querySelectorAll('.exampleRadios_Zv2x4x6w54');
@@ -129,6 +131,7 @@
         // If both groups are valid, allow the form to submit
         return true;
     };
+
 </script>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->

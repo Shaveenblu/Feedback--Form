@@ -62,9 +62,9 @@ class LinkGenerateController extends Controller
         }
     }
 
-    public function hotel_standard(){
+    public function hotel_standard() {
 
-        $customer_hotel=DB::table('customer_hotel')
+        $customer_hotel = DB::table('customer_hotel')
             ->join('hotels', 'hotels.id', '=', 'customer_hotel.hotel_id')
             ->where('customer_id','=',session()->get('customer_id'))
             ->get();
@@ -82,8 +82,48 @@ class LinkGenerateController extends Controller
             "RivzREI7t",
             "eu2QqeYfl",
             "vkOIIsM3O",
+            
         ])->get();
         return view('app.link_generate.hotel_standard',compact('customer_hotel','questions'));
+    }
+
+    public function transport() {
+        $customer_hotel = DB::table('customer_hotel')
+            ->join('hotels', 'hotels.id', '=', 'customer_hotel.hotel_id')
+            ->where('customer_id','=',session()->get('customer_id'))
+            ->get();
+        $questions = Question::where([
+            ['question_category_id', '=', 5],
+        ])->whereIn('unique_id', [
+            "nerihu256",
+            "i8V0EbkNtG",
+            "jhBd87327"
+        ])->get();
+        return view('app.link_generate.transport', compact('customer_hotel','questions'));
+    }
+
+    public function driver_guide() {
+        $customer_hotel = DB::table('customer_hotel')
+            ->join('hotels', 'hotels.id', '=', 'customer_hotel.hotel_id')
+            ->where('customer_id', '=',session()->get('customer_id'))
+            ->get();
+        $questions = Question::where([
+            ['question_category_id', '=', 4],
+        ])->whereIn('unique_Id', [
+            'dfgY6785',
+            "irHg4397",
+            "geyU2344"
+        ])->get();
+        return view('app.link_generate.driver_guide', compact('customer_hotel', 'questions'));
+    }
+
+    public function remaining_questions() {
+        $questions = Question::where([
+            ['question_category_id', '=', 6],
+        ])->whereIn('unique_Id', [
+            "iusr8922"
+        ])->get();
+        return view('app.link_generate.remaining_questions', compact('questions'));
     }
 
     public function hotel_standard_store(Request $request)
@@ -96,8 +136,6 @@ class LinkGenerateController extends Controller
                 ->join('hotels', 'hotels.id', '=', 'customer_hotel.hotel_id')
                 ->where('customer_id','=',session()->get('customer_id'))
                 ->get();
-
-
 
             return view('app.link_generate.about_guid');
         }elseif(!session()->has('session_second')){
