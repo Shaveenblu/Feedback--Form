@@ -10,6 +10,7 @@ use App\Models\Question;
 use App\Models\ResponseType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Foundation\Http\Middleware\ValidateCsrfToken;
 
 class LinkGenerateController extends Controller
 {
@@ -41,6 +42,7 @@ class LinkGenerateController extends Controller
         }else{
             return abort(404);
         }
+        
     }
 
     public function customer_form_data_store(Request $request)
@@ -126,20 +128,76 @@ class LinkGenerateController extends Controller
         return view('app.link_generate.remaining_questions', compact('questions'));
     }
 
+
+
+
+
     public function hotel_standard_store(Request $request)
     {
         $part = $request->except('_token');
         session(['session_second' =>$part]);
-        if(session()->has('session_first') && session()->has('session_second')){
+        foreach($request->expect('_token') as $key => $value) {
+            session()->put($key, $value);
+        }
+        if(session()->has('session_first') && session()->has('session_second')) {
 
-            $customer_hotel=DB::table('customer_hotel')
+            $customer_hotel = DB::table('customer_hotel')
                 ->join('hotels', 'hotels.id', '=', 'customer_hotel.hotel_id')
                 ->where('customer_id','=',session()->get('customer_id'))
                 ->get();
 
             return view('app.link_generate.about_guid');
-        }elseif(!session()->has('session_second')){
+        } elseif(!session()->has('session_second')) {
+
             return redirect()->route('customer_form_page');
+        }
+    }
+
+    public function transport_store(Request $request)
+    {
+        $part = $request->except('_token');
+        session(['session_second' =>$part]);
+
+        foreach($request->expect('_token') as $key => $value) {
+            session()->put($key, $value);
+        }
+
+        if(session()->has('session_first') && session()->has('session_second')) {
+
+            $customer_hotel = DB::table('customer_hotel')
+                ->join('hotels', 'hotels.id', '=', 'customer_hotel.hotel_id')
+                ->where('customer_id','=',session()->get('customer_id'))
+                ->get();
+
+            return view('app.link_generate.about_guid');
+        } elseif(!session()->has('session_second')) {
+
+            return redirect()->route('hotel_standard');
+
+        }
+    }
+
+    public function driver_guide_store(Request $request) {
+        $part = $request->except('_token');
+
+        session(['session_second' =>$part]);
+
+        foreach($request->expect('_token') as $key => $value) {
+            session()->put($key, $value);
+        }
+
+        if(session()->has('session_first') && session()->has('session_second')) {
+
+            $customer_hotel = DB::table('customer_hotel')
+                ->join('hotels', 'hotels.id', '=', 'customer_hotel.hotel_id')
+                ->where('customer_id','=',session()->get('customer_id'))
+                ->get();
+
+            return view('app.link_generate.about_guid');
+        } else if(!session()->has('session_second')) {
+
+            return redirect()->route('remaining_questions');
+
         }
     }
 

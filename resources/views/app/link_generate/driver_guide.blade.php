@@ -16,7 +16,7 @@
 
 <div class="container">
     <div class="mt-5">
-        <form action="{{route('remaining_questions')}}" id="feedbackForm" enctype="multipart/form-data" method="post">
+        <form action="{{ route('remaining_questions') }}" id="feedbackForm" enctype="multipart/form-data" method="post">
         <h1>DRIVER GUIDE</h1>
             @csrf
             {{csrf_field()}}

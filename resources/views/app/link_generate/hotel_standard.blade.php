@@ -16,10 +16,9 @@
 </head>
 <body>
 
-
 <div class="container">
     <div class="mt-5">
-        <form action="{{ route('transport') }}" id="feedbackForm" enctype="multipart/form-data" method="post">
+        <form action = "{{ route('transport') }}" id = "feedbackForm" enctype = "multipart/form-data" method = "post">
             @csrf
             {{csrf_field()}}
         @foreach($customer_hotel as $key =>$hotel)
