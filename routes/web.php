@@ -83,12 +83,11 @@ Route::post('/store-customer-details', [\App\Http\Controllers\LinkGenerateContro
 /*second step form*/
 Route::get('/form-hotel-standard/step-two',[\App\Http\Controllers\LinkGenerateController::class,'hotel_standard'])->name('hotel_standard');
 Route::post('/form-hotel-standard/step-three', [\App\Http\Controllers\LinkGenerateController::class,'transport'])->name('transport');
-Route::get('/form-hotel-standard/step-four', [\App\Http\Controllers\LinkGenerateController::class, 'driver_guide'])->name('driver_guide');
+Route::post('/form-hotel-standard/step-four', [\App\Http\Controllers\LinkGenerateController::class, 'driver_guide'])->name('driver_guide');
 Route::get('/form-hotel-standard/step-five', [\App\Http\Controllers\LinkGenerateController::class, 'remaining_questions'])->name('remaining_questions');
 Route::post('/form-hotel-standard/step-two/store',[\App\Http\Controllers\LinkGenerateController::class,'hotel_standard_store'])->name('hotel_standard_store');
 Route::post('/form-hotel-standard/step-three/store', [\App\Http\Controllers\LinkGenerateController::class,'transport_store'])->name('transport_store');
 Route::post('/form-hotel-standard/step-four/store', [\App\Http\Controllers\LinkGenerateController::class,'driver_guide_store'])->name('driver_guide_store');
-
 
 
 

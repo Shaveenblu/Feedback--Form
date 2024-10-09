@@ -16,8 +16,9 @@
 
 <div class="container">
     <div class="mt-5">
+    <h1>DRIVER GUIDE</h1>
         <form action="{{ route('remaining_questions') }}" id="feedbackForm" enctype="multipart/form-data" method="post">
-        <h1>DRIVER GUIDE</h1>
+
             @csrf
             {{csrf_field()}}
 
@@ -69,7 +70,7 @@
                     </div>
             @endforeach
                 </div>
- 
+
             <div class="col-md-12 mt-5">
                 <button type="submit" class="btn btn-sm btn-primary float-right"> NEXT </button>
             </div>
