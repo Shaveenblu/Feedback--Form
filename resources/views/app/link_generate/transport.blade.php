@@ -16,7 +16,7 @@
 
 <div class="container">
     <div class="mt-5">
-    <h1>TRANSPORT</h1>
+    <h1>TRANSPORT </h1>
         <form action="{{ route('driver_guide') }}" id="feedbackForm" enctype="multipart/form-data" method="post">
             @csrf
             {{csrf_field()}}
@@ -69,7 +69,7 @@
                     </div>
             @endforeach
                 </div>
- 
+
             <div class="col-md-12 mt-5">
                 <button type="submit" class="btn btn-sm btn-primary float-right"> NEXT </button>
             </div>
@@ -78,7 +78,7 @@
 </div>
 <script src="{{asset('question/js/sweet-alert.min.js')}}">
 </script>
-<script src="{{asset('question/js/script.js')}}">
+<script src="{{asset('question/js/transport.js')}}">
 </script>
 
 <!-- Optional JavaScript -->

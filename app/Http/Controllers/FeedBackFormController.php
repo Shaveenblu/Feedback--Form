@@ -151,4 +151,9 @@ class FeedBackFormController extends Controller
             ->route('feed-back-forms.index')
             ->withSuccess(__('crud.common.removed'));
     }
+
+
+    public function getData() {
+        return "Form Data";
+    }
 }

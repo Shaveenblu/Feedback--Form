@@ -3,74 +3,16 @@ document.getElementById('feedbackForm').onsubmit = function(event) {
 
 
     // SWAL incomplete messages for Transport
-    const i8V0EbkNtG = document.querySelectorAll('.i8V0EbkNtG');
-    if(i8V0EbkNtG.length > 0) {
-        const isGroup1Checked_i8V0EbkNtG = Array.from(i8V0EbkNtG).some(radio => radio.checked);
-        if(!isGroup1Checked_i8V0EbkNtG) {
-            swal("Please select an option !", "a) Mechanical Condition ?")
-            event.preventDefault();
-            return false;
-        }
-        const nerihu256 = document.querySelectorAll('.nerihu256');
 
-            const isGroup1Checked_nerihu256 = Array.from(nerihu256).some(radio => radio.checked);
-            if(!isGroup1Checked_nerihu256) {
-                swal("Please select an option !", "b) Cleanliness ?")
-                event.preventDefault();
-                return false;
-            }
-
-        const jhBd87327 = document.querySelectorAll('.jhBd87327');
-
-            const isGroup1Checked_jhBd87327 = Array.from(jhBd87327).some(radio => radio.checked);
-            if(!isGroup1Checked_jhBd87327) {
-                swal("Please select an option !", "c) Public addressing system ?")
-                event.preventDefault();
-                return false;
-            }
-    }
 
     // SWAL incomplete messages for DRIVER GUIDE
-    const dfgY6785 = document.querySelectorAll('.dfgY6785');
-    if(dfgY6785.length > 0) {
-        const isGroup1Checked_dfgY6785 = Array.from(dfgY6785).some(radio => radio.checked);
-        if(!isGroup1Checked_dfgY6785) {
-            swal("Please select an option !", "a) Driving and safety ?")
-            event.preventDefault();
-            return false;
-        }
-        const irHg4397 = document.querySelectorAll('.irHg4397');
 
-            const isGroup1Checked_irHg4397 = Array.from(irHg4397).some(radio => radio.checked);
-            if(!isGroup1Checked_irHg4397) {
-                swal("Please select an option !", "b) Punctuality ?")
-                event.preventDefault();
-                return false;
-            }
-
-        const geyU2344 = document.querySelectorAll('.geyU2344');
-
-            const isGroup1Checked_geyU2344 = Array.from(geyU2344).some(radio => radio.checked);
-            if(!isGroup1Checked_geyU2344) {
-                swal("Please select an option !", "c) Courtesy and friendliness ?")
-                event.preventDefault();
-                return false;
-            }
-    }
 
 
 
 
     // SWAL incomplete messages remaining questions
-    const iusr8922 = document.querySelectorAll('.iusr8922');
-    if(iusr8922.length > 0) {
-        const isGroup1Checked_iusr8922 = Array.from(iusr8922).some(radio => radio.checked);
-        if(!isGroup1Checked_iusr8922) {
-            swal("Please select an option !", "7. HOW DO YOU RATE YOUR OVERALL HOLIDAY ?")
-            event.preventDefault();
-            return false;
-        }
-    }
+
 
 
 

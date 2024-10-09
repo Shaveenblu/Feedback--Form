@@ -79,7 +79,7 @@
 </div>
 <script src="{{asset('question/js/sweet-alert.min.js')}}">
 </script>
-<script src="{{asset('question/js/script.js')}}">
+<script src="{{asset('question/js/driverguide.js')}}">
 </script>
 
 <!-- Optional JavaScript -->

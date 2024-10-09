@@ -101,6 +101,9 @@ class LinkGenerateController extends Controller
     }
 
     public function driver_guide(Request $request) {
+
+        // dd($request);
+
         $questions = Question::where([
             ['question_category_id', '=', 4],
         ])->whereIn('unique_Id', [
@@ -112,12 +115,19 @@ class LinkGenerateController extends Controller
     }
 
     public function remaining_questions(Request $request) {
-        $questions = Question::where([
+        $questions1 = Question::where([
             ['question_category_id', '=', 6],
         ])->whereIn('unique_Id', [
             "iusr8922"
         ])->get();
-        return view('app.link_generate.remaining_questions', compact('questions'));
+
+        $questions2 = Question::where([
+            ['question_category_id', '=', 6],
+        ])->whereIn('unique_Id', [
+            "96IwNttr",
+            "1d0hmx"
+        ])->get();
+        return view('app.link_generate.remaining_questions', compact('questions1', 'questions2'));
     }
 
 
@@ -188,5 +198,21 @@ class LinkGenerateController extends Controller
 
         }
     }
+
+
+    public function add(Request $request) {
+        $request->validate([
+
+        ]);
+
+        foreach(){
+            DB::table('feed_back_forms')->insert ([
+
+        ]);
+
+
+    }
+
+
 
 }
