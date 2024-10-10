@@ -200,18 +200,44 @@ class LinkGenerateController extends Controller
     }
 
 
+
     public function add(Request $request) {
-        $request->validate([
+         $request->validate([
+            'customer_id' => 'required|string',
+            'hotel_id' => 'nullable|string',
+            'guide_id' => 'nullable|string',
+            'tour_id' => 'nullable|string',
+            'customer_name' => 'required|string',
+            'customer_tel_phone_number' => 'required|string',
+            'responses' => 'required|array', // Expecting an array of responses
+            'responses.*' => 'required|string', // Each response should be an integer (response ID)
+         ]);
 
-        ]);
 
-        foreach(){
+         $responses = $request->input('responses');
+
+        //  foreach($questions as $unique_id) {
+
+            foreach($question as $questionID => $response_id) {
+
+
+
+            if($question) {
             DB::table('feed_back_forms')->insert ([
-
-        ]);
-
-
+                 'question_id'=>$questionID,
+                 'customer_id'=>$request->input('customer_id'),
+                 'response_type_id'=>$response_id,
+                 'hotel_id'=>$request->input('$hotel->hotel_id'),
+                 'guide_id'=>$request->input('$guide->guide_id'),
+                 'tour_id'=>$request->input('$tour->tour_id'),
+                 'customer_name'=>$request->input('customer_name'),
+                 'customer_tel_phone_number'=>$request->input('customer_name'),
+                 'date'=> now(),
+            ]);
+        }
     }
+     return response()->json(['message' => 'Feedback Form submitted successfully.']);
+ }
 
 
 

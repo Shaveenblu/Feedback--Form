@@ -100,7 +100,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="col-md-12 mt-5">
                 <button type="submit" class="btn btn-sm btn-primary float-right"> NEXT </button>
             </div>
