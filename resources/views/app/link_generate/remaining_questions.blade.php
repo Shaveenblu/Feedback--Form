@@ -16,7 +16,7 @@
 <div class="container">
     <div class="mt-5">
 
-        <form action="add" id="feedbackForm" enctype="multipart/form-data" method="post">
+        <form action="{{ route('add') }}" id="feedbackForm" enctype="multipart/form-data" method="post">
 
             @csrf
             {{csrf_field()}}
@@ -26,23 +26,23 @@
 
            </h3>
             <div class="row">
-            @foreach($questions1 as $question1)
+            @foreach($questions as $question)
                     <div class="col-md-6">
                         <div class="card mt-2 mb-2 shadow-sm p-2">
-                            <p> <u> {{$question1->question1}}  <span class="text-dark">  </span>  </u>  </p>
+                            <p> <u> {{$question->question}}  <span class="text-dark"> </span> </u> </p>
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-check">
-                                        <input class="form-check-input {{$question1->unique_id}}" type="radio" name="{{$question1->unique_id}}"  value="MCSSCK2024">
-                                        <label class="form-check-label" for="exampleRadios_{{$question1->unique_id}}">
+                                        <input class="form-check-input {{$question->unique_id}}" type="radio" name="{{$question->unique_id}}"  value="MCSSCK2024">
+                                        <label class="form-check-label" for="exampleRadios_{{$question->unique_id}}">
                                             Excellent 😆
                                         </label>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-check">
-                                        <input class="form-check-input {{$question1->unique_id}}" type="radio" name="{{$question1->unique_id}}"  value="CCRRUT2024">
-                                        <label class="form-check-label" for="exampleRadios_{{$question1->unique_id}}">
+                                        <input class="form-check-input {{$question->unique_id}}" type="radio" name="{{$question->unique_id}}"  value="CCRRUT2024">
+                                        <label class="form-check-label" for="exampleRadios_{{$question->unique_id}}">
                                             Good 🙂
                                         </label>
                                     </div>
@@ -51,16 +51,16 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-check">
-                                        <input class="form-check-input {{$question1->unique_id}}" type="radio" name="{{$question1->unique_id}}"  value="SVHTTV2024">
-                                        <label class="form-check-label" for="exampleRadios_{{$question1->unique_id}}">
+                                        <input class="form-check-input {{$question->unique_id}}" type="radio" name="{{$question->unique_id}}"  value="SVHTTV2024">
+                                        <label class="form-check-label" for="exampleRadios_{{$question->unique_id}}">
                                             Satisfactory 😒
                                         </label>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-check">
-                                        <input class="form-check-input {{$question1->unique_id}}" type="radio" name="{{$question1->unique_id}}"  value="TRRSC2024">
-                                        <label class="form-check-label" for="exampleRadios_{{$question1->unique_id}}">
+                                        <input class="form-check-input {{$question->unique_id}}" type="radio" name="{{$question->unique_id}}"  value="TRRSC2024">
+                                        <label class="form-check-label" for="exampleRadios_{{$question->unique_id}}">
                                             Unsatisfactory ☹️
                                         </label>
                                     </div>
@@ -71,35 +71,35 @@
             @endforeach
 
 
-            @foreach($questions2 as $question2)
-            <div class="col-md-6">
-                <div class="card mt-2 mb-2 shadow-sm p-2">
-                    <p> <u> {{$question2->question2}}  <span class="text-dark">  </span>  </u>  </p>
+{{--            @foreach($questions2 as $question2)--}}
+{{--            <div class="col-md-6">--}}
+{{--                <div class="card mt-2 mb-2 shadow-sm p-2">--}}
+{{--                    <p> <u> {{$question2->question2}}  <span class="text-dark">  </span>  </u>  </p>--}}
 
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-check">
-                                <input class="form-check-input {{$question2->unique_id}}" type="radio" name="{{$question2->unique_id}}"  value="OBLCH2024 ">
-                                <label class="form-check-label" for="exampleRadios_{{$question2->unique_id}}">
-                                    Yes
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-check">
-                                <input class="form-check-input {{$question2->unique_id}}" type="radio" name="{{$question2->unique_id}}"  value="zdYfCJ0Kq">
-                                <label class="form-check-label" for="exampleRadios_{{$question2->unique_id}}">
-                                    No
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            @endforeach
-            </div>
+{{--                    <div class="row">--}}
+{{--                        <div class="col-md-6">--}}
+{{--                            <div class="form-check">--}}
+{{--                                <input class="form-check-input {{$question2->unique_id}}" type="radio" name="{{$question2->unique_id}}"  value="OBLCH2024 ">--}}
+{{--                                <label class="form-check-label" for="exampleRadios_{{$question2->unique_id}}">--}}
+{{--                                    Yes--}}
+{{--                                </label>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                    <div class="row">--}}
+{{--                        <div class="col-md-6">--}}
+{{--                            <div class="form-check">--}}
+{{--                                <input class="form-check-input {{$question2->unique_id}}" type="radio" name="{{$question2->unique_id}}"  value="zdYfCJ0Kq">--}}
+{{--                                <label class="form-check-label" for="exampleRadios_{{$question2->unique_id}}">--}}
+{{--                                    No--}}
+{{--                                </label>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--            @endforeach--}}
+{{--            </div>--}}
 
 
 
