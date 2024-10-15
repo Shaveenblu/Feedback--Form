@@ -206,20 +206,14 @@ class LinkGenerateController extends Controller
 
     public function add(Request $request)
     {
-        // VALIDATE THE REQUEST DATA
-        $request->validate([
-            'customer_id' => 'required|string',
-            'hotel_id' => 'nullable|string',
-            'guide_id' => 'nullable|string',
-            'tour_id' => 'nullable|string',
-            'customer_name' => 'required|string',
-            'customer_tel_phone_number' => 'required|string',
-            'responses' => 'required|array', // Expecting an array of responses
-            'responses.*' => 'required|string', // Each response should be an integer (response ID)
-        ]);
+//        dd($request);
 
         // RETRIEVE RESPONSES
         $responses = $request->input('responses');
+
+        if(is_null($responses)) {
+            return redirect()->back()->withErrors('No responses found.');
+        }
         // RETRIEVE QUESTIONS
         $questions = Question::all();
 
@@ -227,29 +221,29 @@ class LinkGenerateController extends Controller
 
         // ITERATE OVER EACH QUESTION
         foreach ($questions as $question) {
-            $unique_id = $question->unique_id;
-            $response_id = $responses[$unique_id];
 
-            // CHECK THE RESPONSEID
-            if ($response_id) {
+            $ques =  DB::table('questions')->where('unique_id',$question->unique_id)->first();
+            $ques_22554 = DB::table('response_types')->where('unique_id',$responses[$question->unique_id])->first();
+//            $unique_id = $question->unique_id;
+//            $response_id = $responses[$unique_id];
+
+            // CHECK THE RESPONSE ID
+            if ($ques && $ques_22554) {
                 // INSERT FEEDBACK TO TABLE
                 DB::table('feed_back_forms')->insert([
-
-                    'question_id' => $unique_id,
+                    'question_id' => $ques->id,
                     'customer_id' => $request->input('customer_id'),
-                    'response_type_id' => $response_id,
+                    'response_type_id' => $ques_22554->id,
                     'hotel_id' => $request->input('hotel_id'),
                     'guide_id' => $request->input('guide_id'),
                     'tour_id' => $request->input('tour_id'),
                     'customer_name' => $request->input('customer_name'),
                     'customer_tel_phone_number' => $request->input('customer_tel_phone_number'),
                     'date' => now(),
-
                 ]);
             }
         }
-
     }
 
-
 }
+
