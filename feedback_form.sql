@@ -11,11 +11,40 @@
  Target Server Version : 100432 (10.4.32-MariaDB)
  File Encoding         : 65001
 
- Date: 18/09/2024 10:26:05
+ Date: 01/10/2024 15:17:32
 */
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+-- Table structure for customer_form_urls
+-- ----------------------------
+DROP TABLE IF EXISTS `customer_form_urls`;
+CREATE TABLE `customer_form_urls`  (
+  `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
+  `url_link` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `unique_id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `customer_id` bigint UNSIGNED NOT NULL,
+  `tour_id` bigint UNSIGNED NOT NULL,
+  `status` enum('Completed','In Progress') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `date` date NOT NULL,
+  `other_details` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE,
+  UNIQUE INDEX `customer_form_urls_unique_id_unique`(`unique_id` ASC) USING BTREE,
+  INDEX `customer_form_urls_customer_id_foreign`(`customer_id` ASC) USING BTREE,
+  INDEX `customer_form_urls_tour_id_foreign`(`tour_id` ASC) USING BTREE,
+  CONSTRAINT `customer_form_urls_customer_id_foreign` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `customer_form_urls_tour_id_foreign` FOREIGN KEY (`tour_id`) REFERENCES `tours` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE = InnoDB AUTO_INCREMENT = 15 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of customer_form_urls
+-- ----------------------------
+INSERT INTO `customer_form_urls` VALUES (13, 'http://127.0.0.1:8000/user/wtQFADRjOsHK358K/link/Irene', 'wtQFADRjOsHK358K', 2, 7, 'In Progress', '2024-09-24', NULL, '2024-09-24 09:28:23', '2024-09-24 09:28:23');
+INSERT INTO `customer_form_urls` VALUES (14, 'http://127.0.0.1:8000/user/x759uot1sj7rfi64/link/Alexandra', 'x759uot1sj7rfi64', 5, 4, 'In Progress', '2024-09-24', NULL, '2024-09-24 11:25:15', '2024-09-24 11:25:15');
 
 -- ----------------------------
 -- Table structure for customer_hotel
@@ -38,6 +67,11 @@ INSERT INTO `customer_hotel` VALUES (5, 3);
 INSERT INTO `customer_hotel` VALUES (2, 5);
 INSERT INTO `customer_hotel` VALUES (2, 8);
 INSERT INTO `customer_hotel` VALUES (5, 8);
+INSERT INTO `customer_hotel` VALUES (4, 2);
+INSERT INTO `customer_hotel` VALUES (5, 2);
+INSERT INTO `customer_hotel` VALUES (1, 5);
+INSERT INTO `customer_hotel` VALUES (1, 1);
+INSERT INTO `customer_hotel` VALUES (5, 1);
 
 -- ----------------------------
 -- Table structure for customers
@@ -53,16 +87,16 @@ CREATE TABLE `customers`  (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `customers_unique_id_unique`(`unique_id` ASC) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 14 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of customers
 -- ----------------------------
-INSERT INTO `customers` VALUES (1, 'Bella', '0712651546', '26565PK', '5545824057', '2024-09-10 12:15:35', '2024-09-10 12:20:47');
-INSERT INTO `customers` VALUES (2, 'Irene', '0715262645', '0542QOSKD', '0542905808', '2024-09-10 12:15:35', '2024-09-10 12:26:11');
-INSERT INTO `customers` VALUES (3, 'Madeleine', '0716251856', '55514ROKS', 'SOWKD5457', '2024-09-10 12:15:35', '2024-09-10 12:25:42');
-INSERT INTO `customers` VALUES (5, 'Alexandra', '0716251546', '5654uiwkd', '9741777407', '2024-09-10 12:15:36', '2024-09-10 12:20:01');
-INSERT INTO `customers` VALUES (8, 'Dhanu', '0716242011', '29qMR7XLRF', 'ro1Ov9OzX', '2024-09-13 05:11:40', '2024-09-13 11:30:33');
+INSERT INTO `customers` VALUES (1, 'Bella', '0712651546', '03CLW29Mro', '5545824057', '2024-09-10 12:15:35', '2024-09-24 08:55:00');
+INSERT INTO `customers` VALUES (2, 'Irene', '0715262645', 'WOKDIE90', '0542905808', '2024-09-10 12:15:35', '2024-09-24 08:55:12');
+INSERT INTO `customers` VALUES (3, 'Madeleine', '0716251856', 'tQ68pcYARQ', 'SOWKD5457', '2024-09-10 12:15:35', '2024-09-24 08:56:09');
+INSERT INTO `customers` VALUES (5, 'Alexandra', '0716251546', '29qMR7XLRF', '9741777407', '2024-09-10 12:15:36', '2024-09-24 08:54:47');
+INSERT INTO `customers` VALUES (8, 'Dhanu', '0716242011', 'TEm911j9XB', 'ro1Ov9OzX', '2024-09-13 05:11:40', '2024-09-24 08:54:20');
 
 -- ----------------------------
 -- Table structure for failed_jobs
@@ -85,6 +119,52 @@ CREATE TABLE `failed_jobs`  (
 -- ----------------------------
 
 -- ----------------------------
+-- Table structure for feed_back_forms
+-- ----------------------------
+DROP TABLE IF EXISTS `feed_back_forms`;
+CREATE TABLE `feed_back_forms`  (
+  `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
+  `question_id` bigint UNSIGNED NOT NULL,
+  `customer_id` bigint UNSIGNED NOT NULL,
+  `response_type_id` bigint UNSIGNED NOT NULL,
+  `hotel_id` bigint UNSIGNED NULL DEFAULT NULL,
+  `guide_id` bigint UNSIGNED NULL DEFAULT NULL,
+  `tour_id` bigint UNSIGNED NULL DEFAULT NULL,
+  `customer_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `customer_tel_phone_number` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `date` date NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE,
+  INDEX `feed_back_forms_question_id_foreign`(`question_id` ASC) USING BTREE,
+  INDEX `feed_back_forms_customer_id_foreign`(`customer_id` ASC) USING BTREE,
+  INDEX `feed_back_forms_response_type_id_foreign`(`response_type_id` ASC) USING BTREE,
+  INDEX `feed_back_forms_hotel_id_foreign`(`hotel_id` ASC) USING BTREE,
+  INDEX `feed_back_forms_guide_id_foreign`(`guide_id` ASC) USING BTREE,
+  INDEX `feed_back_forms_tour_id_foreign`(`tour_id` ASC) USING BTREE,
+  CONSTRAINT `feed_back_forms_customer_id_foreign` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `feed_back_forms_guide_id_foreign` FOREIGN KEY (`guide_id`) REFERENCES `guides` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `feed_back_forms_hotel_id_foreign` FOREIGN KEY (`hotel_id`) REFERENCES `hotels` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `feed_back_forms_question_id_foreign` FOREIGN KEY (`question_id`) REFERENCES `questions` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `feed_back_forms_response_type_id_foreign` FOREIGN KEY (`response_type_id`) REFERENCES `response_types` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `feed_back_forms_tour_id_foreign` FOREIGN KEY (`tour_id`) REFERENCES `tours` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of feed_back_forms
+-- ----------------------------
+INSERT INTO `feed_back_forms` VALUES (1, 3, 5, 4, 2, NULL, NULL, NULL, NULL, NULL, '2024-09-26 04:11:57', '2024-09-26 04:11:57');
+INSERT INTO `feed_back_forms` VALUES (2, 7, 5, 5, 2, NULL, NULL, NULL, NULL, NULL, '2024-09-26 04:11:58', '2024-09-26 04:11:58');
+INSERT INTO `feed_back_forms` VALUES (3, 8, 5, 3, 2, NULL, NULL, NULL, NULL, NULL, '2024-09-26 04:11:58', '2024-09-26 04:11:58');
+INSERT INTO `feed_back_forms` VALUES (4, 9, 5, 5, 2, NULL, NULL, NULL, NULL, NULL, '2024-09-26 04:11:58', '2024-09-26 04:11:58');
+INSERT INTO `feed_back_forms` VALUES (5, 10, 5, 4, 2, NULL, NULL, NULL, NULL, NULL, '2024-09-26 04:11:58', '2024-09-26 04:11:58');
+INSERT INTO `feed_back_forms` VALUES (6, 3, 5, 1, 1, NULL, NULL, NULL, NULL, NULL, '2024-09-26 04:11:59', '2024-09-26 04:11:59');
+INSERT INTO `feed_back_forms` VALUES (7, 7, 5, 3, 1, NULL, NULL, NULL, NULL, NULL, '2024-09-26 04:11:59', '2024-09-26 04:11:59');
+INSERT INTO `feed_back_forms` VALUES (8, 8, 5, 1, 1, NULL, NULL, NULL, NULL, NULL, '2024-09-26 04:11:59', '2024-09-26 04:11:59');
+INSERT INTO `feed_back_forms` VALUES (9, 9, 5, 4, 1, NULL, NULL, NULL, NULL, NULL, '2024-09-26 04:11:59', '2024-09-26 04:11:59');
+INSERT INTO `feed_back_forms` VALUES (10, 10, 5, 5, 1, NULL, NULL, NULL, NULL, NULL, '2024-09-26 04:11:59', '2024-09-26 04:11:59');
+
+-- ----------------------------
 -- Table structure for guide_tour
 -- ----------------------------
 DROP TABLE IF EXISTS `guide_tour`;
@@ -105,6 +185,7 @@ INSERT INTO `guide_tour` VALUES (4, 7);
 INSERT INTO `guide_tour` VALUES (3, 5);
 INSERT INTO `guide_tour` VALUES (2, 2);
 INSERT INTO `guide_tour` VALUES (4, 4);
+INSERT INTO `guide_tour` VALUES (3, 7);
 
 -- ----------------------------
 -- Table structure for guides
@@ -148,7 +229,7 @@ CREATE TABLE `hotels`  (
 -- ----------------------------
 -- Records of hotels
 -- ----------------------------
-INSERT INTO `hotels` VALUES (1, 'The Sapphire Haven !', 'Riviera Bay, California Dream', 'ECLMNY2024', '2024-09-10 12:15:37', '2024-09-13 08:53:54');
+INSERT INTO `hotels` VALUES (1, 'The Sapphire Haven ', 'Riviera Bay, California Dream', 'ECLMNY2024', '2024-09-10 12:15:37', '2024-09-13 08:53:54');
 INSERT INTO `hotels` VALUES (2, 'Gilded Harbor Inn', 'Silverport, Maine', 'GHISPM2024', '2024-09-10 12:15:37', '2024-09-10 12:32:07');
 INSERT INTO `hotels` VALUES (3, 'Violet Springs Lodge', 'Bloomfield, Pennsylvania', 'VSLBFP2024', '2024-09-10 12:15:37', '2024-09-10 12:32:33');
 INSERT INTO `hotels` VALUES (4, 'Crimson Canyon Resort', 'Redstone, Utah', 'CCRRUT2024', '2024-09-10 12:15:37', '2024-09-10 12:33:23');
@@ -163,7 +244,7 @@ CREATE TABLE `migrations`  (
   `migration` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 19 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 23 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of migrations
@@ -186,6 +267,10 @@ INSERT INTO `migrations` VALUES (15, '2024_09_10_009001_add_foreigns_to_customer
 INSERT INTO `migrations` VALUES (16, '2024_09_10_009002_add_foreigns_to_guide_tour_table', 1);
 INSERT INTO `migrations` VALUES (17, '2024_09_10_009003_add_foreigns_to_questions_table', 1);
 INSERT INTO `migrations` VALUES (18, '2024_09_10_080441_create_permission_tables', 1);
+INSERT INTO `migrations` VALUES (19, '2024_09_10_000010_create_customer_form_urls_table', 2);
+INSERT INTO `migrations` VALUES (20, '2024_09_10_009004_add_foreigns_to_customer_form_urls_table', 2);
+INSERT INTO `migrations` VALUES (21, '2024_09_10_000011_create_feed_back_forms_table', 3);
+INSERT INTO `migrations` VALUES (22, '2024_09_10_009005_add_foreigns_to_feed_back_forms_table', 3);
 
 -- ----------------------------
 -- Table structure for model_has_permissions
@@ -381,16 +466,26 @@ CREATE TABLE `questions`  (
   UNIQUE INDEX `questions_unique_id_unique`(`unique_id` ASC) USING BTREE,
   INDEX `questions_question_category_id_foreign`(`question_category_id` ASC) USING BTREE,
   CONSTRAINT `questions_question_category_id_foreign` FOREIGN KEY (`question_category_id`) REFERENCES `question_categories` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 17 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of questions
 -- ----------------------------
-INSERT INTO `questions` VALUES (1, '4. Is jQuery a JavaScript or JSON library file?', 6, 'NNJEvpDTlK', '2024-09-10 12:15:38', '2024-09-13 09:11:23');
-INSERT INTO `questions` VALUES (3, '5. Does jQuery work for both HTML and XML documents?', 3, 'Zv2x4x6w54', '2024-09-10 12:15:38', '2024-09-13 09:12:29');
-INSERT INTO `questions` VALUES (4, '7. What is the $() function in the jQuery library?', 4, 'xsbOONhU2B', '2024-09-10 12:15:38', '2024-09-13 09:12:42');
-INSERT INTO `questions` VALUES (5, '9. What is the exact difference between the methods onload() and document.ready()?', 5, 'i8V0EbkNtG', '2024-09-10 12:15:38', '2024-09-13 09:12:55');
-INSERT INTO `questions` VALUES (6, '3.What is jQuery used for?', 6, 'xzR5hRwvY', '2024-09-13 09:13:19', '2024-09-13 09:13:30');
+INSERT INTO `questions` VALUES (1, '2)Services of NKAR Travels and Tours During Your Stay', 6, 'NNJEvpDTlK', '2024-09-10 12:15:38', '2024-09-24 10:37:19');
+INSERT INTO `questions` VALUES (3, '1) Cleanliness of Rooms ?', 3, 'Zv2x4x6w54', '2024-09-10 12:15:38', '2024-09-27 07:13:05');
+INSERT INTO `questions` VALUES (4, 'a) Language', 4, 'xsbOONhU2B', '2024-09-10 12:15:38', '2024-09-25 05:49:11');
+INSERT INTO `questions` VALUES (5, 'a) Mechanical Condition', 5, 'i8V0EbkNtG', '2024-09-10 12:15:38', '2024-09-25 05:49:58');
+INSERT INTO `questions` VALUES (6, '1)Reception by the representative of NKAR travels and tours ?', 6, 'xzR5hRwvY', '2024-09-13 09:13:19', '2024-09-24 10:36:42');
+INSERT INTO `questions` VALUES (7, '2) Cleanliness of Restaurant ?', 3, 'vfZWkBvin', '2024-09-25 06:01:21', '2024-09-27 07:13:23');
+INSERT INTO `questions` VALUES (8, '3) Cleanliness of Public Areas ?', 3, '5CT3IcShn', '2024-09-25 06:02:51', '2024-09-27 07:13:40');
+INSERT INTO `questions` VALUES (9, '4) Food Presentation ?', 3, 'csdufRifW', '2024-09-25 06:03:13', '2024-09-27 07:13:55');
+INSERT INTO `questions` VALUES (10, '5) Food Quality ?', 3, 'naxn4IjaP', '2024-09-25 06:10:40', '2024-09-27 07:14:05');
+INSERT INTO `questions` VALUES (11, '6) Rooms Appearance ?', 3, 'ddLbQ9UIF', '2024-09-27 05:42:23', '2024-09-27 05:51:03');
+INSERT INTO `questions` VALUES (12, '7) Rooms Air-condition ?', 3, 'tidgy8P7u', '2024-09-27 07:14:45', '2024-09-27 07:19:35');
+INSERT INTO `questions` VALUES (13, '8) Rooms Linen ?', 3, 'tkHqyoi0n', '2024-09-27 07:15:14', '2024-09-27 07:19:43');
+INSERT INTO `questions` VALUES (14, '9) Service Front Office ?', 3, 'RivzREI7t', '2024-09-27 07:23:28', '2024-09-27 07:24:21');
+INSERT INTO `questions` VALUES (15, '10) Service Restaurant ?', 3, 'eu2QqeYfl', '2024-09-27 07:24:02', '2024-09-27 07:24:02');
+INSERT INTO `questions` VALUES (16, '11) Service Housekeeping', 3, 'vkOIIsM3O', '2024-09-27 07:24:59', '2024-09-27 07:24:59');
 
 -- ----------------------------
 -- Table structure for response_types
@@ -553,7 +648,7 @@ CREATE TABLE `tours`  (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `tours_unique_id_unique`(`unique_id` ASC) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of tours
