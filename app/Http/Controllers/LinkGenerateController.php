@@ -8,6 +8,7 @@ use App\Models\FeedBackForm;
 use App\Models\Hotel;
 use App\Models\Question;
 use App\Models\ResponseType;
+use App\Models\Tour;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -63,59 +64,72 @@ class LinkGenerateController extends Controller
     }
 
     public function hotel_standard(){
-
-        $customer_hotel=DB::table('customer_hotel')
-            ->join('hotels', 'hotels.id', '=', 'customer_hotel.hotel_id')
-            ->where('customer_id','=',session()->get('customer_id'))
-            ->get();
-        $questions = Question::where([
-            ['question_category_id', '=', 3],
-        ])->whereIn("unique_id",[
-            "Zv2x4x6w54",
-            "vfZWkBvin",
-            "5CT3IcShn",
-            "csdufRifW",
-            "naxn4IjaP",
-            "ddLbQ9UIF",
-            "tidgy8P7u",
-            "tkHqyoi0n",
-            "RivzREI7t",
-            "eu2QqeYfl",
-            "vkOIIsM3O",
-        ])->get();
+        if(session()->has('customer_id') && session()->has('session_first')){
+            $customer_hotel=DB::table('customer_hotel')
+                ->join('hotels', 'hotels.id', '=', 'customer_hotel.hotel_id')
+                ->where('customer_id','=',session()->get('customer_id'))
+                ->get();
+            $questions = Question::where([
+                ['question_category_id', '=', 3],
+            ])->whereIn("unique_id",[
+                "Zv2x4x6w54",
+                "vfZWkBvin",
+                "5CT3IcShn",
+                "csdufRifW",
+                "naxn4IjaP",
+                "ddLbQ9UIF",
+                "tidgy8P7u",
+                "tkHqyoi0n",
+                "RivzREI7t",
+                "eu2QqeYfl",
+                "vkOIIsM3O",
+            ])->get();
+        }else{
+            return redirect()->back();
+        }
         return view('app.link_generate.hotel_standard',compact('customer_hotel','questions'));
     }
 
     public function hotel_standard_store(Request $request)
     {
+        $part = $request->except('_token');
+        session(['session_second' =>$part]);
 
+        if(session()->has('session_first') && session()->has('session_second') && session()->has('customer_id')){
 
-        return 'done';
+        $customer = Customer::find(session()->get('customer_id'));
+        $tour_no = $customer->tour_no;
 
+        $tour = Tour::where('tour_no','=',$tour_no)->first();
 
+        //return $tour;
+        $tour_guid = DB::table('guide_tour')
+            ->join('guides', 'guides.id', '=', 'guide_tour.guide_id')
+            ->where('tour_id','=',$tour->id)
+            ->get();
 
-        foreach ($request->except('_token') as $key => $value) {
-            // Split the key to get the hotel ID and question ID
-            list($hotelId, $questionId) = explode('_', $key);
+            $questions = Question::where([
+                ['question_category_id', '=', 4],
+            ])->whereIn("unique_id",[
+                "xsbOONhU2B",
+                "8qpgJL35A",
+                "6sYFvXNzK",
+                "ly1XffocJ",
+                "u7W0aYo6e",
+            ])->get();
 
-            // The value is the selected rating (e.g., "CCRRUT2024")
-            $rating = $value;
+         return view('app.link_generate.about_guid', compact('tour_guid','questions'));
 
-            // Now you can process each part as needed
-            // For example, you might save each response to a database
-            // Example:
-            $hotel = Hotel::where('unique_id',$hotelId)->first();
-            $response = ResponseType::where('unique_id',$rating)->first();
-            $question = Question::where('unique_id',$questionId)->first();
-
-
-            FeedBackForm::create([
-                 'question_id' => $question->id,
-                 'customer_id' => 5,
-                 'response_type_id' => $response->id,
-                 'hotel_id' => $hotel->id,
-             ]);
+        }elseif(!session()->has('session_second') && !session()->has('customer_id')){
+            return redirect()->route('customer_form_page');
         }
+    }
+
+    public function form_guid_answer_store(Request $request){
+
+       // dd($request);
+        $part = $request->except('_token');
+        session(['session_third' =>$part]);
 
         return 'done';
 

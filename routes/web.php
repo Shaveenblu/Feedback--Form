@@ -33,8 +33,9 @@ Route::get('/cart/sessiondata', function (){
 
 Route::get('/cart/forget', function (){
     //http://127.0.0.1:8000/cart/forget
+    //session()->flush();
     //session()->forget('customer_id');
-    session()->forget('session_first');
+    //session()->forget('session_first');
     return 'done forget';
 });
 
@@ -83,3 +84,4 @@ Route::post('/store-customer-details', [\App\Http\Controllers\LinkGenerateContro
 /*second step form*/
 Route::get('/form-hotel-standard/step-two',[\App\Http\Controllers\LinkGenerateController::class,'hotel_standard'])->name('hotel_standard');
 Route::post('/form-hotel-standard/step-two/store',[\App\Http\Controllers\LinkGenerateController::class,'hotel_standard_store'])->name('hotel_standard_store');
+Route::post('/form-guid/answer-store/store',[\App\Http\Controllers\LinkGenerateController::class,'form_guid_answer_store'])->name('form-guid.answer-store');

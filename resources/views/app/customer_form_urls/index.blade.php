@@ -7,15 +7,13 @@
             <div class="col-md-6">
                 <form>
                     <div class="input-group">
-                        <input
-                            id="indexSearch"
+                        <input id="indexSearch"
                             type="text"
                             name="search"
                             placeholder="{{ __('crud.common.search') }}"
                             value="{{ $search ?? '' }}"
                             class="form-control"
-                            autocomplete="off"
-                        />
+                            autocomplete="off"/>
                         <div class="input-group-append">
                             <button type="submit" class="btn btn-primary">
                                 <i class="icon ion-md-search"></i>
@@ -34,7 +32,6 @@
                     @lang('crud.customer_form_urls.index_title')
                 </h4>
             </div>
-
             <div class="table-responsive">
                 <table class="table table-borderless table-hover">
                     <thead>
@@ -78,28 +75,20 @@
                                 @endif
                             </td>
                             <td>
-                                {{
-                                optional($customerFormUrl->customer)->customer_name
-                                ?? '-' }}
+                                {{optional($customerFormUrl->customer)->customer_name ?? '-' }}
                             </td>
                             <td>
-                                {{ optional($customerFormUrl->tour)->unique_id
-                                ?? '-' }}
+                                {{ optional($customerFormUrl->tour)->unique_id ?? '-' }}
                             </td>
                             <td class="text-center" style="width: 134px;">
-                                <div
-                                    role="group"
+                                <div role="group"
                                     aria-label="Row Actions"
-                                    class="btn-group"
-                                >
+                                    class="btn-group">
                                         @can('view', $customerFormUrl)
-                                    <a
-                                        href="{{ route('customer-form-urls.show', $customerFormUrl) }}"
-                                    >
+                                    <a href="{{ route('customer-form-urls.show', $customerFormUrl) }}">
                                         <button
                                             type="button"
-                                            class="btn btn-light"
-                                        >
+                                            class="btn btn-light">
                                             <i class="icon ion-md-eye"></i>
                                         </button>
                                     </a>
