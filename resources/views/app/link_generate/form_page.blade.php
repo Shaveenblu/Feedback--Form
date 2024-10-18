@@ -28,6 +28,8 @@
             </div>
             <div class="card p-5">
                 <p>1) Reception by the representative of nkar travels and tours</p>
+                <span id="error_1"></span>
+                <br>
                 <div class="row">
                     <div class="col-md-3">
                         <div class="form-check">
@@ -65,6 +67,8 @@
             </div>
             <div class="card p-5">
                 <p>2) Services of NKAR Travels and Tours During Your Stay </p>
+                <span id="error_2"></span>
+                <br>
                 <div class="row">
                     <div class="col-md-3">
                         <div class="form-check">
@@ -115,6 +119,8 @@
         const isGroup1Checked = Array.from(radiosGroup1).some(radio => radio.checked);
         if (!isGroup1Checked) {
             swal("Please select an option !", "1) Reception by the representative of nkar travels and tours ?")
+            error_1.textContent = "Please select an option"
+            error_1.style.color = "red"
             event.preventDefault();  // Prevent form submission
             return false;
         }
@@ -123,6 +129,8 @@
         const isGroup2Checked = Array.from(radiosGroup2).some(radio => radio.checked);
         if (!isGroup2Checked) {
             swal("Please select an option !", "2) Services of NKAR Travels and Tours During Your Stay ?")
+            error_2.textContent = "Please select an option"
+            error_2.style.color = "red"
             event.preventDefault();  // Prevent form submission
             return false;
         }
