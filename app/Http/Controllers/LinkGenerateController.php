@@ -34,7 +34,7 @@ class LinkGenerateController extends Controller
         $customer_form_url = CustomerFormUrl::where('unique_id',$unique_id)->first();
         if($customer_form_url){
             session(['customer_id' => $customer_form_url->customer_id]);
-            if(session()->has('session_first')){
+            if(session()->has('session_form_first_step')){
                 return redirect()->route('hotel_standard');
             }else{
                 return view('app.link_generate.form_page');
@@ -52,11 +52,9 @@ class LinkGenerateController extends Controller
              'customer_name'=>'required|string|max:255|min:3',
              'customer_phone_number'=>'required|max:255|min:3|string'
          ]);
-
         $part = $request->except('_token');
-        session(['session_first' =>$part]);
-
-        if(session()->has('session_first')){
+        session(['session_form_first_step' =>$part]);
+        if(session()->has('session_form_first_step')){
             return redirect()->route('hotel_standard');
         }else{
             return view('app.link_generate.form_page');
@@ -64,7 +62,7 @@ class LinkGenerateController extends Controller
     }
 
     public function hotel_standard(){
-        if(session()->has('customer_id') && session()->has('session_first')){
+        if(session()->has('customer_id') && session()->has('session_form_first_step')){
             $customer_hotel=DB::table('customer_hotel')
                 ->join('hotels', 'hotels.id', '=', 'customer_hotel.hotel_id')
                 ->where('customer_id','=',session()->get('customer_id'))
@@ -92,14 +90,14 @@ class LinkGenerateController extends Controller
 
     public function hotel_standard_store(Request $request)
     {
-        $part = $request->except('_token');
-        session(['session_second' =>$part]);
+        $session_hotel_standard = $request->except('_token');
+        session(['session_hotel_standard' =>$session_hotel_standard]);
 
-        if(session()->has('session_first') && session()->has('session_second') && session()->has('customer_id')){
-
+        if(session()->has('session_form_first_step') && session()->has('session_hotel_standard') && session()->has('customer_id')){
+        // return 'when it is dark enough!!!';
+        //return 'hello world';
         $customer = Customer::find(session()->get('customer_id'));
         $tour_no = $customer->tour_no;
-
         $tour = Tour::where('tour_no','=',$tour_no)->first();
 
         //return $tour;
@@ -119,8 +117,7 @@ class LinkGenerateController extends Controller
             ])->get();
 
          return view('app.link_generate.about_guid', compact('tour_guid','questions'));
-
-        }elseif(!session()->has('session_second') && !session()->has('customer_id')){
+        }elseif(!session()->has('session_form_first_step') && !session()->has('customer_id')){
             return redirect()->route('customer_form_page');
         }
     }

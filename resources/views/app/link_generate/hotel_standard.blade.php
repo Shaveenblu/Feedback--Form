@@ -34,6 +34,8 @@
                     <div class="col-md-6">
                         <div class="card mt-2 mb-2 shadow-sm p-2">
                             <p> <u> {{$question->question}} | <span class="text-dark"> <strong> {{$hotel->hotel_name}} </strong> </span>  </u>  </p>
+                            <span id="error_{{'hotel_'.$key.'_'.$question->unique_id}}"></span>
+                            <br>
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-check">

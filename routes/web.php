@@ -27,7 +27,7 @@ use App\Http\Controllers\QuestionCategoryController;
 Route::get('/cart/sessiondata', function (){
     //http://127.0.0.1:8000/cart/sessiondata
     //return Gloudemans\Shoppingcart\Facades\Cart::content();
-    return session()->all();
+    //return session()->all();
    // return 'session see';
 });
 
