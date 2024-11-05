@@ -62,7 +62,7 @@ class LinkGenerateController extends Controller
     }
 
     public function hotel_standard(){
-        if(session()->has('customer_id') && session()->has('session_form_first_step')){
+        if(session()->has('customer_id') && session()->has('session_form_first_step') && !session()->has('session_hotel_standard')){
             $customer_hotel=DB::table('customer_hotel')
                 ->join('hotels', 'hotels.id', '=', 'customer_hotel.hotel_id')
                 ->where('customer_id','=',session()->get('customer_id'))
@@ -126,7 +126,10 @@ class LinkGenerateController extends Controller
 
        // dd($request);
         $part = $request->except('_token');
-        session(['session_third' =>$part]);
+        session(['session_about_guid' =>$part]);
+
+        // guid select dropdown
+
 
         return 'done';
 

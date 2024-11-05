@@ -39,7 +39,7 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="{{$question->unique_id}}"  value="MCSSCK2024">
+                                            <input class="form-check-input {{'guid_'.$question->unique_id}}" type="radio" name="{{$question->unique_id}}"  value="MCSSCK2024">
                                             <label class="form-check-label" for="exampleRadios_{{$question->unique_id}}">
                                                 Excellent 😆
                                             </label>
@@ -47,7 +47,7 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="{{$question->unique_id}}"  value="CCRRUT2024">
+                                            <input class="form-check-input {{'guid_'.$question->unique_id}}" type="radio" name="{{$question->unique_id}}"  value="CCRRUT2024">
                                             <label class="form-check-label" for="exampleRadios_{{$question->unique_id}}">
                                                 Good 🙂
                                             </label>
@@ -57,7 +57,7 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="{{$question->unique_id}}"  value="SVHTTV2024">
+                                            <input class="form-check-input {{'guid_'.$question->unique_id}}" type="radio" name="{{$question->unique_id}}"  value="SVHTTV2024">
                                             <label class="form-check-label" for="exampleRadios_{{$question->unique_id}}">
                                                 Satisfactory 😒
                                             </label>
@@ -65,7 +65,7 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="{{$question->unique_id}}"  value="TRRSC2024">
+                                            <input class="form-check-input {{'guid_'.$question->unique_id}}" type="radio" name="{{$question->unique_id}}"  value="TRRSC2024">
                                             <label class="form-check-label" for="exampleRadios_{{$question->unique_id}}">
                                                 Unsatisfactory ☹️
                                             </label>
@@ -92,49 +92,64 @@
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script>
+    document.getElementById('feedbackForm').onsubmit = function(event) {
+        // Validate radio buttons with the class `exampleRadios_Zv2x4x6w54`
+        const radiosGroup_guid_xsbOONhU2B = document.querySelectorAll('.guid_xsbOONhU2B');
+        const isGroup1Checked_guid_xsbOONhU2B = Array.from(radiosGroup_guid_xsbOONhU2B).some(radio => radio.checked);
+        if (!isGroup1Checked_guid_xsbOONhU2B) {
+            swal("Please select an option !", "1) Language ?")
+            error_1.textContent = "Please select an option"
+            error_1.style.color = "red"
+            event.preventDefault();  // Prevent form submission
+            return false;
+        }
+        // Validate radio buttons with the class `exampleRadios_Zv2x4x6w54`
+        const radiosGroup1_guid_8qpgJL35A = document.querySelectorAll('.guid_8qpgJL35A');
+        const isGroup1Checked_guid_8qpgJL35A = Array.from(radiosGroup1_guid_8qpgJL35A).some(radio => radio.checked);
+        if (!isGroup1Checked_guid_8qpgJL35A) {
+            swal("Please select an option !", "2) Knowledge of country and sites")
+            error_1.textContent = "Please select an option"
+            error_1.style.color = "red"
+            event.preventDefault();  // Prevent form submission
+            return false;
+        }
+        // Validate radio buttons with the class `exampleRadios_Zv2x4x6w54`
+        const radiosGroup1_guid_6sYFvXNzK = document.querySelectorAll('.guid_6sYFvXNzK');
+        const isGroup1Checked_guid_6sYFvXNzK = Array.from(radiosGroup1_guid_6sYFvXNzK).some(radio => radio.checked);
+        if (!isGroup1Checked_guid_6sYFvXNzK) {
+            swal("Please select an option !", "3 Knowledge of other areas")
+            error_1.textContent = "Please select an option"
+            error_1.style.color = "red"
+            event.preventDefault();  // Prevent form submission
+            return false;
+        }
+        // Validate radio buttons with the class `exampleRadios_Zv2x4x6w54`
+        const radiosGroup1_guid_ly1XffocJ = document.querySelectorAll('.guid_ly1XffocJ');
+        const isGroup1Checked_guid_ly1XffocJ = Array.from(radiosGroup1_guid_ly1XffocJ).some(radio => radio.checked);
+        if (!isGroup1Checked_guid_ly1XffocJ) {
+            swal("Please select an option !", "4) Courtesy and friendliness")
+            error_1.textContent = "Please select an option"
+            error_1.style.color = "red"
+            event.preventDefault();  // Prevent form submission
+            return false;
+        }
+        // Validate radio buttons with the class `exampleRadios_Zv2x4x6w54`
+        const radiosGroup1_guid_u7W0aYo6e = document.querySelectorAll('.guid_u7W0aYo6e');
+        const isGroup1Checked_guid_u7W0aYo6e = Array.from(radiosGroup1_guid_u7W0aYo6e).some(radio => radio.checked);
+        if (!isGroup1Checked_guid_u7W0aYo6e) {
+            swal("Please select an option !", "5) Punctuality")
+            error_1.textContent = "Please select an option"
+            error_1.style.color = "red"
+            event.preventDefault();  // Prevent form submission
+            return false;
+        }
+        // If both groups are valid, allow the form to submit
+        return true;
+    };
+</script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
