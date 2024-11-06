@@ -123,16 +123,16 @@ class LinkGenerateController extends Controller
     }
 
     public function form_guid_answer_store(Request $request){
-
-       // dd($request);
         $part = $request->except('_token');
         session(['session_about_guid' =>$part]);
-
-        // guid select dropdown
-
-
-        return 'done';
-
+        $questions = Question::where([
+            ['question_category_id', '=', 5],
+        ])->whereIn("unique_id",[
+            "i8V0EbkNtG",
+            "6snmnEeAw",
+            "ltxAddrNJ",
+        ])->get();
+        return view('app.link_generate.transport', compact('questions'));
     }
 
 }
