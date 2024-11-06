@@ -31,14 +31,14 @@
                     @endforeach
                 </select>
             </div>
-            <div>
-                <span id="error_1"></span>
-            </div>
                 <div class="row">
-                    @foreach($questions as $question)
+                    @foreach($questions as $key => $question)
                         <div class="col-md-6">
                             <div class="card mt-2 mb-2 shadow-sm p-2">
                                 <p><u>{{$question->question}}</u></p>
+                                <div>
+                                    <span id="error_{{$key+1}}"></span>
+                                </div>
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-check">
@@ -109,8 +109,8 @@
         const isGroup1Checked_guid_8qpgJL35A = Array.from(radiosGroup_guid_8qpgJL35A).some(radio => radio.checked);
         if (!isGroup1Checked_guid_8qpgJL35A) {
             swal("Please select an option !", "2) Knowledge of country and sites")
-            error_1.textContent = "Please select an option"
-            error_1.style.color = "red"
+            error_2.textContent = "Please select an option"
+            error_2.style.color = "red"
             event.preventDefault();
             return false;
         }
@@ -119,8 +119,8 @@
         const isGroup1Checked_guid_6sYFvXNzK = Array.from(radiosGroup_guid_6sYFvXNzK).some(radio => radio.checked);
         if (!isGroup1Checked_guid_6sYFvXNzK) {
             swal("Please select an option !", "3) Knowledge of other areas")
-            error_1.textContent = "Please select an option"
-            error_1.style.color = "red"
+            error_3.textContent = "Please select an option"
+            error_3.style.color = "red"
             event.preventDefault();
             return false;
         }
@@ -129,8 +129,8 @@
         const isGroup1Checked_guid_ly1XffocJ = Array.from(radiosGroup_guid_ly1XffocJ).some(radio => radio.checked);
         if (!isGroup1Checked_guid_ly1XffocJ) {
             swal("Please select an option !", "4) Courtesy and friendliness")
-            error_1.textContent = "Please select an option"
-            error_1.style.color = "red"
+            error_4.textContent = "Please select an option"
+            error_4.style.color = "red"
             event.preventDefault();
             return false;
         }
@@ -139,8 +139,8 @@
         const isGroup1Checked_guid_u7W0aYo6e = Array.from(radiosGroup_guid_u7W0aYo6e).some(radio => radio.checked);
         if (!isGroup1Checked_guid_u7W0aYo6e) {
             swal("Please select an option !", "5) Punctuality")
-            error_1.textContent = "Please select an option"
-            error_1.style.color = "red"
+            error_5.textContent = "Please select an option"
+            error_5.style.color = "red"
             event.preventDefault();
             return false;
         }

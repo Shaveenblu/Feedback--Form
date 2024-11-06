@@ -35,7 +35,7 @@ Route::get('/cart/sessiondata', function (){
 //http://127.0.0.1:8000/cart/forget
 Route::get('/cart/forget', function (){
     //http://127.0.0.1:8000/cart/forget
-     //session()->flush();
+     session()->flush();
     //session()->forget('customer_id');
     //session()->forget('session_first');
     return 'done forget';
