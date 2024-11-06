@@ -31,11 +31,14 @@
                     @endforeach
                 </select>
             </div>
+            <div>
+                <span id="error_1"></span>
+            </div>
                 <div class="row">
                     @foreach($questions as $question)
                         <div class="col-md-6">
                             <div class="card mt-2 mb-2 shadow-sm p-2">
-                                <p> <u> {{$question->question}}   </u>  </p>
+                                <p><u>{{$question->question}}</u></p>
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-check">
@@ -92,29 +95,23 @@
 <script>
     document.getElementById('feedbackForm').onsubmit = function(event) {
 
-        console.log('done win windows ldekkdksdksdksdfjsdfi');
-
-        //return false;
-
         const radiosGroup_guid_xsbOONhU2B = document.querySelectorAll('.guid_xsbOONhU2B');
         const isGroup1Checked_guid_xsbOONhU2B = Array.from(radiosGroup_guid_xsbOONhU2B).some(radio => radio.checked);
         if (!isGroup1Checked_guid_xsbOONhU2B) {
             swal("Please select an option !", "1) Language ?")
             error_1.textContent = "Please select an option"
             error_1.style.color = "red"
-            event.preventDefault();  // Prevent form submission
+            event.preventDefault();
             return false;
         }
-        If both groups are valid, allow the form to submit
-        return true;
 
 
+       return true;
     };
 </script>
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-
 </body>
 </html>
 
