@@ -24,7 +24,7 @@
             {{csrf_field()}}
             <div class="form-group">
                 <label for="exampleInputEmail1">Select Your Guid Name</label>
-                <select class="form-select form-control" name="guid_id" aria-label="Default select example">
+                <select class="form-select form-control" name="guid_id" aria-label="Default select example" required>
                     <option selected disabled value="">Open this select menu</option>
                     @foreach($tour_guid as $key =>$guid)
                     <option value="{{$guid->id}}">{{$guid->guid_first_name}} {{$guid->guid_last_name}}</option>
@@ -94,7 +94,7 @@
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script>
     document.getElementById('feedbackForm').onsubmit = function(event) {
-
+        /*xsbOONhU2B*/
         const radiosGroup_guid_xsbOONhU2B = document.querySelectorAll('.guid_xsbOONhU2B');
         const isGroup1Checked_guid_xsbOONhU2B = Array.from(radiosGroup_guid_xsbOONhU2B).some(radio => radio.checked);
         if (!isGroup1Checked_guid_xsbOONhU2B) {
@@ -104,9 +104,47 @@
             event.preventDefault();
             return false;
         }
-
-
-       return true;
+        /*8qpgJL35A*/
+        const radiosGroup_guid_8qpgJL35A = document.querySelectorAll('.guid_8qpgJL35A');
+        const isGroup1Checked_guid_8qpgJL35A = Array.from(radiosGroup_guid_8qpgJL35A).some(radio => radio.checked);
+        if (!isGroup1Checked_guid_8qpgJL35A) {
+            swal("Please select an option !", "2) Knowledge of country and sites")
+            error_1.textContent = "Please select an option"
+            error_1.style.color = "red"
+            event.preventDefault();
+            return false;
+        }
+        /*6sYFvXNzK*/
+        const radiosGroup_guid_6sYFvXNzK = document.querySelectorAll('.guid_6sYFvXNzK');
+        const isGroup1Checked_guid_6sYFvXNzK = Array.from(radiosGroup_guid_6sYFvXNzK).some(radio => radio.checked);
+        if (!isGroup1Checked_guid_6sYFvXNzK) {
+            swal("Please select an option !", "3) Knowledge of other areas")
+            error_1.textContent = "Please select an option"
+            error_1.style.color = "red"
+            event.preventDefault();
+            return false;
+        }
+        /*ly1XffocJ*/
+        const radiosGroup_guid_ly1XffocJ = document.querySelectorAll('.guid_ly1XffocJ');
+        const isGroup1Checked_guid_ly1XffocJ = Array.from(radiosGroup_guid_ly1XffocJ).some(radio => radio.checked);
+        if (!isGroup1Checked_guid_ly1XffocJ) {
+            swal("Please select an option !", "4) Courtesy and friendliness")
+            error_1.textContent = "Please select an option"
+            error_1.style.color = "red"
+            event.preventDefault();
+            return false;
+        }
+        /*u7W0aYo6e*/
+        const radiosGroup_guid_u7W0aYo6e = document.querySelectorAll('.guid_u7W0aYo6e');
+        const isGroup1Checked_guid_u7W0aYo6e = Array.from(radiosGroup_guid_u7W0aYo6e).some(radio => radio.checked);
+        if (!isGroup1Checked_guid_u7W0aYo6e) {
+            swal("Please select an option !", "5) Punctuality")
+            error_1.textContent = "Please select an option"
+            error_1.style.color = "red"
+            event.preventDefault();
+            return false;
+        }
+        return true;
     };
 </script>
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
