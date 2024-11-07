@@ -23,17 +23,8 @@
         <form action="#" id="feedbackForm" enctype="multipart/form-data" method="post">
             @csrf
             {{csrf_field()}}
-            <div class="form-group">
-                <label for="exampleInputEmail1">Select Your Guid Name</label>
-                <select class="form-select form-control" name="guid_id" aria-label="Default select example" required>
-                    <option selected disabled value="">Open this select menu</option>
-                    @foreach($tour_guid as $key =>$guid)
-                        <option value="{{$guid->id}}">{{$guid->guid_first_name}} {{$guid->guid_last_name}}</option>
-                    @endforeach
-                </select>
-            </div>
             <div class="row">
-                @foreach($questions as $key => $question)
+                @foreach($question_type_first as $key => $question)
                     <div class="col-md-6">
                         <div class="card mt-2 mb-2 shadow-sm p-2">
                             <p><u>{{$question->question}}</u></p>
@@ -44,7 +35,7 @@
                                 <div class="col-md-6">
                                     <div class="form-check">
                                         <input class="form-check-input {{'guid_'.$question->unique_id}}" type="radio" name="{{$question->unique_id}}"  value="MCSSCK2024">
-                                        <label class="form-check-label" for="exampleRadios_{{$question->unique_id}}">
+                                        <label class="form-check-label" for="buttonRadios_{{$question->unique_id}}">
                                             Excellent 😆
                                         </label>
                                     </div>
@@ -52,7 +43,7 @@
                                 <div class="col-md-6">
                                     <div class="form-check">
                                         <input class="form-check-input {{'guid_'.$question->unique_id}}" type="radio" name="{{$question->unique_id}}"  value="CCRRUT2024">
-                                        <label class="form-check-label" for="exampleRadios_{{$question->unique_id}}">
+                                        <label class="form-check-label" for="buttonRadios_{{$question->unique_id}}">
                                             Good 🙂
                                         </label>
                                     </div>
@@ -62,7 +53,7 @@
                                 <div class="col-md-6">
                                     <div class="form-check">
                                         <input class="form-check-input {{'guid_'.$question->unique_id}}" type="radio" name="{{$question->unique_id}}"  value="SVHTTV2024">
-                                        <label class="form-check-label" for="exampleRadios_{{$question->unique_id}}">
+                                        <label class="form-check-label" for="buttonRadios_{{$question->unique_id}}">
                                             Satisfactory 😒
                                         </label>
                                     </div>
@@ -70,8 +61,35 @@
                                 <div class="col-md-6">
                                     <div class="form-check">
                                         <input class="form-check-input {{'guid_'.$question->unique_id}}" type="radio" name="{{$question->unique_id}}"  value="TRRSC2024">
-                                        <label class="form-check-label" for="exampleRadios_{{$question->unique_id}}">
+                                        <label class="form-check-label" for="buttonRadios_{{$question->unique_id}}">
                                             Unsatisfactory ☹️
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+                @foreach($question_type_second as $key => $question)<div class="col-md-6">
+                        <div class="card mt-2 mb-2 shadow-sm p-2">
+                            <p><u>{{$question->question}}</u></p>
+                            <div>
+                                <span id="error_{{$key+2}}"></span>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-check">
+                                        <input class="form-check-input {{'guid_'.$question->unique_id}}" type="radio" name="{{$question->unique_id}}"  value="OBLCH2024">
+                                        <label class="form-check-label" for="buttonRadios_{{$question->unique_id}}">
+                                            YES
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-check">
+                                        <input class="form-check-input {{'guid_'.$question->unique_id}}" type="radio" name="{{$question->unique_id}}"  value="zdYfCJ0Kq">
+                                        <label class="form-check-label" for="buttonRadios_{{$question->unique_id}}">
+                                            NO
                                         </label>
                                     </div>
                                 </div>
@@ -93,62 +111,34 @@
 <script>
     document.getElementById('feedbackForm').onsubmit = function(event) {
         /*xsbOONhU2B*/
-        const radiosGroup_guid_xsbOONhU2B = document.querySelectorAll('.guid_xsbOONhU2B');
-        const isGroup1Checked_guid_xsbOONhU2B = Array.from(radiosGroup_guid_xsbOONhU2B).some(radio => radio.checked);
-        if (!isGroup1Checked_guid_xsbOONhU2B) {
-            swal("Please select an option !", "1) Language ?")
+        const radiosGroup_guid_1YJTWRUBG = document.querySelectorAll('.guid_1YJTWRUBG');
+        const isGroup1Checked_guid_1YJTWRUBG = Array.from(radiosGroup_guid_1YJTWRUBG).some(radio => radio.checked);
+        if (!isGroup1Checked_guid_1YJTWRUBG) {
+            swal("Please select an option !", "1) How do you rate your overall holiday?")
             error_1.textContent = "Please select an option"
             error_1.style.color = "red"
             event.preventDefault();
             return false;
         }
-        /*8qpgJL35A*/
-        const radiosGroup_guid_8qpgJL35A = document.querySelectorAll('.guid_8qpgJL35A');
-        const isGroup1Checked_guid_8qpgJL35A = Array.from(radiosGroup_guid_8qpgJL35A).some(radio => radio.checked);
-        if (!isGroup1Checked_guid_8qpgJL35A) {
-            swal("Please select an option !", "2) Knowledge of country and sites")
+        /*---------------------------------------------------------------------------*/
+        /*WMlmmJGIO*/
+        const radiosGroup_guid_WMlmmJGIO = document.querySelectorAll('.guid_WMlmmJGIO');
+        const isGroup1Checked_guid_WMlmmJGIO = Array.from(radiosGroup_guid_WMlmmJGIO).some(radio => radio.checked);
+        if (!isGroup1Checked_guid_WMlmmJGIO) {
+            swal("Please select an option !", "2) Would you recommend the destination to your family / friends ?")
             error_2.textContent = "Please select an option"
             error_2.style.color = "red"
             event.preventDefault();
             return false;
         }
-        /*6sYFvXNzK*/
-        const radiosGroup_guid_6sYFvXNzK = document.querySelectorAll('.guid_6sYFvXNzK');
-        const isGroup1Checked_guid_6sYFvXNzK = Array.from(radiosGroup_guid_6sYFvXNzK).some(radio => radio.checked);
-        if (!isGroup1Checked_guid_6sYFvXNzK) {
-            swal("Please select an option !", "3) Knowledge of other areas")
+        /*---------------------------------------------------------------------------*/
+        /*Dbois0KMo*/
+        const radiosGroup_guid_Dbois0KMo = document.querySelectorAll('.guid_Dbois0KMo');
+        const isGroup1Checked_guid_Dbois0KMo = Array.from(radiosGroup_guid_Dbois0KMo).some(radio => radio.checked);
+        if (!isGroup1Checked_guid_Dbois0KMo) {
+            swal("Please select an option !", "3) if so, would you recommend the services of NKAR TRAVELS &amp; TOURS ?")
             error_3.textContent = "Please select an option"
             error_3.style.color = "red"
-            event.preventDefault();
-            return false;
-        }
-        /*ly1XffocJ*/
-        const radiosGroup_guid_ly1XffocJ = document.querySelectorAll('.guid_ly1XffocJ');
-        const isGroup1Checked_guid_ly1XffocJ = Array.from(radiosGroup_guid_ly1XffocJ).some(radio => radio.checked);
-        if (!isGroup1Checked_guid_ly1XffocJ) {
-            swal("Please select an option !", "4) Courtesy and friendliness")
-            error_4.textContent = "Please select an option"
-            error_4.style.color = "red"
-            event.preventDefault();
-            return false;
-        }
-        /*u7W0aYo6e*/
-        const radiosGroup_guid_u7W0aYo6e = document.querySelectorAll('.guid_u7W0aYo6e');
-        const isGroup1Checked_guid_u7W0aYo6e = Array.from(radiosGroup_guid_u7W0aYo6e).some(radio => radio.checked);
-        if (!isGroup1Checked_guid_u7W0aYo6e) {
-            swal("Please select an option !", "5) Punctuality")
-            error_5.textContent = "Please select an option"
-            error_5.style.color = "red"
-            event.preventDefault();
-            return false;
-        }
-        /*AI9X5Mcl6*/
-        const radiosGroup_guid_AI9X5Mcl6 = document.querySelectorAll('.guid_AI9X5Mcl6');
-        const isGroup1Checked_guid_AI9X5Mcl6 = Array.from(radiosGroup_guid_AI9X5Mcl6).some(radio => radio.checked);
-        if (!isGroup1Checked_guid_AI9X5Mcl6) {
-            swal("Please select an option !", "5) Punctuality")
-            error_6.textContent = "Please select an option"
-            error_6.style.color = "red"
             event.preventDefault();
             return false;
         }
