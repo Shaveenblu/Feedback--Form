@@ -19,6 +19,9 @@
 
 <div class="container">
     <div class="mt-5">
+        <div style="display: flex; justify-content: space-between;">
+            <h4 class="card-title mt-2 mb-2">DRIVER GUID</h4>
+        </div>
         <form action="{{route('form-guid.answer-store')}}" id="feedbackForm" enctype="multipart/form-data" method="post">
             @csrf
             {{csrf_field()}}
@@ -141,6 +144,16 @@
             swal("Please select an option !", "5) Punctuality")
             error_5.textContent = "Please select an option"
             error_5.style.color = "red"
+            event.preventDefault();
+            return false;
+        }
+        /*AI9X5Mcl6*/
+        const radiosGroup_guid_AI9X5Mcl6 = document.querySelectorAll('.guid_AI9X5Mcl6');
+        const isGroup1Checked_guid_AI9X5Mcl6 = Array.from(radiosGroup_guid_AI9X5Mcl6).some(radio => radio.checked);
+        if (!isGroup1Checked_guid_AI9X5Mcl6) {
+            swal("Please select an option !", "5) Punctuality")
+            error_6.textContent = "Please select an option"
+            error_6.style.color = "red"
             event.preventDefault();
             return false;
         }

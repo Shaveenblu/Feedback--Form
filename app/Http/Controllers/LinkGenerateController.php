@@ -114,6 +114,7 @@ class LinkGenerateController extends Controller
                 "6sYFvXNzK",
                 "ly1XffocJ",
                 "u7W0aYo6e",
+                "AI9X5Mcl6",
             ])->get();
 
          return view('app.link_generate.about_guid', compact('tour_guid','questions'));
@@ -134,5 +135,26 @@ class LinkGenerateController extends Controller
         ])->get();
         return view('app.link_generate.transport', compact('questions'));
     }
+    public function form_transport_answer_store(Request $request)
+    {
+        $part = $request->except('_token');
+        session(['session_transport_guid' =>$part]);
+
+        $question_type_first = Question::where([
+            ['question_category_id', '=', 6],
+        ])->whereIn("unique_id",[
+            "1YJTWRUBG",
+        ])->get();
+
+        $question_type_second = Question::where([
+            ['question_category_id', '=', 6],
+        ])->whereIn("unique_id",[
+            "WMlmmJGIO",
+            "Dbois0KMo",
+        ])->get();
+
+        return view('app.link_generate.extra_questions', compact('question_type_first','question_type_second'));
+    }
+
 
 }
