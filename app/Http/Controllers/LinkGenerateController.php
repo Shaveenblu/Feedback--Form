@@ -156,5 +156,15 @@ class LinkGenerateController extends Controller
         return view('app.link_generate.extra_questions', compact('question_type_first','question_type_second'));
     }
 
+    public function extra_question_answer_store(Request $request)
+    {
+        $part = $request->except('_token');
+        session(['session_extra_question' =>$part]);
+
+
+        return $request;
+
+
+    }
 
 }

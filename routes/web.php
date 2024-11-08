@@ -89,5 +89,6 @@ Route::post('/form-hotel-standard/step-two/store',[\App\Http\Controllers\LinkGen
 Route::post('/form-guid/answer-store/store',[\App\Http\Controllers\LinkGenerateController::class,'form_guid_answer_store'])->name('form-guid.answer-store');
 /*transport*/
 Route::post('/form-transport/answer-store/store',[\App\Http\Controllers\LinkGenerateController::class,'form_transport_answer_store'])->name('form-transport.answer-store');
+Route::post('/extra-questions/answer-store/store',[\App\Http\Controllers\LinkGenerateController::class,'extra_question_answer_store'])->name('extra-questions.answer-store');
 
 
