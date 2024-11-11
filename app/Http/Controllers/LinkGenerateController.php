@@ -158,13 +158,7 @@ class LinkGenerateController extends Controller
 
     public function extra_question_answer_store(Request $request)
     {
-        $part = $request->except('_token');
-        session(['session_extra_question' =>$part]);
-
-
-        return $request;
-
-
+        dd($request);
     }
 
 }

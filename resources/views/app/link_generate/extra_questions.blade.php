@@ -99,14 +99,12 @@
                     </div>
                 @endforeach
             </div>
-
             <div style="display: flex; justify-content: space-between;">
                 <h4 class="card-title mt-2 mb-2"> Overall Travel Experiences  </h4>
             </div>
-
-            <div id="editor"></div>
-
-
+            <div class="form-group">
+                <textarea class="form-control" name="comment" id="exampleFormControlTextarea1" rows="3"></textarea>
+            </div>
             <div class="col-md-12 mt-5">
                 <button  class="btn btn-sm btn-primary float-right"> NEXT </button>
             </div>
