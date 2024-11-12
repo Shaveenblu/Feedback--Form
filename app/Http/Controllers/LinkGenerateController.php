@@ -167,6 +167,9 @@ class LinkGenerateController extends Controller
             'comment'=>'nullable|string',
         ]);
 
+        $part = $request->except('_token','comment');
+        session(['session_extra_question' =>$part]);
+
         $customer_form_url = CustomerFormUrl::where('unique_id',session()->get('customer_form_urls_unique_id'))->first();
 
         DB::table('customer_comments')->insert(
@@ -176,6 +179,9 @@ class LinkGenerateController extends Controller
               'unique_id' => Str::random(9),
             ]
         );
+
+
+
 
         return 'done';
 
