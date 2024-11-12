@@ -158,7 +158,26 @@ class LinkGenerateController extends Controller
 
     public function extra_question_answer_store(Request $request)
     {
+        $request->validate([
+            '1YJTWRUBG'=>'required|string',
+            'WMlmmJGIO'=>'required|string',
+            'Dbois0KMo'=>'required|string',
+        ]);
+
+        DB::table('customer_comments')->insert(
+            [
+              'customer_form_urls_id' => $row_id ,
+              'comment' => $request->comemnt,
+              'unique_id' => $user_id,
+            ]
+        );
+
         dd($request);
+
+        //DB::table('feed_back_forms')
+
+        return 'done';
+
     }
 
 }
