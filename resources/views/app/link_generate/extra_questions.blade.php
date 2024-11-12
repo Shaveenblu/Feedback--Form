@@ -103,7 +103,7 @@
                 <h4 class="card-title mt-2 mb-2"> Overall Travel Experiences  </h4>
             </div>
             <div class="form-group">
-                <textarea class="form-control" name="comment" id="exampleFormControlTextarea1" rows="3"></textarea>
+                <textarea class="form-control" maxlength="20000" name="comment" id="exampleFormControlTextarea1" rows="10"></textarea>
             </div>
             <div class="col-md-12 mt-5">
                 <button  class="btn btn-sm btn-primary float-right"> NEXT </button>

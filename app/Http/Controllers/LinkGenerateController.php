@@ -11,6 +11,7 @@ use App\Models\ResponseType;
 use App\Models\Tour;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class LinkGenerateController extends Controller
 {
@@ -34,6 +35,7 @@ class LinkGenerateController extends Controller
         $customer_form_url = CustomerFormUrl::where('unique_id',$unique_id)->first();
         if($customer_form_url){
             session(['customer_id' => $customer_form_url->customer_id]);
+            session(['customer_form_urls_unique_id' => $customer_form_url->unique_id]);
             if(session()->has('session_form_first_step')){
                 return redirect()->route('hotel_standard');
             }else{
@@ -162,21 +164,21 @@ class LinkGenerateController extends Controller
             '1YJTWRUBG'=>'required|string',
             'WMlmmJGIO'=>'required|string',
             'Dbois0KMo'=>'required|string',
+            'comment'=>'nullable|string',
         ]);
+
+        $customer_form_url = CustomerFormUrl::where('unique_id',session()->get('customer_form_urls_unique_id'))->first();
 
         DB::table('customer_comments')->insert(
             [
-              'customer_form_urls_id' => $row_id ,
-              'comment' => $request->comemnt,
-              'unique_id' => $user_id,
+              'customer_form_urls_id' => $customer_form_url->id,
+              'comment' => $request->comment,
+              'unique_id' => Str::random(9),
             ]
         );
 
-        dd($request);
-
-        //DB::table('feed_back_forms')
-
         return 'done';
+
 
     }
 
