@@ -212,7 +212,8 @@ class LinkGenerateController extends Controller
             /*session_hotel_standard*/
             if (session()->has('session_hotel_standard')) {
                 foreach (session()->get('session_hotel_standard') as $key => $part) {
-                    $question = DB::table('questions')->where('unique_id', $key)->first();
+                    [$session, $hotelCode] = explode('_', $key, 2);
+                    $question = DB::table('questions')->where('unique_id', $hotelCode)->first();
                     $response_type = DB::table('response_types')->where('unique_id', $part)->first();
                     DB::table('feed_back_forms')->insert(
                         [
@@ -267,7 +268,7 @@ class LinkGenerateController extends Controller
                                 'customer_id' => $customer->id,
                                 'response_type_id' => $response_type->id,
                                 'hotel_id' => null,
-                                'guide_id' => session()->get('session_form_first_step')['guid_id'],
+                                'guide_id' => session()->get('session_about_guid')['guid_id'],
                                 'tour_id' => $customer_form_url->tour_id,
                                 'customer_name' => session()->get('session_form_first_step')['customer_name'],
                                 'customer_tel_phone_number' => session()->get('session_form_first_step')['customer_phone_number'],
