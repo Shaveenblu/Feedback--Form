@@ -9,6 +9,7 @@ use App\Models\Hotel;
 use App\Models\Question;
 use App\Models\ResponseType;
 use App\Models\Tour;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
@@ -31,7 +32,7 @@ class LinkGenerateController extends Controller
     }
 
 
-    public function customer_form_page($unique_id,$name){
+    public function customer_form_page($unique_id){
         $customer_form_url = CustomerFormUrl::where('unique_id',$unique_id)->first();
         if($customer_form_url){
             session(['customer_id' => $customer_form_url->customer_id]);
@@ -56,7 +57,7 @@ class LinkGenerateController extends Controller
          ]);
         $part = $request->except('_token');
         session(['session_form_first_step' =>$part]);
-        if(session()->has('session_form_first_step')){
+        if(session()->has('session_form_first_step') && session()->has('customer_id') && session()->has('customer_form_urls_unique_id')){
             return redirect()->route('hotel_standard');
         }else{
             return view('app.link_generate.form_page');
@@ -64,7 +65,7 @@ class LinkGenerateController extends Controller
     }
 
     public function hotel_standard(){
-        if(session()->has('customer_id') && session()->has('session_form_first_step') && !session()->has('session_hotel_standard')){
+        if(session()->has('customer_form_urls_unique_id') && session()->has('customer_id') && session()->has('session_form_first_step') && !session()->has('session_hotel_standard')){
             $customer_hotel=DB::table('customer_hotel')
                 ->join('hotels', 'hotels.id', '=', 'customer_hotel.hotel_id')
                 ->where('customer_id','=',session()->get('customer_id'))
@@ -161,30 +162,153 @@ class LinkGenerateController extends Controller
     public function extra_question_answer_store(Request $request)
     {
         $request->validate([
-            '1YJTWRUBG'=>'required|string',
-            'WMlmmJGIO'=>'required|string',
-            'Dbois0KMo'=>'required|string',
-            'comment'=>'nullable|string',
+            '1YJTWRUBG' => 'required|string',
+            'WMlmmJGIO' => 'required|string',
+            'Dbois0KMo' => 'required|string',
+            'comment' => 'nullable|string',
         ]);
 
-        $part = $request->except('_token','comment');
-        session(['session_extra_question' =>$part]);
+        $part = $request->except('_token', 'comment');
+        session(['session_extra_question' => $part]);
+        $customer_form_url = CustomerFormUrl::where('unique_id', session()->get('customer_form_urls_unique_id'))->first();
+        $customer = Customer::find($customer_form_url->customer_id);
+        $test = 'aaa';
+        $currentDate = Carbon::now()->toDateString();
 
-        $customer_form_url = CustomerFormUrl::where('unique_id',session()->get('customer_form_urls_unique_id'))->first();
+        if (
+            session()->has('session_form_first_step')
+            && session()->has('customer_id')
+            && session()->has('customer_form_urls_unique_id')
+            && session()->has('session_hotel_standard')
+            && session()->has('session_transport_guid')
+            && session()->has('session_extra_question')
+            && session()->has('session_about_guid')
+        ) {
 
-        DB::table('customer_comments')->insert(
-            [
-              'customer_form_urls_id' => $customer_form_url->id,
-              'comment' => $request->comment,
-              'unique_id' => Str::random(9),
-            ]
-        );
+            /*-----------------------------------------*/
+            /*session_form_first_step*/
+            if (session()->has('session_form_first_step')) {
+                foreach (session()->get('session_form_first_step') as $key => $part) {
+                    if ($key != 'customer_name' and $key != 'customer_phone_number') {
+                        $question = DB::table('questions')->where('unique_id', $key)->first();
+                        $response_type = DB::table('response_types')->where('unique_id', $part)->first();
+                        DB::table('feed_back_forms')->insert(
+                            [
+                                'question_id' => $question->id,
+                                'customer_form_urls_unique_id' => session()->get('customer_form_urls_unique_id'),
+                                'customer_id' => $customer->id,
+                                'response_type_id' => $response_type->id,
+                                'hotel_id' => null,
+                                'guide_id' => null,
+                                'tour_id' => $customer_form_url->tour_id,
+                                'customer_name' => session()->get('session_form_first_step')['customer_name'],
+                                'customer_tel_phone_number' => session()->get('session_form_first_step')['customer_phone_number'],
+                                'date' => $currentDate,
+                            ]
+                        );
+                    }
+                }
+            }
+            /*-------------------------------------------*/
+            /*session_hotel_standard*/
+            if (session()->has('session_hotel_standard')) {
+                foreach (session()->get('session_hotel_standard') as $key => $part) {
+                    $question = DB::table('questions')->where('unique_id', $key)->first();
+                    $response_type = DB::table('response_types')->where('unique_id', $part)->first();
+                    DB::table('feed_back_forms')->insert(
+                        [
+                            'question_id' => $question->id,
+                            'customer_form_urls_unique_id' => session()->get('customer_form_urls_unique_id'),
+                            'customer_id' => $customer->id,
+                            'response_type_id' => $response_type->id,
+                            'hotel_id' => null,
+                            'guide_id' => null,
+                            'tour_id' => $customer_form_url->tour_id,
+                            'customer_name' => session()->get('session_form_first_step')['customer_name'],
+                            'customer_tel_phone_number' => session()->get('session_form_first_step')['customer_phone_number'],
+                            'date' => $currentDate,
+                        ]
+                    );
+                }
+            }
+            /*---------------------------------------------*/
+            /*session_transport_guid*/
+            if (session()->has('session_transport_guid')) {
+                foreach (session()->get('session_transport_guid') as $key => $part) {
+                    $question = DB::table('questions')->where('unique_id', $key)->first();
+                    $response_type = DB::table('response_types')->where('unique_id', $part)->first();
+                    DB::table('feed_back_forms')->insert(
+                        [
+                            'question_id' => $question->id,
+                            'customer_form_urls_unique_id' => session()->get('customer_form_urls_unique_id'),
+                            'customer_id' => $customer->id,
+                            'response_type_id' => $response_type->id,
+                            'hotel_id' => null,
+                            'guide_id' => null,
+                            'tour_id' => $customer_form_url->tour_id,
+                            'customer_name' => session()->get('session_form_first_step')['customer_name'],
+                            'customer_tel_phone_number' => session()->get('session_form_first_step')['customer_phone_number'],
+                            'date' => $currentDate,
+                        ]
+                    );
+                }
 
+                /*------------------------------------------*/
+                /*session_about_guid*/
+                if (session()->has('session_about_guid')) {
+                    foreach(session()->get('session_about_guid') as $key => $part) {
+                        if($key != 'guid_id'){
+                            $question = DB::table('questions')->where('unique_id', $key)->first();
+                            $response_type = DB::table('response_types')->where('unique_id', $part)->first();
+                            DB::table('feed_back_forms')->insert(
+                                [
+                                    'question_id' => $question->id,
+                                    'customer_form_urls_unique_id' => session()->get('customer_form_urls_unique_id'),
+                                    'customer_id' => $customer->id,
+                                    'response_type_id' => $response_type->id,
+                                    'hotel_id' => null,
+                                    'guide_id' => session()->get('session_form_first_step')['guid_id'],
+                                    'tour_id' => $customer_form_url->tour_id,
+                                    'customer_name' => session()->get('session_form_first_step')['customer_name'],
+                                    'customer_tel_phone_number' => session()->get('session_form_first_step')['customer_phone_number'],
+                                    'date' => $currentDate,
+                                ]
+                            );
+                        }
+                    }
+                }
 
+                /*--------------------------------------------*/
+                /*session_extra_question*/
+                if (session()->has('session_extra_question')) {
+                    DB::table('feed_back_forms')->insert(
+                        [
+                            'question_id' => $question->id,
+                            'customer_form_urls_unique_id' => session()->get('customer_form_urls_unique_id'),
+                            'customer_id' => $customer->id,
+                            'response_type_id' => $test,
+                            'hotel_id' => null,
+                            'guide_id' => null,
+                            'tour_id' => $customer_form_url->tour_id,
+                            'customer_name' => session()->get('session_form_first_step')['customer_name'],
+                            'customer_tel_phone_number' => session()->get('session_form_first_step')['customer_phone_number'],
+                            'date' => $currentDate,
+                        ]
+                    );
+                }
+                /*--------------------------------------*/
+                /*customer_comments*/
+                DB::table('customer_comments')->insert(
+                    [
+                        'customer_form_urls_id' => $customer_form_url->id,
+                        'comment' => $request->comment,
+                        'unique_id' => Str::random(9),
+                    ]
+                );
 
+            }
 
-        return 'done';
-
+        }
 
     }
 

@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
@@ -29,7 +30,11 @@ Route::get('/cart/sessiondata', function (){
     //http://127.0.0.1:8000/cart/sessiondata
     //return Gloudemans\Shoppingcart\Facades\Cart::content();
     return session()->all();
-   // return 'session see';
+    //return session()->get('session_form_first_step')['customer_name'];
+    //return 'session see';
+//    foreach (session()->get('session_form_first_step') as $key => $part){
+//      return $key;
+//    }
 });
 
 //http://127.0.0.1:8000/cart/forget
