@@ -215,13 +215,14 @@ class LinkGenerateController extends Controller
                     [$session, $hotelCode] = explode('_', $key, 2);
                     $question = DB::table('questions')->where('unique_id', $hotelCode)->first();
                     $response_type = DB::table('response_types')->where('unique_id', $part)->first();
+                    $hotelS = DB::table('hotels')->where('unique_id',$session)->first();
                     DB::table('feed_back_forms')->insert(
                         [
                             'question_id' => $question->id,
                             'customer_form_urls_unique_id' => session()->get('customer_form_urls_unique_id'),
                             'customer_id' => $customer->id,
                             'response_type_id' => $response_type->id,
-                            'hotel_id' => null,
+                            'hotel_id' => $hotelS->id,
                             'guide_id' => null,
                             'tour_id' => $customer_form_url->tour_id,
                             'customer_name' => session()->get('session_form_first_step')['customer_name'],
