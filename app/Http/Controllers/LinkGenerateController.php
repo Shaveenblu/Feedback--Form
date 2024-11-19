@@ -28,7 +28,8 @@ class LinkGenerateController extends Controller
 
     public function copy_link()
     {
-         return view('app.link_generate.copy_link');
+         $customer_form_urls = CustomerFormUrl::all();
+         return view('app.link_generate.copy_link', compact('customer_form_urls'));
     }
 
 

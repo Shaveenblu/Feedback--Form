@@ -84,15 +84,21 @@
                                 <div role="group"
                                     aria-label="Row Actions"
                                     class="btn-group">
-                                        @can('view', $customerFormUrl)
+
+                                    @can('view', $customerFormUrl)
                                     <a href="{{ route('customer-form-urls.show', $customerFormUrl) }}">
                                         <button
                                             type="button"
-                                            class="btn btn-light">
+                                            class="btn btn-light bg-success">
                                             <i class="icon ion-md-eye"></i>
                                         </button>
                                     </a>
                                     @endcan
+                                        <button
+                                            type="button"
+                                            class="btn btn-light bg-primary ml-2">
+                                            <i class="icon ion-md-checkbox-outline"></i>
+                                        </button>
                                 </div>
                             </td>
                         </tr>
