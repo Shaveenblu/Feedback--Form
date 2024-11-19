@@ -36,7 +36,6 @@
             </div>
         </div>
     </div>
-
     <div class="card">
         <div class="card-body">
             <div style="display: flex; justify-content: space-between;">
@@ -44,7 +43,6 @@
                     @lang('crud.feed_back_forms.index_title')
                 </h4>
             </div>
-
             <div class="table-responsive">
                 <table class="table table-borderless table-hover">
                     <thead>
@@ -62,9 +60,6 @@
                                 @lang('crud.feed_back_forms.inputs.hotel_id')
                             </th>
                             <th class="text-left">
-                                @lang('crud.feed_back_forms.inputs.guide_id')
-                            </th>
-                            <th class="text-left">
                                 @lang('crud.feed_back_forms.inputs.tour_id')
                             </th>
                             <th class="text-left">
@@ -72,9 +67,6 @@
                             </th>
                             <th class="text-left">
                                 @lang('crud.feed_back_forms.inputs.customer_tel_phone_number')
-                            </th>
-                            <th class="text-left">
-                                @lang('crud.feed_back_forms.inputs.date')
                             </th>
                             <th class="text-center">
                                 @lang('crud.common.actions')
@@ -102,10 +94,6 @@
                                 '-' }}
                             </td>
                             <td>
-                                {{ optional($feedBackForm->guide)->unique_id ??
-                                '-' }}
-                            </td>
-                            <td>
                                 {{ optional($feedBackForm->tour)->unique_id ??
                                 '-' }}
                             </td>
@@ -114,7 +102,6 @@
                                 {{ $feedBackForm->customer_tel_phone_number ??
                                 '-' }}
                             </td>
-                            <td>{{ $feedBackForm->date ?? '-' }}</td>
                             <td class="text-center" style="width: 134px;">
                                 <div
                                     role="group"
