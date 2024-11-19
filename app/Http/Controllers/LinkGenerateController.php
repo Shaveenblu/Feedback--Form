@@ -163,23 +163,39 @@ class LinkGenerateController extends Controller
     }
     public function form_transport_answer_store(Request $request)
     {
-        $part = $request->except('_token');
-        session(['session_transport_guid' =>$part]);
-
-        $question_type_first = Question::where([
-            ['question_category_id', '=', 6],
-        ])->whereIn("unique_id",[
-            "1YJTWRUBG",
-        ])->get();
-
-        $question_type_second = Question::where([
-            ['question_category_id', '=', 6],
-        ])->whereIn("unique_id",[
-            "WMlmmJGIO",
-            "Dbois0KMo",
-        ])->get();
-
-        return view('app.link_generate.extra_questions', compact('question_type_first','question_type_second'));
+        $customer_form_url = CustomerFormUrl::where(
+            [
+                ['unique_id', '=', session()->get('customer_form_urls_unique_id')],
+                ['status', '=', 'In Progress'],
+            ]
+        )->first();
+        if($customer_form_url){
+            $part = $request->except('_token');
+            session(['session_transport_guid' =>$part]);
+            if(
+                session()->has('customer_id') &&
+                session()->has('customer_form_urls_unique_id') &&
+                session()->has('session_form_first_step') &&
+                session()->has('session_hotel_standard') &&
+                session()->has('session_about_guid') &&
+                session()->has('session_transport_guid')
+            ){
+                $question_type_first = Question::where([
+                    ['question_category_id', '=', 6],
+                ])->whereIn("unique_id",[
+                    "1YJTWRUBG",
+                ])->get();
+                $question_type_second = Question::where([
+                    ['question_category_id', '=', 6],
+                ])->whereIn("unique_id",[
+                    "WMlmmJGIO",
+                    "Dbois0KMo",
+                ])->get();
+                return view('app.link_generate.extra_questions', compact('question_type_first','question_type_second'));
+            }else{
+                return abort(404);
+            }
+        }
     }
 
     public function extra_question_answer_store(Request $request)
