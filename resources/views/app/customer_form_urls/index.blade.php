@@ -94,11 +94,13 @@
                                         </button>
                                     </a>
                                     @endcan
-                                        <button
-                                            type="button"
-                                            class="btn btn-light bg-primary ml-2">
-                                            <i class="icon ion-md-checkbox-outline"></i>
-                                        </button>
+                                        <a href="{{ route('see_all_answer_for_customer', $customerFormUrl) }}">
+                                            <button
+                                                type="button"
+                                                class="btn btn-light bg-primary ml-2">
+                                                <i class="icon ion-md-checkbox-outline"></i>
+                                            </button>
+                                        </a>
                                 </div>
                             </td>
                         </tr>

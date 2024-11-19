@@ -29,7 +29,7 @@ class LinkGenerateController extends Controller
     public function copy_link()
     {
          $customer_form_urls = CustomerFormUrl::all();
-         return view('app.link_generate.copy_link', compact('customer_form_urls'));
+         return 'done';
     }
 
 
@@ -319,5 +319,17 @@ class LinkGenerateController extends Controller
         }
 
     }
+
+    public function fetch_all_answer_for_customer(Request $request, CustomerFormUrl $customerFormUrl)
+    {
+           $search = $request->get('search', '');
+           $feedBackForms  = FeedBackForm::search($search)
+               ->where('customer_form_urls_unique_id',$customerFormUrl->unique_id)
+               ->latest()
+               ->paginate(20)
+               ->withQueryString();
+           return view('app.link_generate.copy_link', compact('feedBackForms'));
+    }
+
 
 }
