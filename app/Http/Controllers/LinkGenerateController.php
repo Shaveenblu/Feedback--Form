@@ -134,22 +134,32 @@ class LinkGenerateController extends Controller
                 "AI9X5Mcl6",
             ])->get();
          return view('app.link_generate.about_guid', compact('tour_guid','questions'));
-        }elseif(!session()->has('session_form_first_step') && !session()->has('customer_id')){
-            return redirect()->route('customer_form_page');
+        }else{
+            return abort(404);
         }
     }
 
     public function form_guid_answer_store(Request $request){
         $part = $request->except('_token');
         session(['session_about_guid' =>$part]);
-        $questions = Question::where([
-            ['question_category_id', '=', 5],
-        ])->whereIn("unique_id",[
-            "i8V0EbkNtG",
-            "6snmnEeAw",
-            "ltxAddrNJ",
-        ])->get();
-        return view('app.link_generate.transport', compact('questions'));
+        if(
+            session()->has('customer_id') &&
+            session()->has('customer_form_urls_unique_id') &&
+            session()->has('session_form_first_step') &&
+            session()->has('session_hotel_standard') &&
+            session()->has('session_about_guid')
+        ){
+            $questions = Question::where([
+                ['question_category_id', '=', 5],
+            ])->whereIn("unique_id",[
+                "i8V0EbkNtG",
+                "6snmnEeAw",
+                "ltxAddrNJ",
+            ])->get();
+            return view('app.link_generate.transport', compact('questions'));
+        }else{
+            return abort(404);
+        }
     }
     public function form_transport_answer_store(Request $request)
     {
