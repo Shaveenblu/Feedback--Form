@@ -60,12 +60,24 @@
                         @forelse($customerFormUrls as $customerFormUrl)
                         <tr>
                             <td>
+                                @if($customerFormUrl->status == 'In Progress')
                                 <a href="{{ $customerFormUrl->url_link ?? '-' }}" id="CopyText_{{$customerFormUrl->id}}">
                                     {{ $customerFormUrl->url_link ?? '-' }}
                                 </a>
+                                @else
+                                    <p class="bg-warning text-center">
+                                        <strong> Completed </strong>
+                                    </p>
+                                @endif
                             </td>
                             <td>
-                                <button class="btn btn-dark" onclick="copyContent({{$customerFormUrl->id}})"> Copy </button>
+                                @if($customerFormUrl->status == 'In Progress')
+                                    <button class="btn btn-dark" onclick="copyContent({{$customerFormUrl->id}})"> Copy </button>
+                                @else
+                                    <p class="bg-warning text-center">
+                                        <strong> Completed </strong>
+                                    </p>
+                                @endif
                             </td>
                             <td>
                                 @if($customerFormUrl->status == 'Completed')

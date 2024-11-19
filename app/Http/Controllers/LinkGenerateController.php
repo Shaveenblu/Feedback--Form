@@ -314,6 +314,20 @@ class LinkGenerateController extends Controller
                 ]
             );
 
+            //customer_form_urls update for "Completed"
+            $form_data= array(
+                'status'=>'Completed',
+            );
+
+            CustomerFormUrl::where('unique_id','=',$customer_form_url->unique_id)->update($form_data);
+
+            session()->forget('customer_id');
+            session()->forget('customer_form_urls_unique_id');
+            session()->forget('session_form_first_step');
+            session()->forget('session_hotel_standard');
+            session()->forget('session_about_guid');
+            session()->forget('session_transport_guid');
+
             return 'done!!!';
 
         }
