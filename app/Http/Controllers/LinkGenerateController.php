@@ -66,7 +66,7 @@ class LinkGenerateController extends Controller
         if(session()->has('session_form_first_step') && session()->has('customer_id') && session()->has('customer_form_urls_unique_id')){
             return redirect()->route('hotel_standard');
         }else{
-            return view('app.link_generate.form_page');
+            return abort(404);
         }
     }
 
@@ -99,7 +99,7 @@ class LinkGenerateController extends Controller
                     "vkOIIsM3O",
                 ])->get();
             }else{
-                return redirect()->back();
+                return abort(404);
             }
         }
         return view('app.link_generate.hotel_standard',compact('customer_hotel','questions'));
@@ -373,6 +373,8 @@ class LinkGenerateController extends Controller
                 session()->forget('session_transport_guid');
 
                 return 'done!!!';
+            }else{
+                return abort(404);
             }
 
         }
