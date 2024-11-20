@@ -77,30 +77,24 @@
                         @forelse($feedBackForms as $feedBackForm)
                         <tr>
                             <td>
-                                {{ optional($feedBackForm->question)->question
-                                ?? '-' }}
+                                {{ optional($feedBackForm->question)->question ?? '-' }}
                             </td>
                             <td>
-                                {{
-                                optional($feedBackForm->question2)->customer_name
-                                ?? '-' }}
+                                {{ optional($feedBackForm->question2)->customer_name ?? '-' }}
                             </td>
                             <td>
-                                {{ optional($feedBackForm->responseType)->name
-                                ?? '-' }}
+                                {{ optional($feedBackForm->responseType)->name ?? '-' }}
                             </td>
                             <td>
-                                {{ optional($feedBackForm->hotel)->hotel_name ??
-                                '-' }}
+                                {{ optional($feedBackForm->hotel)->hotel_name ?? '-' }}
                             </td>
                             <td>
-                                {{ optional($feedBackForm->tour)->unique_id ??
-                                '-' }}
+                                {{ optional($feedBackForm->tour)->unique_id ?? '-' }}
+                                ({{ optional($feedBackForm->tour)->tour_name ?? '-'}})
                             </td>
                             <td>{{ $feedBackForm->customer_name ?? '-' }}</td>
                             <td>
-                                {{ $feedBackForm->customer_tel_phone_number ??
-                                '-' }}
+                                {{ $feedBackForm->customer_tel_phone_number ?? '-' }}
                             </td>
                             <td class="text-center" style="width: 134px;">
                                 <div
@@ -112,10 +106,8 @@
                                     <a
                                         href="{{ route('feed-back-forms.edit', $feedBackForm) }}"
                                     >
-                                        <button
-                                            type="button"
-                                            class="btn btn-light"
-                                        >
+                                        <button type="button"
+                                            class="btn btn-light">
                                             <i class="icon ion-md-create"></i>
                                         </button>
                                     </a>
