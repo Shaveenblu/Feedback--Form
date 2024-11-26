@@ -35,7 +35,12 @@ date(nullable)
 ![schema](https://github.com/user-attachments/assets/c34ebacf-82d4-444b-bda2-7982af55f2a9)
 
 
-
+## login credentials
+<ul>
+    <li>user - Testuser</li>
+    <li>email - test@mail.com</li>
+    <li>password - 12345678</li>
+</ul>
 
 
 
