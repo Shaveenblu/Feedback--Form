@@ -24,13 +24,13 @@
         </div>
         <form action="{{route('form-guid.answer-store')}}" id="feedbackForm" enctype="multipart/form-data" method="post">
             @csrf
-            {{csrf_field()}}
+            {{ csrf_field() }}
             <div class="form-group">
-                <label for="exampleInputEmail1">Select Your Guid Name</label>
+                <label for="exampleInputEmail1">Select Your Guide Name</label>
                 <select class="form-select form-control" name="guid_id" aria-label="Default select example" required>
                     <option selected disabled value="">Open this select menu</option>
                     @foreach($tour_guid as $key =>$guid)
-                    <option value="{{$guid->id}}">{{$guid->guid_first_name}} {{$guid->guid_last_name}}</option>
+                    <option value="{{ $guid->id }}">{{ $guid->guid_first_name }} {{ $guid->guid_last_name }}</option>
                     @endforeach
                 </select>
             </div>

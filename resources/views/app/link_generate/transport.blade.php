@@ -26,6 +26,7 @@
             <div class="row">
                 @foreach($questions as $key => $question)
                     <div class="col-md-6">
+                        <p>Hello guys</p>
                         <div class="card mt-2 mb-2 shadow-sm p-2">
                             <p><u>{{$question->question}} ?</u></p>
                             <div>

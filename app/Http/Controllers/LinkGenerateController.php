@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Customer;
 use App\Models\CustomerFormUrl;
 use App\Models\FeedBackForm;
+use App\Models\Guide;
+
 use App\Models\Hotel;
 use App\Models\Question;
 use App\Models\ResponseType;
@@ -70,14 +72,14 @@ class LinkGenerateController extends Controller
         }
     }
 
-    public function hotel_standard(){
+    public function hotel_standard() {
         $customer_form_url = CustomerFormUrl::where(
             [
                 ['unique_id', '=', session()->get('customer_form_urls_unique_id')],
                 ['status', '=', 'In Progress'],
             ]
         )->first();
-        if($customer_form_url){
+        if($customer_form_url) {
             if(session()->has('customer_form_urls_unique_id') && session()->has('customer_id') && session()->has('session_form_first_step') && !session()->has('session_hotel_standard')){
                 $customer_hotel=DB::table('customer_hotel')
                     ->join('hotels', 'hotels.id', '=', 'customer_hotel.hotel_id')
@@ -148,7 +150,7 @@ class LinkGenerateController extends Controller
             session()->has('session_form_first_step') &&
             session()->has('session_hotel_standard') &&
             session()->has('session_about_guid')
-        ){
+        ) {
             $questions = Question::where([
                 ['question_category_id', '=', 5],
             ])->whereIn("unique_id",[
@@ -156,7 +158,10 @@ class LinkGenerateController extends Controller
                 "6snmnEeAw",
                 "ltxAddrNJ",
             ])->get();
-            return view('app.link_generate.transport', compact('questions'));
+
+            $tour_guid = Guide::all();
+
+            return view('app.link_generate.transport', compact('tour_guid','questions'));
         }else{
             return abort(404);
         }
